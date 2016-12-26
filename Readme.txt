@@ -6,10 +6,10 @@
 
     login : 登录注册
     home  : 主页
-    military : 军事天地
+    military : 军事天地 -- Jun
     propaganda : 征兵宣传
-    enroll : 征兵报名
-    policy : 征兵政策
+    enroll : 征兵报名 -- Jun
+    policy : 征兵政策 -- Jun
     utils  : 工具类
     views :自定义控件
     ...
