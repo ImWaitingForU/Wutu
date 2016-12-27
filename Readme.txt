@@ -19,6 +19,12 @@
 
 图片加载：picasso   compile 'com.squareup.picasso:picasso:2.5.2'
 网络请求：volley     compile 'com.android.volley:volley:1.0.0'
+引导页/广告轮播:   compile 'com.android.support:support-v4:2.1.6'
+                  compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
+
+显示密码的Edittext: compile 'com.maksim88:PasswordEditText:v0.9'
+依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
+                   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
 关于代码规范：
 
