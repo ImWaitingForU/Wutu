@@ -8,70 +8,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:maxLength="11"
-            android:id="@+id/et_userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:background="@color/colorTranslate"
-            android:gravity="center"
-            android:hint="@string/login_input_userName"
-            android:inputType="phone"/>
-
-        <View
-            android:id="@+id/line"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_below="@id/et_userName"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"/>
-
-        <RelativeLayout
-            android:id="@+id/rr_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/line">
-
-            <EditText
-                android:id="@+id/et_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorTranslate"
-                android:gravity="center"
-                android:hint="@string/login_input_pwd"
-                android:inputType="textPassword"/>
-
-            <CheckBox
-                android:id="@+id/cb_login_showPwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@color/colorTranslate"
-                android:button="@drawable/et_pwd_selector"/>
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rr_login"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_selector"
-            android:text="@string/login_btn_login"
-            android:textColor="@color/colorWhite"/>
-
-    </LinearLayout>
-
 
     <TextView
         android:id="@+id/tv_goToFindPwd"
@@ -82,11 +18,75 @@
         android:text="@string/login_tv_goFindPwd"/>
 
     <TextView
-        android:id="@+id/tv_goToRegister"
+        android:id="@+id/tv_noPwdEnter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/login_tv_goRegister"/>
+        android:layout_alignParentLeft="true"
+        android:text="@string/login_tv_noPwdEnter"/>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <EditText
+            android:id="@+id/et_userName"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTranslate"
+            android:gravity="center"
+            android:hint="@string/login_input_userName"
+            android:inputType="phone"
+            android:maxLength="11"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/et_userName"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"/>
+
+        <com.maksim88.passwordedittext.PasswordEditText
+            android:id="@+id/et_pwd"
+            android:layout_below="@id/line"
+            android:background="@color/colorTranslate"
+            android:hint="@string/login_input_pwd"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/et_pwd"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_marginRight="1dp"
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_selector"
+                android:text="@string/login_btn_register"
+                android:textColor="@color/colorWhite"/>
+
+
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:text="@string/login_btn_login"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+    </RelativeLayout>
+    
 
 </RelativeLayout>

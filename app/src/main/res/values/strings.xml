@@ -7,13 +7,14 @@
     <string name="sinaLogin">微博登录</string>
     <string name="goLogin"><i><u> → 手机号登录</u></i></string>
 
-    <!--登录-->
+    <!--登录页面-->
     <string name="login_label">登录</string>
     <string name="login_input_userName">请输入手机号</string>
     <string name="login_input_pwd">请输入密码</string>
     <string name="login_btn_login">登录</string>
-    <string name="login_tv_goRegister"><i><u>没有账号，去注册~</u></i></string>
+    <string name="login_btn_register">注册</string>
     <string name="login_tv_goFindPwd"><i><u>忘记密码?</u></i></string>
+    <string name="login_tv_noPwdEnter"><i><u>游客进入</u></i></string>
 
     <!-- 注册 -->
     <string name="register_label">验证手机号</string>
