@@ -1,4 +1,4 @@
-伍途APP:
+﻿伍途APP:
 
 版本号:1.0.0.0(版本号暂时不用管，应用发布后再进行版本升级)
 
@@ -6,7 +6,7 @@
 
     login : 登录注册
     home  : 主页
-    military : 军事天地
+    military : 军事天地（测试下）
     propaganda : 征兵宣传
     enroll : 征兵报名
     policy : 征兵政策
