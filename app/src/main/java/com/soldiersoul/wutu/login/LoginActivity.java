@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.maksim88.passwordedittext.PasswordEditText;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.register.RegisterActivity;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.utils.LogUtils;
 
@@ -20,9 +21,6 @@ public class LoginActivity extends BaseActivity {
 
     @BindView (R.id.et_userName) EditText etPhone;
     @BindView (R.id.et_pwd) PasswordEditText etPwd;
-    //    @BindView (R.id.btn_login) Button btnLogin;
-    //    @BindView (R.id.btn_register) Button btnRegister;
-
 
     /**
      * 登录
@@ -39,7 +37,7 @@ public class LoginActivity extends BaseActivity {
     @OnClick (R.id.btn_register)
     void register () {
         //TODO:跳转到注册界面注册
-        startActivity (new Intent ());
+        startActivity (new Intent (this, RegisterActivity.class));
         LogUtils.d ("注册");
         mToastUtil.toastShort ("---asdasdada----");
     }
