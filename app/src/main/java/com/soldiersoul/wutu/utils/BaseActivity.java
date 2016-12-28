@@ -19,17 +19,30 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     Handler mHandler = new Handler ();
 
+    //工具
+    protected ToastUtil mToastUtil;
+
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        setContentView (getContentViewId ());
 
+        setContentView (getContentViewId ());
         //注册butterKnife只能在setContentView之后
         ButterKnife.bind (this);
+        initTools ();
 
     }
 
-    public abstract int getContentViewId();
+    /**
+     * 初始化工具类
+     */
+    private void initTools () {
+        String tag = this.getComponentName ().getClassName ();
+        LogUtils.getBuilder ().setTag (tag).create ();
+        mToastUtil = new ToastUtil (this);
+    }
+
+    public abstract int getContentViewId ();
 
     @Override
     protected void onDestroy () {
@@ -39,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 几乎每个页面都会进行网络通信,会涉及到handler
      */
-    protected void initHandler(Handler.Callback callback){
+    protected void initHandler (Handler.Callback callback) {
         this.mHandler = new Handler (callback);
     }
 
@@ -70,7 +83,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param title
      */
-    protected void setPageTitle (Toolbar toolbar,String title) {
+    protected void setPageTitle (Toolbar toolbar, String title) {
         toolbar.setTitle (title);
     }
 

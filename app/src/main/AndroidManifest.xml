@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".login.GuideActivity">
         </activity>
+        <activity android:name=".register.RegisterActivity">
+        </activity>
     </application>
 
 </manifest>
