@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">伍途</string>
 
+    <string name="topbar_leftText">返回</string>
+
     <!--第三方登录-->
     <string name="qqLogin">QQ登录</string>
     <string name="wechatLogin">微信登录</string>

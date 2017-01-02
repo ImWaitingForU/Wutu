@@ -2,6 +2,7 @@ package com.soldiersoul.wutu.register;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.soldiersoul.wutu.views.CountDownButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 接收验证码的Fragment
@@ -27,7 +29,14 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
     @BindView (R.id.btn_getVerify) CountDownButton btnVerify;
     @BindView (R.id.btn_verify_next) Button btnNext;
 
+    private Handler mHandler;
+    public static final int VERIFY_SUCCESS = 0x111;
+
     public VerifyFragment () {
+    }
+
+    public VerifyFragment (Handler handler) {
+        this.mHandler = handler;
     }
 
     @Nullable
@@ -52,6 +61,18 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
 
     @Override
     public void onGettingVerify () {
-        Log.d ("chan", "onGettingVerify");
+        //TODO:验证手机号-->获取验证码-->启动计时器
+        Log.d ("chan", "--获取验证码--");
+    }
+
+    /**
+     * 验证验证码并跳转到下一步
+     */
+    @OnClick (R.id.btn_verify_next)
+    public void next () {
+        //TODO:验证验证码
+
+        //验证通过
+        mHandler.sendMessage (mHandler.obtainMessage (VERIFY_SUCCESS));
     }
 }
