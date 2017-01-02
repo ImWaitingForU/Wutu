@@ -67,6 +67,7 @@ public class CountDownButton extends Button implements View.OnClickListener {
     @Override
     public void onClick (View v) {
         if (!isCountdown) {
+            //TODO:在服务器回调成功后开始计时，而不是一点击就开始计时
             startCountDown ();
             mVerifyListener.onGettingVerify ();
         }
