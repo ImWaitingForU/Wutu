@@ -82,7 +82,7 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
     public void onBackPressed () {
         MisoperationDialog dialog = new MisoperationDialog (this);
         dialog.setMisoperationListener (this);
-        dialog.initMisoperationDialog (this, "确认退出注册吗?", "退出注册");
+        dialog.initMisoperationDialog (this, "确认退出注册吗?", "退出注册", true);
     }
 
     @Override

@@ -27,9 +27,9 @@ public class MisoperationDialog extends AlertDialog {
      * @param msg
      * @param positiveMsg 退出
      */
-    public void initMisoperationDialog (Context context, String msg, String positiveMsg) {
+    public void initMisoperationDialog (Context context, String msg, String positiveMsg, boolean cancelable) {
         Builder builder = new Builder (context);
-        builder.setMessage (msg).setCancelable (true).setNegativeButton ("取消", new OnClickListener () {
+        builder.setMessage (msg).setCancelable (cancelable).setNegativeButton ("取消", new OnClickListener () {
             @Override
             public void onClick (DialogInterface dialog, int which) {
                 dialog.cancel ();
