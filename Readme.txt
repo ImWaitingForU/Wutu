@@ -4,7 +4,8 @@
 
 包名说明:
 
-    login : 登录注册
+    login : 登录
+    register:注册
     home  : 主页
     military : 军事天地 -- Jun
     propaganda : 征兵宣传
