@@ -34,6 +34,9 @@
     <string name="findPwd_pwd">设置新密码</string>
     <string name="findPwd_finish">完成</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--主页-->
+    <string name="military_world">军事天地</string>
+    <string name="time_manage">目标管理</string>
+    <string name="my_center">个人中心</string>
+    <string name="my_club">我的社团</string>
 </resources>
