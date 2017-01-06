@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.soldiersoul.wutu.register.RegisterActivity">
+
+    <!--<com.soldiersoul.wutu.views.TopBar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--app:left_text="@string/topbar_leftText"-->
+        <!--app:left_text_color="@color/colorWhite"-->
+        <!--app:title_text="注册"-->
+        <!--app:title_text_color="@color/colorWhite"-->
+        <!--app:title_text_size="12sp">-->
+
+    <!--</com.soldiersoul.wutu.views.TopBar>-->
+
+    <FrameLayout
+        android:id="@+id/activity_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

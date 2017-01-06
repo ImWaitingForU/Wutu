@@ -4,12 +4,13 @@
 
 包名说明:
 
-    login : 登录注册
+    login : 登录
+    register:注册
     home  : 主页
-    military : 军事天地
+    military : 军事天地 -- Jun
     propaganda : 征兵宣传
-    enroll : 征兵报名
-    policy : 征兵政策
+    enroll : 征兵报名 -- Jun
+    policy : 征兵政策 -- Jun
     utils  : 工具类
     views :自定义控件
     ...
@@ -19,13 +20,20 @@
 
 图片加载：picasso   compile 'com.squareup.picasso:picasso:2.5.2'
 网络请求：volley     compile 'com.android.volley:volley:1.0.0'
+引导页/广告轮播:   compile 'com.android.support:support-v4:2.1.6'
+                  compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
+
+显示密码的Edittext: compile 'com.maksim88:PasswordEditText:v0.9'
+依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
+                   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
 关于代码规范：
 
     1见名知意
     2方法使用文档注释(/** xxx **/),必要时标明参数返回值等
     3全局变量使用mXXX,静态使用sXXX,常量大写，单词之间用下划线分割_
-    4其他遵循基本注释原则
+    4String/Color/Style等能复用的尽量卸载xml文件里
+    5其他遵循基本注释原则
 
 关于版本控制:
 

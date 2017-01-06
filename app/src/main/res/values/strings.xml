@@ -1,3 +1,42 @@
 <resources>
     <string name="app_name">伍途</string>
+
+    <string name="topbar_leftText">返回</string>
+
+    <!--第三方登录-->
+    <string name="qqLogin">QQ登录</string>
+    <string name="wechatLogin">微信登录</string>
+    <string name="sinaLogin">微博登录</string>
+    <string name="goLogin"><i><u> → 手机号登录</u></i></string>
+
+    <!--登录页面-->
+    <string name="login_label">登录</string>
+    <string name="login_input_userName">请输入手机号</string>
+    <string name="login_input_pwd">请输入密码</string>
+    <string name="login_btn_login">登录</string>
+    <string name="login_btn_register">注册</string>
+    <string name="login_tv_goFindPwd"><i><u>忘记密码?</u></i></string>
+    <string name="login_tv_noPwdEnter"><i><u>游客进入</u></i></string>
+
+    <!-- 注册 -->
+    <string name="register_label">验证手机号</string>
+    <string name="register_username">输入手机号</string>
+    <string name="register_verifyCode">输入验证码</string>
+    <string name="register_btn_verify">获取验证码</string>
+    <string name="register_btn_next">下一步</string>
+    <string name="register_pwd">设置密码</string>
+    <string name="register_rePwd">再次输入密码</string>
+    <string name="register_finish">注册完成</string>
+
+    <!--密码找回-->
+    <string name="register_pwd_label">设置密码</string>
+    <string name="findPwd_username">手机号</string>
+    <string name="findPwd_pwd">设置新密码</string>
+    <string name="findPwd_finish">完成</string>
+
+    <!--主页-->
+    <string name="military_world">军事天地</string>
+    <string name="time_manage">目标管理</string>
+    <string name="my_center">个人中心</string>
+    <string name="my_club">我的社团</string>
 </resources>

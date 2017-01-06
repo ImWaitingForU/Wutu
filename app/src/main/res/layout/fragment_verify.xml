@@ -1,0 +1,76 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="6dp"
+    android:paddingTop="6dp"
+    android:paddingRight="6dp"
+    tools:context=".register.RegisterActivity">
+
+    <EditText
+        android:id="@+id/et_register_username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorTranslate"
+        android:hint="@string/register_username"
+        android:inputType="phone"
+        android:maxLength="11"/>
+
+    <View
+        android:id="@+id/line"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/et_userName"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_register_verify"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorTranslate"
+            android:ems="8"
+            android:hint="@string/register_verifyCode"
+            android:inputType="number"/>
+
+        <com.soldiersoul.wutu.views.CountDownButton
+            android:id="@+id/btn_getVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:background="@color/colorPrimary"
+            android:text="@string/register_btn_verify"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"/>
+        <!--<Button-->
+            <!--android:id="@+id/btn_getVerify"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="top"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/register_btn_verify"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="12sp"/>-->
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_verify_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_selector"
+        android:text="@string/register_btn_next"
+        android:textColor="@color/colorWhite"/>
+
+</LinearLayout>

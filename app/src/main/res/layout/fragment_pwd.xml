@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:context="com.soldiersoul.wutu.register.PwdFragment">
+
+    <EditText
+        android:gravity="center"
+        android:id="@+id/et_pwd1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorTranslate"
+        android:hint="@string/register_pwd"
+        android:inputType="textPassword"/>
+
+    <View
+        android:id="@+id/line"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/et_userName"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"/>
+
+    <EditText
+        android:gravity="center"
+        android:id="@+id/et_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorTranslate"
+        android:hint="@string/register_rePwd"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/btn_finish_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_selector"
+        android:text="@string/register_finish"
+        android:textColor="@color/colorWhite"/>
+
+</LinearLayout>
