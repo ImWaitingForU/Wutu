@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
     tools:context="com.soldiersoul.wutu.home.MilitaryWorldActivity">
-=======
-    tools:context="com.soldiersoul.wutu.military.MilitaryWorldActivity">
->>>>>>> edc24057c0f1387a58a400b5895fb39cc3e528f8
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,11 +15,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-<<<<<<< HEAD
             android:text="<back"/>
-=======
-            android:text="back"/>
->>>>>>> edc24057c0f1387a58a400b5895fb39cc3e528f8
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
