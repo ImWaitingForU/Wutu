@@ -39,4 +39,7 @@
     <string name="time_manage">目标管理</string>
     <string name="my_center">个人中心</string>
     <string name="my_club">我的社团</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
