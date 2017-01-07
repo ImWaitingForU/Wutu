@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout
     android:id="@+id/main_layout"
+=======
+<LinearLayout
+>>>>>>> Chan
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.soldiersoul.wutu.home.MainActivity">
 
+<<<<<<< HEAD
     <com.soldiersoul.wutu.views.BottomBar
         android:id="@+id/bottomBar"
         android:background="@color/colorWhite"
@@ -49,3 +54,21 @@
             <!--android:layout_gravity="right"/>-->
     <!--</android.support.v7.widget.Toolbar>-->
 </RelativeLayout>
+=======
+    <FrameLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"/>
+
+    <com.soldiersoul.wutu.views.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite">
+
+    </com.soldiersoul.wutu.views.BottomBar>
+</LinearLayout>
+>>>>>>> Chan
