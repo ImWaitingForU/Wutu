@@ -2,17 +2,24 @@
 
 版本号:1.0.0.0(版本号暂时不用管，应用发布后再进行版本升级)
 
-包名说明:
+新包名说明:
 
     login : 登录
     register:注册
-    home  : 主页
+    home  : 主页 //修改成用四个Fragment组成首页，不使用滑动
+
     military : 军事天地 -- Jun
-    propaganda : 征兵宣传
-    enroll : 征兵报名 -- Jun
-    policy : 征兵政策 -- Jun
+    society : 社团
+    manage : 时间/目标管理
+    me:我的界面
+
     utils  : 工具类
     views :自定义控件
+
+    propaganda : 征兵宣传 --删除
+    enroll : 征兵报名 -- 删除
+    policy : 征兵政策 -- 删除
+
     ...
 
 
