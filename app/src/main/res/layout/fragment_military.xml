@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
@@ -5,9 +6,27 @@
              tools:context="com.soldiersoul.wutu.military.MilitaryFragment">
 
     <!-- TODO: Update blank fragment layout -->
+=======
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.soldiersoul.wutu.military.MilitaryFragment">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        layout="@layout/toolbar"/>
+
+>>>>>>> Chan
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="军事天地"/>
 
+<<<<<<< HEAD
 </FrameLayout>
+=======
+</RelativeLayout>
+>>>>>>> Chan
