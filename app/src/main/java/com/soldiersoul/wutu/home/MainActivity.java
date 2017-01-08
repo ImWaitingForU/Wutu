@@ -30,6 +30,8 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
         mFragmentManager = getSupportFragmentManager ();
 
         mBottomBar.setBottomBarClickedListener (this);
+
+        initFragments ();
     }
 
     private void initFragments () {
