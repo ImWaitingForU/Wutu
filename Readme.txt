@@ -34,6 +34,9 @@
 依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
                    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.0'
+
+
 关于代码规范：
 
     1见名知意
