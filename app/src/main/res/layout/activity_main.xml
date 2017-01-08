@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
-        android:background="@color/colorWhite">
+        android:background="@color/colorPrimary">
 
     </com.soldiersoul.wutu.views.BottomBar>
 </LinearLayout>

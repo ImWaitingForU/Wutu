@@ -20,8 +20,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
     /**
      * 图片资源路径
      */
-    private static final int[] IMG_ARRAY =
-            {R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    private int[] imgArray = {R.drawable.ic_military, R.drawable.ic_society, R.drawable.ic_manage, R.drawable.ic_me};
 
     public BottomBar (Context context) {
         super (context);
@@ -36,8 +35,8 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         setOrientation (HORIZONTAL);
         setElevation (4.0f);
 
-        for (int i = 0; i < IMG_ARRAY.length; i++) {
-            addView (context, IMG_ARRAY[i], i);
+        for (int i = 0; i < imgArray.length; i++) {
+            addView (context, imgArray[i], i);
         }
 
     }
@@ -52,7 +51,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         ImageView iv = new ImageView (context);
         if (tag == 0) {
             //默认显示第一页
-            iv.setImageResource (R.drawable.ic_visibility_24dp);
+            iv.setImageResource (R.drawable.ic_military_pressed);
         } else {
             iv.setImageResource (resId);
         }
@@ -70,7 +69,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
     private void resumeMenu () {
         for (int i = 0; i < getChildCount (); i++) {
             ImageView view = (ImageView) getChildAt (i);
-            view.setImageResource (IMG_ARRAY[i]);
+            view.setImageResource (imgArray[i]);
         }
     }
 
@@ -80,19 +79,19 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         resumeMenu ();
         switch ((int) v.getTag ()) {
             case 0:
-                iv.setImageResource (R.drawable.ic_visibility_24dp);
+                iv.setImageResource (R.drawable.ic_military_pressed);
                 mListener.onBottomBar1Clicked ();
                 break;
             case 1:
-                iv.setImageResource (R.drawable.ic_visibility_24dp);
+                iv.setImageResource (R.drawable.ic_society_pressed);
                 mListener.onBottomBar2Clicked ();
                 break;
             case 2:
-                iv.setImageResource (R.drawable.ic_visibility_24dp);
+                iv.setImageResource (R.drawable.ic_manage_pressed);
                 mListener.onBottomBar3Clicked ();
                 break;
             case 3:
-                iv.setImageResource (R.drawable.ic_visibility_24dp);
+                iv.setImageResource (R.drawable.ic_me_pressed);
                 mListener.onBottomBar4Clicked ();
                 break;
             default:
