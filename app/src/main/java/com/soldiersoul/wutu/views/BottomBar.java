@@ -39,6 +39,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         for (int i = 0; i < IMG_ARRAY.length; i++) {
             addView (context, IMG_ARRAY[i], i);
         }
+
     }
 
     /**
@@ -49,7 +50,12 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
      */
     private void addView (Context context, int resId, int tag) {
         ImageView iv = new ImageView (context);
-        iv.setImageResource (resId);
+        if (tag == 0) {
+            //默认显示第一页
+            iv.setImageResource (R.drawable.ic_visibility_24dp);
+        } else {
+            iv.setImageResource (resId);
+        }
         iv.setScaleType (ImageView.ScaleType.CENTER_INSIDE);
         LayoutParams params = new LayoutParams (0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
         iv.setLayoutParams (params);
@@ -64,7 +70,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
     private void resumeMenu () {
         for (int i = 0; i < getChildCount (); i++) {
             ImageView view = (ImageView) getChildAt (i);
-            view.setImageResource (IMG_ARRAY[0]);
+            view.setImageResource (IMG_ARRAY[i]);
         }
     }
 

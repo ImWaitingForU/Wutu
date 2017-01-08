@@ -28,9 +28,6 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         mFragmentManager = getSupportFragmentManager ();
-
-        mBottomBar.setBottomBarClickedListener (this);
-
         initFragments ();
     }
 

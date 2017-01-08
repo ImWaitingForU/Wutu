@@ -36,6 +36,9 @@
 
 BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.0'
 
+其他:
+下拉刷新使用SwipeRefreshLayout;
+
 
 关于代码规范：
 
