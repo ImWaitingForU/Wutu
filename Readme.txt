@@ -1,4 +1,4 @@
-伍途APP:
+﻿伍途APP:
 
 版本号:1.0.0.0(版本号暂时不用管，应用发布后再进行版本升级)
 
@@ -8,17 +8,15 @@
     register:注册
     home  : 主页 //修改成用四个Fragment组成首页，不使用滑动
 
-    military : 军事天地 -- Jun
+    military : 军事天地 -- Jun（合并：征兵宣传、征兵报名、征兵政策）//内部
+加入嵌套fragment，由于考虑需要做的新颖别致，界面还待改进
+
     society : 社团
     manage : 时间/目标管理
     me:我的界面
 
     utils  : 工具类
     views :自定义控件
-
-    propaganda : 征兵宣传 --删除
-    enroll : 征兵报名 -- 删除
-    policy : 征兵政策 -- 删除
 
     ...
 
