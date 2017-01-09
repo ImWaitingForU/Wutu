@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+<<<<<<< HEAD
     <!--轮播图基本样式 -->
 
+=======
+>>>>>>> dc33f623c16763ba0d1b24fbefb16cb190bbeda2
     <style name="WrapMatch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>

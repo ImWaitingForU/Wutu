@@ -27,6 +27,7 @@
 网络请求：volley     compile 'com.android.volley:volley:1.0.0'
 引导页/广告轮播:   compile 'com.android.support:support-v4:2.1.6'
                   compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
+		compile 'com.nineoldandroids:library:2.4.0' --Jun添加依赖
 
 显示密码的Edittext: compile 'com.maksim88:PasswordEditText:v0.9'
 依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
