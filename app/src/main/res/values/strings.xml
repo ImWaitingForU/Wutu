@@ -40,6 +40,15 @@
     <string name="my_center">个人中心</string>
     <string name="my_club">我的社团</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 社团 -->
+    <string name="society_name">我的社团</string>
+    <string name="society_Activity">社团特色活动</string>
+    <string name="society_hornor">社团荣誉墙</string>
+    <string name="society_photo">社团图片墙</string>
+    <string name="society_member">社团人员资料墙</string>
+    <string name="society_task">社团任务大厅</string>
+    <string name="society_train">社团培训大厅</string>
+    <string name="society_myContribute">我的社团贡献</string>
+    <string name="society_integral">积分兑换大厅</string>
+    <string name="society_textLocation"><i>成都,成都理工大学,伍途社团</i></string>
 </resources>
