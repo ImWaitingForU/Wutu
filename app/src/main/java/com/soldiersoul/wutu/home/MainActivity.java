@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     private void showMilitaryFragments () {
         FragmentTransaction transaction = mFragmentManager.beginTransaction ();
         if (mMilitaryFragment == null) {
-            mMilitaryFragment = new MilitaryFragment ();
+            mMilitaryFragment = new MilitaryFragment (this);
             transaction.add (R.id.main_layout, mMilitaryFragment);
         }
         hideAllFragment ();

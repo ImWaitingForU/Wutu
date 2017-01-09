@@ -22,8 +22,6 @@
         </activity>
         <activity android:name=".login.LoginActivity">
         </activity>
-        <activity android:name=".military.MilitaryWorldActivity">
-        </activity>
         <activity android:name=".login.GuideActivity">
         </activity>
         <activity android:name=".register.RegisterActivity">
