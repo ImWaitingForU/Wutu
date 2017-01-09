@@ -15,30 +15,123 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="社团"
+            android:text="@string/society_name"
             android:textColor="@color/colorWhite"/>
 
-        <ImageButton
-            android:id="@+id/ivAdd"
+        <ImageView
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
             android:background="@null"
-            android:src="@drawable/ic_add"/>
+            android:src="@mipmap/ic_launcher"/>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLight"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="@string/society_textLocation"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvSocietyList"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvActivity"
+                    style="@style/society_tvStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="126dp"
+                    android:background="@drawable/back1"
+                    android:text="@string/society_Activity"/>
+
+                <TextView
+                    android:background="@drawable/back2"
+                    android:id="@+id/tvHornor"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    style="@style/society_tvStyle"
+                    android:text="@string/society_hornor"/>
+
+                <TextView
+                    android:background="@drawable/back3"
+                    android:id="@+id/tvPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    style="@style/society_tvStyle"
+                    android:text="@string/society_photo"/>
+
+                <TextView
+                    android:background="@drawable/back4"
+                    android:id="@+id/tvMember"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    style="@style/society_tvStyle"
+                    android:text="@string/society_member"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:background="@drawable/back5"
+                        android:id="@+id/tvTask"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        style="@style/society_tvStyle_small"
+                        android:text="@string/society_Activity"/>
+
+                    <TextView
+                        android:background="@drawable/back6"
+                        android:id="@+id/tvTrain"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        style="@style/society_tvStyle_small"
+                        android:text="@string/society_train"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:background="@drawable/back7"
+                        android:id="@+id/tvContribute"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        style="@style/society_tvStyle_small"
+                        android:text="@string/society_myContribute"/>
+
+                    <TextView
+                        android:background="@drawable/back8"
+                        android:id="@+id/tvIntegral"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        style="@style/society_tvStyle_small"
+                        android:text="@string/society_integral"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
