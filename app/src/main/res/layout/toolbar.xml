@@ -8,7 +8,7 @@
     android:layout_gravity="top"
     android:background="@color/colorPrimary"
     android:elevation="4dp"
-    android:padding="6dp"
+    android:padding="12dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -24,10 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/military_world"
+        style="@style/Base.TextAppearance.AppCompat.Title"
         android:textColor="@color/colorWhite"/>
 
     <include
         android:id="@+id/location"
+
         layout="@layout/location_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
