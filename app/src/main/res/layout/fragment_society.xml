@@ -2,6 +2,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:addStatesFromChildren="true"
               android:orientation="vertical"
               tools:context="com.soldiersoul.wutu.society.SocietyFragment">
 
@@ -29,14 +30,34 @@
             android:src="@mipmap/ic_launcher"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tvLocation"
+    <LinearLayout
+        android:id="@+id/rlLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorLight"
+        android:addStatesFromChildren="true"
+        android:background="@drawable/society_location_selector"
         android:gravity="center"
-        android:padding="4dp"
-        android:text="@string/society_textLocation"/>
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location_small"/>
+
+        <com.soldiersoul.wutu.views.MarqueeTextView
+            android:id="@+id/tvLocation"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:singleLine="true"
+            android:focusableInTouchMode="true"
+            android:lines="1"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:text="@string/society_textLocation"/>
+
+    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl"
@@ -61,27 +82,27 @@
                     android:text="@string/society_Activity"/>
 
                 <TextView
-                    android:background="@drawable/back2"
                     android:id="@+id/tvHornor"
+                    style="@style/society_tvStyle"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    style="@style/society_tvStyle"
+                    android:background="@drawable/back2"
                     android:text="@string/society_hornor"/>
 
                 <TextView
-                    android:background="@drawable/back3"
                     android:id="@+id/tvPhoto"
+                    style="@style/society_tvStyle"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    style="@style/society_tvStyle"
+                    android:background="@drawable/back3"
                     android:text="@string/society_photo"/>
 
                 <TextView
-                    android:background="@drawable/back4"
                     android:id="@+id/tvMember"
+                    style="@style/society_tvStyle"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    style="@style/society_tvStyle"
+                    android:background="@drawable/back4"
                     android:text="@string/society_member"/>
 
                 <LinearLayout
@@ -89,21 +110,21 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:background="@drawable/back5"
                         android:id="@+id/tvTask"
+                        style="@style/society_tvStyle_small"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        style="@style/society_tvStyle_small"
+                        android:background="@drawable/back5"
                         android:text="@string/society_Activity"/>
 
                     <TextView
-                        android:background="@drawable/back6"
                         android:id="@+id/tvTrain"
+                        style="@style/society_tvStyle_small"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        style="@style/society_tvStyle_small"
+                        android:background="@drawable/back6"
                         android:text="@string/society_train"/>
                 </LinearLayout>
 
@@ -112,21 +133,21 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:background="@drawable/back7"
                         android:id="@+id/tvContribute"
+                        style="@style/society_tvStyle_small"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        style="@style/society_tvStyle_small"
+                        android:background="@drawable/back7"
                         android:text="@string/society_myContribute"/>
 
                     <TextView
-                        android:background="@drawable/back8"
                         android:id="@+id/tvIntegral"
+                        style="@style/society_tvStyle_small"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_weight="1"
-                        style="@style/society_tvStyle_small"
+                        android:background="@drawable/back8"
                         android:text="@string/society_integral"/>
                 </LinearLayout>
 

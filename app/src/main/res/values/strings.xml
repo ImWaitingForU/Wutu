@@ -50,5 +50,5 @@
     <string name="society_train">社团培训大厅</string>
     <string name="society_myContribute">我的社团贡献</string>
     <string name="society_integral">积分兑换大厅</string>
-    <string name="society_textLocation"><i>成都,成都理工大学,伍途社团</i></string>
+    <string name="society_textLocation"><i>成都,成都理工大学,伍途社团。部长:XXX</i></string>
 </resources>
