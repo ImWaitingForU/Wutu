@@ -51,4 +51,11 @@
     <string name="society_myContribute">我的社团贡献</string>
     <string name="society_integral">积分兑换大厅</string>
     <string name="society_textLocation"><i>成都,成都理工大学,伍途社团。部长:XXX</i></string>
+
+
+    <!--定位-->
+    <string name="location_title">定位</string>
+    <string name="location_city">定位城市</string>
+    <string name="location_current_choose">当前：</string>
+
 </resources>
