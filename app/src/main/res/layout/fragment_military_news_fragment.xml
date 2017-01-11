@@ -1,9 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soldiersoul.wutu.military.Military_news_fragment">
+    tools:context="com.soldiersoul.wutu.military.MilitaryNewsFragment">
 
-    <include layout="@layout/banner_military_fragment"/>
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner_guide_content1"
+        style="@style/MatchMatch"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:banner_pointAutoPlayAble="true"
+        app:banner_pointTopBottomMargin="5dp"
+        app:banner_transitionEffect="defaultEffect"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"/>
 
-</FrameLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/sr_military_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/banner_guide_content1">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvMilitaryNewsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

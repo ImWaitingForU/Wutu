@@ -2,8 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soldiersoul.wutu.military.Military_weapons_fragment">
+    tools:context="com.soldiersoul.wutu.military.MilitaryWpFragment">
 
-    <include layout="@layout/banner_military_fragment"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="需要后续讨论，加入AR效果"/>
 
 </FrameLayout>
