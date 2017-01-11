@@ -171,7 +171,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
             case 0:
                 tv_advertise.setTextColor(Color.parseColor("#288C53"));
                 v1.setVisibility(View.VISIBLE);
-
                 break;
             case 1:
                 tv_tips.setTextColor(Color.parseColor("#288C53"));
