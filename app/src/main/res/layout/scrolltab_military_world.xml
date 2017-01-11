@@ -20,10 +20,11 @@
             android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_marginLeft="6dp">
 
                     <TextView
                         android:id="@+id/tv_military_advertise_tag"
@@ -45,7 +46,7 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1">
@@ -57,7 +58,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:gravity="center"
-                        android:text="军事知识小贴士"
+                        android:text="知识贴士"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -70,7 +71,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1">
@@ -95,7 +96,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="1">
@@ -107,7 +108,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:gravity="center"
-                        android:text="武器装备展示"
+                        android:text="武器展示"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 

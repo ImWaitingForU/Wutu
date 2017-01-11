@@ -99,10 +99,10 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
     private void initViewPager() {
         mFragmentManager = getFragmentManager();
         fragmentsList = new ArrayList<Fragment>();
-        Fragment frag1 = new Military_advertise_fragment();
-        Fragment frag2 = new Military_tips_fragment();
-        Fragment frag3 = new Military_news_fragment();
-        Fragment frag4 = new Military_weapons_fragment();
+        Fragment frag1 = new MilitaryAdFragment();
+        Fragment frag2 = new MilitaryTipFragment();
+        Fragment frag3 = new MilitaryNewsFragment();
+        Fragment frag4 = new MilitaryWpFragment();
 
         fragmentsList.add(frag1);
         fragmentsList.add(frag2);
@@ -161,7 +161,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        scrollbar_militaryworld.scrollTo((width * position + positionOffsetPixels) / 4, 0);
+        scrollbar_militaryworld.scrollTo((width * position + positionOffsetPixels) / 8, 0);
     }
 
     @Override
