@@ -27,9 +27,9 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGABannerUtil;
 
 /**
- * Military_news_fragment
+ * MilitaryNewsFragment
  */
-public class Military_news_fragment extends Fragment {
+public class MilitaryNewsFragment extends Fragment {
 
     //创建轮播图,顶部新闻轮播
     private BGABanner mBanner1;
@@ -40,7 +40,7 @@ public class Military_news_fragment extends Fragment {
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
-    public Military_news_fragment() {
+    public MilitaryNewsFragment() {
         // Required empty public constructor
     }
 

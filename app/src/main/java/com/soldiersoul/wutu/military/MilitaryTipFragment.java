@@ -19,13 +19,13 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGABannerUtil;
 
 /**
- * Military_weapons_fragment
+ * MilitaryTipFragment
  */
-public class Military_weapons_fragment extends Fragment {
+public class MilitaryTipFragment extends Fragment {
 
 
 
-    public Military_weapons_fragment() {
+    public MilitaryTipFragment() {
         // Required empty public constructor
     }
 
@@ -39,7 +39,7 @@ public class Military_weapons_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_military_weapons_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_military_tips_fragment, container, false);
 
         return view;
     }
@@ -49,6 +49,7 @@ public class Military_weapons_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
+
 
 
 }
