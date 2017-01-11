@@ -1,9 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.soldiersoul.wutu.military.Military_tips_fragment">
+    tools:context="com.soldiersoul.wutu.military.MilitaryTipFragment">
 
-    <include layout="@layout/banner_military_fragment"/>
+    <EditText
+        android:id="@+id/et_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="你想知道什么"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="100dp"/>
+    <Button
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="搜索"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_search_bar"
+        android:layout_marginTop="100dp"
+        android:text="以下内容待定，还不明确"
+        android:textSize="24sp"/>
+
+</RelativeLayout>
