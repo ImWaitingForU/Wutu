@@ -82,7 +82,7 @@
                     android:text="@string/society_Activity"/>
 
                 <TextView
-                    android:id="@+id/tvHornor"
+                    android:id="@+id/tvHonor"
                     style="@style/society_tvStyle"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
