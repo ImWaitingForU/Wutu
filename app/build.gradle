@@ -46,5 +46,7 @@ dependencies {
     compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
     compile 'com.nineoldandroids:library:2.4.0'
 //    compile 'com.android.support:support-v4:25.1.0'
+
+    compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 }
 

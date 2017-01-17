@@ -35,6 +35,10 @@
 
 BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.0'
 
+//TODO:武器界面考虑使用
+CoverFlow：    compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
+
+
 其他:
 下拉刷新使用SwipeRefreshLayout;
 
