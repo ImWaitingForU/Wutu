@@ -58,4 +58,8 @@
     <string name="location_city">定位城市</string>
     <string name="location_current_choose">当前：</string>
 
+
+    <!--社团人员管理界面-->
+    <string name="member_addNew"><i>点击添加新届人员</i></string>
+
 </resources>
