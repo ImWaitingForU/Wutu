@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.utils.BaseActivity;
 
@@ -45,7 +44,7 @@ public class MemberActivity extends BaseActivity {
             tvAddNew.setVisibility (View.GONE);
         }
 
-        rvMember.setAdapter ();
+//        rvMember.setAdapter ();
 
     }
 
@@ -54,7 +53,7 @@ public class MemberActivity extends BaseActivity {
         return R.layout.activity_member;
     }
 
-    private class MemberRvAdapter extends BaseQuickAdapter<>
+//    private class MemberRvAdapter extends BaseQuickAdapter<>
 
 
 }
