@@ -2,6 +2,7 @@ package com.soldiersoul.wutu.military;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
 
@@ -31,41 +33,44 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
     //Context
     public Context context;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    //控件
+    private Button btn_ad;
+    private Button btn_policy;
+    private Button btn_welfare;
+    private Button btn_city;
+
     //创建ViewPager
-    @BindView(R.id.viewpager_military_fragment)
-    ViewPager mViewPager;
+    //@BindView(R.id.viewpager_military_fragment)
     //创建控件
-    @BindView(R.id.scrollbar_militaryworld)
-    HorizontalScrollView scrollbar_militaryworld;
-    @BindView(R.id.tv_military_advertise_tag)
-    TextView tv_advertise;
-    @BindView(R.id.tv_military_tips_tag)
-    TextView tv_tips;
-    @BindView(R.id.tv_military_news_tag)
-    TextView tv_news;
-    @BindView(R.id.tv_military_weapons_tag)
-    TextView tv_weapons;
-    @BindView(R.id.view_v1)
-    View v1;
-    @BindView(R.id.view_v2)
-    View v2;
-    @BindView(R.id.view_v3)
-    View v3;
-    @BindView(R.id.view_v4)
-    View v4;
+//    @BindView(R.id.scrollbar_militaryworld)
+//    HorizontalScrollView scrollbar_militaryworld;
+//    @BindView(R.id.tv_military_advertise_tag)
+//    TextView tv_advertise;
+//    @BindView(R.id.tv_military_tips_tag)
+//    TextView tv_tips;
+//    @BindView(R.id.tv_military_news_tag)
+//    TextView tv_news;
+//    @BindView(R.id.tv_military_weapons_tag)
+//    TextView tv_weapons;
+//    @BindView(R.id.view_v1)
+//    View v1;
+//    @BindView(R.id.view_v2)
+//    View v2;
+//    @BindView(R.id.view_v3)
+//    View v3;
+//    @BindView(R.id.view_v4)
+//    View v4;
 
     //创建四个子fragment
-    private ArrayList<Fragment> fragmentsList;
-    private FragmentManager mFragmentManager;
+    //private ArrayList<Fragment> fragmentsList;
+    //private FragmentManager mFragmentManager;
 
     //数据源
-    private ArrayList<View> downlines;
-    private ArrayList<TextView> tag_name;
+    //private ArrayList<View> downlines;
+    //private ArrayList<TextView> tag_name;
 
     //屏幕宽度
-    private int width;
+    //private int width;
 
     public MilitaryFragment() {
 
@@ -78,21 +83,24 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
-        width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+        //ButterKnife.bind(this, view);
+        //  ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
+        //width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
 
         //注册事件
-        tv_advertise.setOnClickListener(this);
-        tv_tips.setOnClickListener(this);
-        tv_news.setOnClickListener(this);
-        tv_weapons.setOnClickListener(this);
+//        tv_advertise.setOnClickListener(this);
+//        tv_tips.setOnClickListener(this);
+//        tv_news.setOnClickListener(this);
+//        tv_weapons.setOnClickListener(this);
         //初始化数据
         //initData();
         //初始化ViewPager
         //initViewPager();
-
+        btn_ad.setOnClickListener(this);
+        btn_policy.setOnClickListener(this);
+        btn_welfare.setOnClickListener(this);
+        btn_city.setOnClickListener(this);
 
     }
 
@@ -129,7 +137,12 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_military, container, false);
+        View view = inflater.inflate(R.layout.fragment_military, container, false);
+        btn_ad = (Button) view.findViewById(R.id.btn_ad);
+        btn_policy = (Button) view.findViewById(R.id.btn_policy);
+        btn_welfare = (Button) view.findViewById(R.id.btn_welfare);
+        btn_city = (Button) view.findViewById(R.id.btn_city);
+        return view;
     }
 
     @Override
@@ -156,6 +169,18 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
 //                tv_weapons.setTextColor(Color.parseColor("#288C53"));
 //                v4.setVisibility(View.VISIBLE);
 //                break;
+            case R.id.btn_ad:
+                startActivity(new Intent(context, MadActivity.class));
+                break;
+            case R.id.btn_policy:
+                startActivity(new Intent(context, MpolicyActivity.class));
+                break;
+            case R.id.btn_welfare:
+                startActivity(new Intent(context, MwelfareActivity.class));
+                break;
+            case R.id.btn_city:
+                startActivity(new Intent(context, McityActivity.class));
+                break;
         }
     }
 

@@ -20,34 +20,105 @@
 
     <!--</android.support.v4.view.ViewPager>-->
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp">
-        <Button
-            android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:gravity="center_horizontal">
+        <LinearLayout
+            android:id="@+id/ll_ad"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:background="@drawable/advertise"/>
-        <Button
-            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="30dp">
+            <Button
+                android:id="@+id/btn_ad"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/advertise"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="军事宣传"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_policy"
+            android:layout_toRightOf="@id/ll_ad"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginRight="15dp">
+        <Button
+            android:id="@+id/btn_policy"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/policy"/>
-        <Button
-            android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="国家政策"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_welfare"
+            android:layout_toRightOf="@+id/ll_policy"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:background="@drawable/welfare"/>
-        <Button
-            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="15dp">
+            <Button
+                android:id="@+id/btn_welfare"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/welfare"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="相关福利"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_city"
+            android:layout_toRightOf="@id/ll_welfare"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:background="@drawable/city"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="30dp">
+            <Button
+                android:id="@+id/btn_city"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/city"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="城市详情"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
