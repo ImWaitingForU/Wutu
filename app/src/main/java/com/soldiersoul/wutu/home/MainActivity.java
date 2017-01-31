@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.manage.ManageFragment;
-import com.soldiersoul.wutu.me.MeFragment;
+import com.soldiersoul.wutu.weapon.ManageFragment;
+import com.soldiersoul.wutu.more.MeFragment;
 import com.soldiersoul.wutu.military.MilitaryFragment;
 import com.soldiersoul.wutu.society.SocietyFragment;
 import com.soldiersoul.wutu.utils.BaseActivity;

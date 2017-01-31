@@ -54,6 +54,8 @@ BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAda
 //TODO:武器界面考虑使用
 CoverFlow：    compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 
+FlycoTabLayout:     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
 
 其他:
 下拉刷新使用SwipeRefreshLayout;

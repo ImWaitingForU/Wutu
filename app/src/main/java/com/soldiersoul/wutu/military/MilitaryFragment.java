@@ -210,6 +210,4 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
         v4.setVisibility(View.GONE);
 
     }
-
-
 }

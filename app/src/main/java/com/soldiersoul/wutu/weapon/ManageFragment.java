@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.manage;
+package com.soldiersoul.wutu.weapon;
 
 
 import android.os.Bundle;
@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import com.soldiersoul.wutu.R;
 
 /**
+ * @deprecated
  * 时间/目标管理Fragment
+ *
+ * 武器Fragment
  */
 public class ManageFragment extends Fragment {
 

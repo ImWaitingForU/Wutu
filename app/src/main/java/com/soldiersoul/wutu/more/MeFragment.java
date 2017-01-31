@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.me;
+package com.soldiersoul.wutu.more;
 
 
 import android.os.Bundle;
