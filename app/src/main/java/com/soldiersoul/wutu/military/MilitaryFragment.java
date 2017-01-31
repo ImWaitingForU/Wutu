@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 /**
  * 军事天地Fragment
  */
-public class MilitaryFragment extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
     //Context
     public Context context;
@@ -89,43 +89,43 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
         tv_news.setOnClickListener(this);
         tv_weapons.setOnClickListener(this);
         //初始化数据
-        initData();
+        //initData();
         //初始化ViewPager
-        initViewPager();
+        //initViewPager();
 
 
     }
 
-    private void initViewPager() {
-        mFragmentManager = getFragmentManager();
-        fragmentsList = new ArrayList<Fragment>();
-        Fragment frag1 = new MilitaryAdFragment();
-        Fragment frag2 = new MilitaryTipFragment();
-        Fragment frag3 = new MilitaryNewsFragment();
-        Fragment frag4 = new MilitaryWpFragment();
+//    private void initViewPager() {
+//        mFragmentManager = getFragmentManager();
+//        fragmentsList = new ArrayList<Fragment>();
+//        Fragment frag1 = new MilitaryAdFragment();
+//        Fragment frag2 = new MilitaryTipFragment();
+//        Fragment frag3 = new MilitaryNewsFragment();
+//        Fragment frag4 = new MilitaryWpFragment();
+//
+//        fragmentsList.add(frag1);
+//        fragmentsList.add(frag2);
+//        fragmentsList.add(frag3);
+//        fragmentsList.add(frag4);
+//
+//        mViewPager.setAdapter(new Military_Fragment_Adapter(mFragmentManager, fragmentsList));
+//        mViewPager.setCurrentItem(0);
+//        mViewPager.setOnPageChangeListener(this);
+//    }
 
-        fragmentsList.add(frag1);
-        fragmentsList.add(frag2);
-        fragmentsList.add(frag3);
-        fragmentsList.add(frag4);
-
-        mViewPager.setAdapter(new Military_Fragment_Adapter(mFragmentManager, fragmentsList));
-        mViewPager.setCurrentItem(0);
-        mViewPager.setOnPageChangeListener(this);
-    }
-
-    private void initData() {
-        tag_name = new ArrayList<TextView>();
-        tag_name.add(tv_advertise);
-        tag_name.add(tv_tips);
-        tag_name.add(tv_news);
-        tag_name.add(tv_weapons);
-        downlines = new ArrayList<View>();
-        downlines.add(v1);
-        downlines.add(v2);
-        downlines.add(v3);
-        downlines.add(v4);
-    }
+//    private void initData() {
+//        tag_name = new ArrayList<TextView>();
+//        tag_name.add(tv_advertise);
+//        tag_name.add(tv_tips);
+//        tag_name.add(tv_news);
+//        tag_name.add(tv_weapons);
+//        downlines = new ArrayList<View>();
+//        downlines.add(v1);
+//        downlines.add(v2);
+//        downlines.add(v3);
+//        downlines.add(v4);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,80 +134,80 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        resetTextColorAndView();
+        //resetTextColorAndView();
         switch (view.getId()) {
-            case R.id.tv_military_advertise_tag:
-                mViewPager.setCurrentItem(0);
-                tv_advertise.setTextColor(Color.parseColor("#288C53"));
-                v1.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tv_military_tips_tag:
-                mViewPager.setCurrentItem(1);
-                tv_tips.setTextColor(Color.parseColor("#288C53"));
-                v2.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tv_military_news_tag:
-                mViewPager.setCurrentItem(2);
-                tv_news.setTextColor(Color.parseColor("#288C53"));
-                v3.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tv_military_weapons_tag:
-                mViewPager.setCurrentItem(3);
-                tv_weapons.setTextColor(Color.parseColor("#288C53"));
-                v4.setVisibility(View.VISIBLE);
-                break;
+//            case R.id.tv_military_advertise_tag:
+//                mViewPager.setCurrentItem(0);
+//                tv_advertise.setTextColor(Color.parseColor("#288C53"));
+//                v1.setVisibility(View.VISIBLE);
+//                break;
+//            case R.id.tv_military_tips_tag:
+//                mViewPager.setCurrentItem(1);
+//                tv_tips.setTextColor(Color.parseColor("#288C53"));
+//                v2.setVisibility(View.VISIBLE);
+//                break;
+//            case R.id.tv_military_news_tag:
+//                mViewPager.setCurrentItem(2);
+//                tv_news.setTextColor(Color.parseColor("#288C53"));
+//                v3.setVisibility(View.VISIBLE);
+//                break;
+//            case R.id.tv_military_weapons_tag:
+//                mViewPager.setCurrentItem(3);
+//                tv_weapons.setTextColor(Color.parseColor("#288C53"));
+//                v4.setVisibility(View.VISIBLE);
+//                break;
         }
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        scrollbar_militaryworld.scrollTo((width * position + positionOffsetPixels) / 8, 0);
-    }
+//    @Override
+//    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//        scrollbar_militaryworld.scrollTo((width * position + positionOffsetPixels) / 8, 0);
+//    }
 
-    @Override
-    public void onPageSelected(int position) {
-        resetTextColorAndView();
-        switch (position) {
-            case 0:
-                tv_advertise.setTextColor(Color.parseColor("#288C53"));
-                v1.setVisibility(View.VISIBLE);
-                break;
-            case 1:
-                tv_tips.setTextColor(Color.parseColor("#288C53"));
-                v2.setVisibility(View.VISIBLE);
-                break;
-            case 2:
-                tv_news.setTextColor(Color.parseColor("#288C53"));
-                v3.setVisibility(View.VISIBLE);
-                break;
-            case 3:
-                tv_weapons.setTextColor(Color.parseColor("#288C53"));
-                v4.setVisibility(View.VISIBLE);
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-
-    /**
-     * 重设滚动条颜色
-     */
-    private void resetTextColorAndView() {
-        tv_advertise.setTextColor(Color.BLACK);
-        tv_tips.setTextColor(Color.BLACK);
-        tv_news.setTextColor(Color.BLACK);
-        tv_weapons.setTextColor(Color.BLACK);
-
-        v1.setVisibility(View.GONE);
-        v2.setVisibility(View.GONE);
-        v3.setVisibility(View.GONE);
-        v4.setVisibility(View.GONE);
-
-    }
+//    @Override
+//    public void onPageSelected(int position) {
+//        resetTextColorAndView();
+//        switch (position) {
+//            case 0:
+//                tv_advertise.setTextColor(Color.parseColor("#288C53"));
+//                v1.setVisibility(View.VISIBLE);
+//                break;
+//            case 1:
+//                tv_tips.setTextColor(Color.parseColor("#288C53"));
+//                v2.setVisibility(View.VISIBLE);
+//                break;
+//            case 2:
+//                tv_news.setTextColor(Color.parseColor("#288C53"));
+//                v3.setVisibility(View.VISIBLE);
+//                break;
+//            case 3:
+//                tv_weapons.setTextColor(Color.parseColor("#288C53"));
+//                v4.setVisibility(View.VISIBLE);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//
+//    @Override
+//    public void onPageScrollStateChanged(int state) {
+//
+//    }
+//
+//
+//    /**
+//     * 重设滚动条颜色
+//     */
+//    private void resetTextColorAndView() {
+//        tv_advertise.setTextColor(Color.BLACK);
+//        tv_tips.setTextColor(Color.BLACK);
+//        tv_news.setTextColor(Color.BLACK);
+//        tv_weapons.setTextColor(Color.BLACK);
+//
+//        v1.setVisibility(View.GONE);
+//        v2.setVisibility(View.GONE);
+//        v3.setVisibility(View.GONE);
+//        v4.setVisibility(View.GONE);
+//
+//    }
 }
