@@ -54,7 +54,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     //控件
     private Button btn_ad;
     private Button btn_policy;
-    private Button btn_welfare;
     private Button btn_city;
 
     private SwipeRefreshLayout refreshLayout;
@@ -129,7 +128,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         //initViewPager();
         btn_ad.setOnClickListener(this);
         btn_policy.setOnClickListener(this);
-        btn_welfare.setOnClickListener(this);
         btn_city.setOnClickListener(this);
 
     }
@@ -170,11 +168,9 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_military, container, false);
         btn_ad = (Button) view.findViewById(R.id.btn_ad);
         btn_policy = (Button) view.findViewById(R.id.btn_policy);
-        btn_welfare = (Button) view.findViewById(R.id.btn_welfare);
         btn_city = (Button) view.findViewById(R.id.btn_city);
         btn_ad.getBackground().setAlpha(150);
         btn_policy.getBackground().setAlpha(150);
-        btn_welfare.getBackground().setAlpha(150);
         btn_city.getBackground().setAlpha(150);
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.military_refresh);
         recyclerView = (RecyclerView) view.findViewById(R.id.military_news);
@@ -213,9 +209,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btn_policy:
                 startActivity(new Intent(context, MpolicyActivity.class));
-                break;
-            case R.id.btn_welfare:
-                startActivity(new Intent(context, MwelfareActivity.class));
                 break;
             case R.id.btn_city:
                 startActivity(new Intent(context, McityActivity.class));
