@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mili_bg"
     tools:context="com.soldiersoul.wutu.military.MilitaryFragment">
 
     <!--<include-->
@@ -38,7 +39,7 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="2dp"
-                android:background="@drawable/advertise"/>
+                android:background="@drawable/ad_white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,14 +54,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginRight="15dp">
+            android:layout_marginRight="20dp">
         <Button
             android:id="@+id/btn_policy"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/policy"/>
+            android:background="@drawable/policy_white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,14 +76,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="20dp">
             <Button
                 android:id="@+id/btn_welfare"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/welfare"/>
+                android:background="@drawable/welfare_white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +105,7 @@
                 android:layout_height="64dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/city"/>
+                android:background="@drawable/city_white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,10 +121,22 @@
         android:layout_height="1dp"
         android:background="#000000"/>
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/military_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/military_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"/>
 
-    </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 </LinearLayout>

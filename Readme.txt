@@ -43,7 +43,9 @@
 网络请求：volley     compile 'com.android.volley:volley:1.0.0'
 引导页/广告轮播:   compile 'com.android.support:support-v4:2.1.6'
                   compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
-		compile 'com.nineoldandroids:library:2.4.0' --Jun添加依赖
+		compile 'com.nineoldandroids:library:2.4.0' 
+多布局列表，自带上下拉: //LazyRecyclerView
+    compile 'com.github.CarGuo:LazyRecyclerAdapter:v2.0.0'（数据待后台加入，考虑使用视频新闻混合显示）
 
 显示密码的Edittext: compile 'com.maksim88:PasswordEditText:v0.9'
 依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
