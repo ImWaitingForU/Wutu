@@ -32,6 +32,8 @@ public class SocietyFragment extends Fragment {
     private final String[] mTitles = {"社团信息", "社团照片", "社团活动", "社团任务"};
     private MyPagerAdapter mAdapter;
 
+    private static boolean isHasSociety = false;
+
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter (FragmentManager fm) {
             super (fm);
@@ -59,6 +61,11 @@ public class SocietyFragment extends Fragment {
     @Override
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
+
+        if (!isHasSociety) {
+            return;
+        }
+
         ButterKnife.bind (this, view);
 
         //todo:初始化Fragment集合
@@ -76,7 +83,14 @@ public class SocietyFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate (R.layout.fragment_society, container, false);
+        //TODO:定位后判断学校内是否有该社团，有则显示社团信息，没有则显示提示
+
+        if (isHasSociety) {
+            return inflater.inflate (R.layout.fragment_society, container, false);
+        } else {
+            return inflater.inflate (R.layout.fragment_society_empty, container, false);
+        }
+
     }
 
     //    /**
