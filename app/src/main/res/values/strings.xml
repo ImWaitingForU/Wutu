@@ -62,4 +62,7 @@
     <!--社团人员管理界面-->
     <string name="member_addNew"><i>点击添加新届人员</i></string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
