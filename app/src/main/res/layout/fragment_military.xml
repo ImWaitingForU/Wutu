@@ -1,130 +1,110 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/mili_bg"
     tools:context="com.soldiersoul.wutu.military.MilitaryFragment">
 
     <!--<include-->
-        <!--layout="@layout/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?actionBarSize"/>-->
+    <!--layout="@layout/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="?actionBarSize"/>-->
 
     <!--<include layout="@layout/scrolltab_military_world"/>-->
 
     <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/viewpager_military_fragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
+    <!--android:id="@+id/viewpager_military_fragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
 
     <!--</android.support.v4.view.ViewPager>-->
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="95dp"
+        android:background="@color/colorPrimary"
         android:gravity="center_horizontal">
+
         <LinearLayout
             android:id="@+id/ll_ad"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_marginRight="40dp"
             android:gravity="center_horizontal"
-            android:layout_marginRight="30dp">
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btn_ad"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/ad_white"/>
+                android:background="@drawable/ic_ad" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="军事宣传"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/ll_ad"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginRight="20dp">
-        <Button
-            android:id="@+id/btn_policy"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/policy_white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="国家政策"
-                android:textSize="16sp"/>
-        </LinearLayout>
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/ll_welfare"
-            android:layout_toRightOf="@+id/ll_policy"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_marginLeft="20dp">
             <Button
-                android:id="@+id/btn_welfare"
+                android:id="@+id/btn_policy"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/welfare_white"/>
+                android:background="@drawable/ic_policy" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="相关福利"
-                android:textSize="16sp"/>
+                android:text="政策福利"
+                android:textSize="16sp" />
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/ll_city"
-            android:layout_toRightOf="@id/ll_welfare"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/ll_policy"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="30dp">
+            android:orientation="vertical">
+
             <Button
                 android:id="@+id/btn_city"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/city_white"/>
+                android:background="@drawable/ic_city" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="城市详情"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/military_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/military_news"
             android:layout_width="match_parent"
@@ -132,11 +112,10 @@
             android:clipToPadding="false"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="5dp"/>
+            android:paddingTop="5dp" />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
 
 
 </LinearLayout>

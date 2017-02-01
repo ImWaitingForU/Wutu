@@ -68,8 +68,8 @@
         <activity android:name=".society.IntegralActivity" />
         <activity android:name=".military.MadActivity" />
         <activity android:name=".military.MpolicyActivity" />
-        <activity android:name=".military.MwelfareActivity" />
-        <activity android:name=".military.McityActivity"></activity>
+        <activity android:name=".military.McityActivity" />
+        <activity android:name=".military.CityContentActivity"></activity>
     </application>
 
 </manifest>
