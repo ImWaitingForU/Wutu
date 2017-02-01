@@ -29,7 +29,7 @@ public class SocietyFragment extends Fragment {
 
     private static final String TAG = "SocietyFragment";
     private ArrayList<Fragment> mFragments = new ArrayList<> ();
-    private final String[] mTitles = {"社团信息", "社团照片", "社团活动", "社团积分"};
+    private final String[] mTitles = {"社团信息", "社团照片", "社团活动", "社团任务"};
     private MyPagerAdapter mAdapter;
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
