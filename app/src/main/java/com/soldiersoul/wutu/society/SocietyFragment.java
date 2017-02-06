@@ -32,7 +32,8 @@ public class SocietyFragment extends Fragment {
     private final String[] mTitles = {"社团信息", "社团照片", "社团活动", "社团任务"};
     private MyPagerAdapter mAdapter;
 
-    private static boolean isHasSociety = false;
+//    private static boolean isHasSociety = false;
+    private static boolean isHasSociety = true;
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
         public MyPagerAdapter (FragmentManager fm) {
@@ -77,6 +78,7 @@ public class SocietyFragment extends Fragment {
         }
 
         mAdapter = new MyPagerAdapter (getFragmentManager ());
+        vpSociety.setOffscreenPageLimit (4);
         vpSociety.setAdapter (mAdapter);
         stl.setViewPager (vpSociety);
     }

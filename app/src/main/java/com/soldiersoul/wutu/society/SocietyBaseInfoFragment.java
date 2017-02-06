@@ -2,6 +2,7 @@ package com.soldiersoul.wutu.society;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -55,4 +56,12 @@ public class SocietyBaseInfoFragment extends Fragment {
         startActivity (new Intent (getActivity (), LocationActivity.class));
     }
 
+    /**
+     * 跳转到拨打社团电话界面
+     */
+    @OnClick (R.id.cvCall)
+    void gotoCall () {
+        Intent intent = new Intent (Intent.ACTION_DIAL, Uri.parse ("tel:" + tvSocietyPhone.getText ().toString ()));
+        startActivity (intent);
+    }
 }

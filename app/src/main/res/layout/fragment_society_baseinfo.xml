@@ -1,10 +1,10 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorWhite"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorTranslate"
     tools:context="com.soldiersoul.wutu.society.SocietyBaseInfoFragment">
 
     <LinearLayout
@@ -44,156 +44,171 @@
         </LinearLayout>
 
         <android.support.v7.widget.CardView
-            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardCornerRadius="18dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="4dp"
-            app:contentPadding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:contentPadding="15dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/ivSocietyLogo"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/ic_launcher"/>
+                <ImageView
+                    android:id="@+id/ivSocietyLogo"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_launcher"/>
 
-            <TextView
-                android:textSize="20sp"
-                android:text="成都理工军事社团"
-                android:gravity="center"
-                android:id="@+id/tvSocietyName"
-                android:layout_alignBottom="@id/ivSocietyLogo"
-                android:layout_alignTop="@id/ivSocietyLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/ivSocietyLogo"/>
+                <TextView
+                    android:id="@+id/tvSocietyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/ivSocietyLogo"
+                    android:layout_alignTop="@id/ivSocietyLogo"
+                    android:layout_toRightOf="@id/ivSocietyLogo"
+                    android:gravity="center"
+                    android:text="成都理工军事社团"
+                    android:textSize="20sp"/>
 
-            <TextView
-                android:gravity="center"
-                android:text="这里是简介。。。。。asadsadadasdadasdad"
-                android:id="@+id/tvSocietyIntroduction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/ivSocietyLogo"/>
+                <TextView
+                    android:id="@+id/tvSocietyIntroduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivSocietyLogo"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="这里是简介。。。。。asadsadadasdadasdad"/>
 
-        </RelativeLayout>
+            </RelativeLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            app:cardCornerRadius="18dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="18dp"
             app:cardElevation="4dp"
-            app:contentPadding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:contentPadding="10dp">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:textSize="15sp"
-                        android:text="社长"
+                        android:id="@+id/textView2"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:text="社长"
+                        android:textSize="15sp"/>
 
                     <TextView
                         android:id="@+id/tvChairmanName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="RoseChan"
-                        android:textSize="18sp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="18sp"/>
 
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="15sp"
-                        android:text="社团电话"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:textSize="18sp"
-                        android:id="@+id/tvSocietyPhone"
-                        android:text="15079192155"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:textSize="15sp"
                         android:text="社团地址"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="15sp"/>
 
                     <TextView
-                        android:textSize="18sp"
                         android:id="@+id/tvSocietyLocation"
-                        android:text="学院街xxxx号xxx室"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:text="学院街xxxx号xxx室"
+                        android:textSize="18sp"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:textSize="15sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="社团人数"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="15sp"/>
 
                     <TextView
-                        android:textSize="18sp"
                         android:id="@+id/tvSocietyMemberCount"
-                        android:text="50"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
+                        android:text="50"
+                        android:textSize="18sp"/>
                 </LinearLayout>
 
             </LinearLayout>
 
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="4dp"
+            app:contentPadding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:text="社团电话"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tvSocietyPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:text="15079192155"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_call"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="right"/>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
