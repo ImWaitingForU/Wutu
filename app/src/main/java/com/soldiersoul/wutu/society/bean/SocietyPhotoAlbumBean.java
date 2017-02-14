@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.society;
+package com.soldiersoul.wutu.society.bean;
 
 /**
  * Created by Rose on 2017/2/4.

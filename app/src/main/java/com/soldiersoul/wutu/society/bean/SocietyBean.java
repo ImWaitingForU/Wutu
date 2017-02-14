@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.society;
+package com.soldiersoul.wutu.society.bean;
 
 import com.soldiersoul.wutu.register.UserBean;
 
