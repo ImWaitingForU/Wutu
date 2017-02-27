@@ -4,14 +4,15 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.shuyu.common.RecyclerBaseHolder;
 import com.shuyu.common.model.RecyclerBaseModel;
+import com.soldiersoul.wutu.Model.CardModel;
 import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.R;
 
@@ -19,23 +20,22 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by wxj on 2017/02/27.
+ * Created by wxj on 2017/2/27.
  */
 
-public class ImageHolder extends RecyclerBaseHolder {
+public class CardHolder extends RecyclerBaseHolder{
 
-    public final static int ID = R.layout.image_item;
+    public final static int ID = R.layout.activity_mad_item;
 
-    @BindView(R.id.ivNewsPic)
+
+    @BindView(R.id.ivMadpic)
     ImageView itemImage;
-    @BindView(R.id.tvNewsTitle)
-    TextView newsTitle;
-    @BindView(R.id.tvNewsContent)
-    TextView newsContent;
-    @BindView(R.id.tvNewsTime)
-    TextView newsTime;
+    @BindView(R.id.tvMadTitle)
+    TextView itemTitle;
+    @BindView(R.id.tvMadContent)
+    TextView itemContent;
 
-    public ImageHolder(Context context, View v) {
+    public CardHolder(Context context, View v) {
         super(context, v);
     }
 
@@ -47,29 +47,26 @@ public class ImageHolder extends RecyclerBaseHolder {
 
     @Override
     public void onBind(RecyclerBaseModel model, int position) {
-        ImageModel imageModel = (ImageModel) model;
-        itemImage.setImageResource(imageModel.getResId());
-        newsTitle.setText("新闻标题");
-        newsContent.setText("内容----------------------------------------------------------------------");
-        newsTime.setText("2017.2.27");
+        CardModel cardModel = (CardModel) model;
+        itemImage.setImageResource(cardModel.getImg1());
+        itemTitle.setText(cardModel.getTv1());
+        itemContent.setText(cardModel.getTv2());
     }
 
     @Override
     public AnimatorSet getAnimator(View view) {
         AnimatorSet animatorSet = new AnimatorSet();
-        Animator animator = ObjectAnimator.ofFloat(view, "translationY", dip2px(context, 80), 0);
-        animator.setDuration(500);
-        animator.setInterpolator(new OvershootInterpolator(.5f));
 
-        Animator animatorSx = ObjectAnimator.ofFloat(view, "scaleX", 0.5f, 1f);
-        animator.setDuration(500);
-        animator.setInterpolator(new OvershootInterpolator(.5f));
+
+//        Animator animatorSx = ObjectAnimator.ofFloat(view, "scaleX", 0.8f, 1f);
+//        animatorSx.setDuration(1000);
+//        animatorSx.setInterpolator(new OvershootInterpolator(.5f));
 
         Animator animatorSy = ObjectAnimator.ofFloat(view, "scaleY", 0.5f, 1f);
-        animator.setDuration(500);
-        animator.setInterpolator(new OvershootInterpolator(.5f));
+        animatorSy.setDuration(1000);
+        animatorSy.setInterpolator(new OvershootInterpolator(.5f));
 
-        animatorSet.playTogether(animator, animatorSx, animatorSy);
+        animatorSet.playTogether(animatorSy);
         return animatorSet;
     }
 
@@ -80,5 +77,4 @@ public class ImageHolder extends RecyclerBaseHolder {
         float fontScale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * fontScale + 0.5f);
     }
-
 }

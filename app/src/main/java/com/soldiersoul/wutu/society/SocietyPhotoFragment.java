@@ -15,7 +15,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.society.bean.SocietyPhotoAlbumBean;
 
 import java.util.ArrayList;
 

@@ -10,9 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.soldiersoul.wutu.military.MpolicyActivity">
 
-    <TextView
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/military_mpolicy_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="国家政策"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/military_mpolicy_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

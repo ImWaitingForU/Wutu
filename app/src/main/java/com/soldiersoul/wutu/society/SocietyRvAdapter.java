@@ -2,7 +2,6 @@ package com.soldiersoul.wutu.society;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.soldiersoul.wutu.society.bean.SocietyBean;
 
 import java.util.List;
 

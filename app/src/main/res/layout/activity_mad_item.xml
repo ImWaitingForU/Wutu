@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<FrameLayout-->
+    <!--android:id="@+id/fl_mad_item"-->
+    <!---->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mad_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="4dp"
+    app:contentPadding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/ivMadpic"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/tvMadTitle"
+            android:text="标题"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivMadpic"
+            android:layout_toRightOf="@id/ivMadpic"/>
+
+        <TextView
+            android:text="内容-------------------------"
+            android:id="@+id/tvMadContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ivMadpic"
+            android:layout_toRightOf="@id/ivMadpic"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
+<!--</FrameLayout>-->

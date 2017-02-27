@@ -5,24 +5,10 @@
     android:orientation="vertical"
     tools:context="com.soldiersoul.wutu.military.MilitaryFragment">
 
-    <!--<include-->
-    <!--layout="@layout/toolbar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="?actionBarSize"/>-->
-
-    <!--<include layout="@layout/scrolltab_military_world"/>-->
-
-    <!--<android.support.v4.view.ViewPager-->
-    <!--android:id="@+id/viewpager_military_fragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content">-->
-
-    <!--</android.support.v4.view.ViewPager>-->
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp"
+        android:layout_height="70dp"
+        android:padding="5dp"
         android:background="@color/colorPrimary"
         android:gravity="center_horizontal">
 
@@ -30,14 +16,14 @@
             android:id="@+id/ll_ad"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="30dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_ad"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_ad" />
 
@@ -45,23 +31,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="军事宣传"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <View
+            android:layout_toRightOf="@id/ll_ad"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#8e8e8e"/>
 
         <LinearLayout
             android:id="@+id/ll_policy"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:layout_toRightOf="@id/ll_ad"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_policy"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_policy" />
 
@@ -69,42 +61,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="政策福利"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <View
+            android:layout_toRightOf="@id/ll_policy"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#8e8e8e"/>
 
 
         <LinearLayout
             android:id="@+id/ll_city"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_toRightOf="@id/ll_policy"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_city"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/ic_city" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="城市详情"
-                android:textSize="16sp" />
+                android:text="省份详情"
+                android:textSize="14sp" />
         </LinearLayout>
 
 
     </RelativeLayout>
 
 
+
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/military_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/military_news"
             android:layout_width="match_parent"
@@ -113,7 +112,6 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:paddingTop="5dp" />
-
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

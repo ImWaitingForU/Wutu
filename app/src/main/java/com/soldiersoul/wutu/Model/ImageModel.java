@@ -8,6 +8,9 @@ import com.shuyu.common.model.RecyclerBaseModel;
 
 public class ImageModel extends RecyclerBaseModel {
     private int resId;
+    private String newsTitle;
+    private String newsContent;
+    private String newsTime;
 
     public int getResId() {
         return resId;
@@ -15,5 +18,29 @@ public class ImageModel extends RecyclerBaseModel {
 
     public void setResId(int resId) {
         this.resId = resId;
+    }
+
+    public String getNewsTime() {
+        return newsTime;
+    }
+
+    public void setNewsTime(String newsTime) {
+        this.newsTime = newsTime;
+    }
+
+    public String getNewsTitle() {
+        return newsTitle;
+    }
+
+    public void setNewsTitle(String newsTitle) {
+        this.newsTitle = newsTitle;
+    }
+
+    public String getNewsContent() {
+        return newsContent;
+    }
+
+    public void setNewsContent(String newsContent) {
+        this.newsContent = newsContent;
     }
 }

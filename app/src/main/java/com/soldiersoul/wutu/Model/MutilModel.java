@@ -8,7 +8,8 @@ import com.shuyu.common.model.RecyclerBaseModel;
 
 public class MutilModel extends RecyclerBaseModel {
     private int image1;
-    private int image2;
+    private String tv1;
+    private String tv2;
 
     public int getImage1() {
         return image1;
@@ -18,11 +19,19 @@ public class MutilModel extends RecyclerBaseModel {
         this.image1 = image1;
     }
 
-    public int getImage2() {
-        return image2;
+    public String getTv1() {
+        return tv1;
     }
 
-    public void setImage2(int image2) {
-        this.image2 = image2;
+    public void setTv1(String tv1) {
+        this.tv1 = tv1;
+    }
+
+    public String getTv2() {
+        return tv2;
+    }
+
+    public void setTv2(String tv2) {
+        this.tv2 = tv2;
     }
 }

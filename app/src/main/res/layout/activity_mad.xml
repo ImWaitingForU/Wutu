@@ -6,13 +6,21 @@
     android:layout_height="match_parent"
     tools:context="com.soldiersoul.wutu.military.MadActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/military_ad_list"
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/military_mad_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/military_mad_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

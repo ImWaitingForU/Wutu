@@ -3,6 +3,7 @@ package com.soldiersoul.wutu.Holder;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.shuyu.common.RecyclerBaseHolder;
@@ -20,10 +21,12 @@ import butterknife.ButterKnife;
 public class MutilHolder extends RecyclerBaseHolder {
 
     public final static int ID = R.layout.mutil_item;
-    @BindView(R.id.item_image_1)
+    @BindView(R.id.ivMadpic)
     ImageView itemImage1;
-    @BindView(R.id.item_image_2)
-    ImageView itemImage2;
+    @BindView(R.id.tvMadTitle)
+    TextView madTitle;
+    @BindView(R.id.tvMadContent)
+    TextView madContent;
 
 
     public MutilHolder(Context context, View v) {
@@ -39,7 +42,9 @@ public class MutilHolder extends RecyclerBaseHolder {
     @Override
     public void onBind(RecyclerBaseModel model, int position) {
         MutilModel mutilModel = (MutilModel) model;
+
         itemImage1.setImageResource(mutilModel.getImage1());
-        itemImage2.setImageResource(mutilModel.getImage2());
+        madTitle.setText("标题");
+        madContent.setText("内容");
     }
 }

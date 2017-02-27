@@ -5,12 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.military.MilitaryFragment;
+import com.soldiersoul.wutu.weapon.ManageFragment;
 import com.soldiersoul.wutu.more.MeFragment;
+import com.soldiersoul.wutu.military.MilitaryFragment;
 import com.soldiersoul.wutu.society.SocietyFragment;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.BottomBar;
-import com.soldiersoul.wutu.weapon.WeaponFragment;
 
 import butterknife.BindView;
 
@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     private FragmentManager mFragmentManager;
     private MilitaryFragment mMilitaryFragment;
     private SocietyFragment mSocietyFragment;
-    private WeaponFragment mWeaponFragment;
+    private ManageFragment mManageFragment;
     private MeFragment mMeFragment;
 
     @Override
@@ -60,14 +60,14 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
         transaction.commitAllowingStateLoss ();
     }
 
-    private void showWeaponFragments () {
+    private void showManageFragments () {
         FragmentTransaction transaction = mFragmentManager.beginTransaction ();
-        if (mWeaponFragment == null) {
-            mWeaponFragment = new WeaponFragment ();
-            transaction.add (R.id.main_layout, mWeaponFragment);
+        if (mManageFragment == null) {
+            mManageFragment = new ManageFragment ();
+            transaction.add (R.id.main_layout, mManageFragment);
         }
         hideAllFragment ();
-        transaction.show (mWeaponFragment);
+        transaction.show (mManageFragment);
         transaction.commitAllowingStateLoss ();
     }
 
@@ -95,8 +95,8 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
             transaction.hide (mSocietyFragment);
         }
 
-        if (mWeaponFragment != null && mWeaponFragment.isVisible ()) {
-            transaction.hide (mWeaponFragment);
+        if (mManageFragment != null && mManageFragment.isVisible ()) {
+            transaction.hide (mManageFragment);
         }
 
         if (mMeFragment != null && mMeFragment.isVisible ()) {
@@ -123,7 +123,7 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
 
     @Override
     public void onBottomBar3Clicked () {
-        showWeaponFragments ();
+        showManageFragments ();
     }
 
     @Override
