@@ -195,8 +195,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Context context, int position) {
-                //TODO:需要减去你的header和刷新的view的数量
-                Toast.makeText(context, "点击了！！　" + position, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context,CityContentActivity.class));
             }
         });
     }

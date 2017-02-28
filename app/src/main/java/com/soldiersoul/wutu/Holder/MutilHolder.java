@@ -27,6 +27,8 @@ public class MutilHolder extends RecyclerBaseHolder {
     TextView madTitle;
     @BindView(R.id.tvMadContent)
     TextView madContent;
+    @BindView(R.id.tvMadTime)
+    TextView madTime;
 
 
     public MutilHolder(Context context, View v) {
@@ -45,6 +47,9 @@ public class MutilHolder extends RecyclerBaseHolder {
 
         itemImage1.setImageResource(mutilModel.getImage1());
         madTitle.setText("标题");
-        madContent.setText("内容");
+        madContent.setText("内容----------------------------------------------------------------------" +
+                "---------------------------------------------------------------------------------------" +
+                "------------------------------------------------------------------------------------");
+        madTime.setText("2017.2.28");
     }
 }

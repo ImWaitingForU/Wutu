@@ -10,6 +10,7 @@ public class MutilModel extends RecyclerBaseModel {
     private int image1;
     private String tv1;
     private String tv2;
+    private String tv3;
 
     public int getImage1() {
         return image1;
@@ -33,5 +34,13 @@ public class MutilModel extends RecyclerBaseModel {
 
     public void setTv2(String tv2) {
         this.tv2 = tv2;
+    }
+
+    public String getTv3() {
+        return tv3;
+    }
+
+    public void setTv3(String tv3) {
+        this.tv3 = tv3;
     }
 }

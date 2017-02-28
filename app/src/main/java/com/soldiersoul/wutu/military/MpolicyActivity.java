@@ -1,6 +1,7 @@
 package com.soldiersoul.wutu.military;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -124,7 +125,7 @@ public class MpolicyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Context context, int position) {
 
-                Toast.makeText(context, "点击了！！　" + position, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MpolicyActivity.this,CityContentActivity.class));
             }
         });
     }

@@ -30,49 +30,81 @@ public class DataUtils {
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         cardModel.setResLayoutId(MutilHolder.ID);
         cardModel.setImage1(R.mipmap.ic_launcher);
         cardModel.setTv1("标题");
-        cardModel.setTv2("内容");
+        cardModel.setTv2("内容-------------------------------------------------------" +
+                "-----------------------------------------------------------------" +
+                "-------------------------------------------------------------------" +
+                "-----------------------------------------------------------");
+        cardModel.setTv3("2017.2.28");
         list.add(cardModel);
 
         return list;
@@ -197,7 +229,11 @@ public class DataUtils {
                 mutilModel.setResLayoutId(recyclerBaseModel.getResLayoutId());
                 mutilModel.setImage1(R.mipmap.ic_launcher);
                 mutilModel.setTv1("标题");
-                mutilModel.setTv2("内容");
+                mutilModel.setTv2("内容-------------------------------------------------------" +
+                        "-----------------------------------------------------------------" +
+                        "-------------------------------------------------------------------" +
+                        "-----------------------------------------------------------");
+                mutilModel.setTv3("2017.2.28");
                 list.add(newModel);
             }
         }
