@@ -39,7 +39,6 @@ public class LoginActivity extends BaseActivity {
         //TODO:跳转到注册界面注册
         startActivity (new Intent (this, RegisterActivity.class));
         LogUtils.d ("注册");
-        mToastUtil.toastShort ("---asdasdada----");
     }
 
     @Override
