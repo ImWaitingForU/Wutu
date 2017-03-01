@@ -20,6 +20,9 @@ import butterknife.BindView;
 import me.crosswall.lib.coverflow.CoverFlow;
 import me.crosswall.lib.coverflow.core.PagerContainer;
 
+/**
+ * 原社区荣誉界面，舍不得删...
+ */
 public class HonorActivity extends BaseActivity {
 
     @BindView (R.id.tvDailyStar) TextView tvDailyStar;

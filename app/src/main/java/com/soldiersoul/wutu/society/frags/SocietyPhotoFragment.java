@@ -1,5 +1,14 @@
-package com.soldiersoul.wutu.society;
+package com.soldiersoul.wutu.society.frags;
 
+
+import java.util.ArrayList;
+
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.society.PhotoActivity;
+import com.soldiersoul.wutu.society.bean.SocietyPhotoAlbumBean;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +19,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
-import com.soldiersoul.wutu.R;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,9 +38,9 @@ public class SocietyPhotoFragment extends Fragment {
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        dataList.add (new SocietyPhotoAlbumBean ("albumName1", "2016-1-1", "aaaa"));
-        dataList.add (new SocietyPhotoAlbumBean ("albumName2", "2016-1-2", "bbbb"));
-        dataList.add (new SocietyPhotoAlbumBean ("albumName3", "2016-1-3", "cccc"));
+        dataList.add (new SocietyPhotoAlbumBean ("albumName1", "2016-1-1",null, "aaaa"));
+        dataList.add (new SocietyPhotoAlbumBean ("albumName2", "2016-1-2",null, "bbbb"));
+        dataList.add (new SocietyPhotoAlbumBean ("albumName3", "2016-1-3",null, "cccc"));
         adapter = new SocietyPhotoAlbumAdapter ();
         return inflater.inflate (R.layout.fragment_society_photo, container, false);
     }

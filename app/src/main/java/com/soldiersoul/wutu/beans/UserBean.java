@@ -1,6 +1,6 @@
 package com.soldiersoul.wutu.beans;
 
-import com.soldiersoul.wutu.society.SocietyBean;
+import com.soldiersoul.wutu.society.bean.SocietyBean;
 
 import java.util.List;
 

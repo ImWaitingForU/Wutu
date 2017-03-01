@@ -64,10 +64,6 @@
         <activity android:name=".society.SocietyActActivity" />
         <activity android:name=".society.HonorActivity" />
         <activity android:name=".society.PhotoActivity" />
-        <activity android:name=".society.MemberActivity" />
-        <activity android:name=".society.TrainActivity" />
-        <activity android:name=".society.ContributeActivity" />
-        <activity android:name=".society.IntegralActivity" />
         <activity android:name=".military.MadActivity" />
         <activity android:name=".military.MpolicyActivity" />
         <activity android:name=".military.McityActivity" />

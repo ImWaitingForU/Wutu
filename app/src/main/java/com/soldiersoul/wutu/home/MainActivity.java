@@ -5,12 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.weapon.ManageFragment;
-import com.soldiersoul.wutu.more.MeFragment;
 import com.soldiersoul.wutu.military.MilitaryFragment;
-import com.soldiersoul.wutu.society.SocietyFragment;
+import com.soldiersoul.wutu.more.MeFragment;
+import com.soldiersoul.wutu.society.frags.SocietyFragment;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.BottomBar;
+import com.soldiersoul.wutu.weapon.WeaponFragment;
 
 import butterknife.BindView;
 
@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     private FragmentManager mFragmentManager;
     private MilitaryFragment mMilitaryFragment;
     private SocietyFragment mSocietyFragment;
-    private ManageFragment mManageFragment;
+    private WeaponFragment mWeaponFragment;
     private MeFragment mMeFragment;
 
     @Override
@@ -62,12 +62,12 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
 
     private void showManageFragments () {
         FragmentTransaction transaction = mFragmentManager.beginTransaction ();
-        if (mManageFragment == null) {
-            mManageFragment = new ManageFragment ();
-            transaction.add (R.id.main_layout, mManageFragment);
+        if (mWeaponFragment == null) {
+            mWeaponFragment = new WeaponFragment ();
+            transaction.add (R.id.main_layout, mWeaponFragment);
         }
         hideAllFragment ();
-        transaction.show (mManageFragment);
+        transaction.show (mWeaponFragment);
         transaction.commitAllowingStateLoss ();
     }
 
@@ -95,8 +95,8 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
             transaction.hide (mSocietyFragment);
         }
 
-        if (mManageFragment != null && mManageFragment.isVisible ()) {
-            transaction.hide (mManageFragment);
+        if (mWeaponFragment != null && mWeaponFragment.isVisible ()) {
+            transaction.hide (mWeaponFragment);
         }
 
         if (mMeFragment != null && mMeFragment.isVisible ()) {

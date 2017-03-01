@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.society;
+package com.soldiersoul.wutu.society.frags;
 
 
 import android.os.Bundle;
@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import com.soldiersoul.wutu.R;
 
 /**
- * 社团积分界面(合并任务)
+ * 社团活动界面
  */
-public class SocietyIntegralFragment extends Fragment {
+public class SocietyActFragment extends Fragment {
 
 
-    public SocietyIntegralFragment () {
+    public SocietyActFragment () {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class SocietyIntegralFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate (R.layout.fragment_society_integral, container, false);
+        return inflater.inflate (R.layout.fragment_society_act, container, false);
     }
 
 }
