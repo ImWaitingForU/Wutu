@@ -1,13 +1,105 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.soldiersoul.wutu.more.MeFragment">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="我的界面"/>
+        android:orientation="vertical"
+        tools:context="com.soldiersoul.wutu.more.MeFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUserAvatar"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="1dp"/>
+
+            <TextView
+                android:id="@+id/tvUserName"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="魂锁典狱长冯老师"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            app:imgSrc="@drawable/ic_phone"
+            app:itemText="绑定手机"/>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemSchool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            app:imgSrc="@drawable/ic_school"
+            app:itemText="学校"/>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemCollection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="20dp"
+            app:imgSrc="@drawable/ic_collect"
+            app:itemText="我的收藏"/>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemChangeSkin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            app:imgSrc="@drawable/ic_change_skin"
+            app:itemText="更换主题"/>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="20dp"
+            app:imgSrc="@drawable/ic_update"
+            app:itemText="检查更新"/>
+
+        <com.soldiersoul.wutu.views.SimpleMenuItem
+            android:id="@+id/itemAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            app:imgSrc="@drawable/ic_about"
+            app:itemText="关于"/>
+
+
+        <Button
+            android:id="@+id/btnQuitLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorRed"
+            android:text="退出登录"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+</ScrollView>
