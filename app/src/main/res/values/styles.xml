@@ -71,4 +71,10 @@
         <item name="android:paddingBottom">8dp</item>
     </style>
 
+    <!--SimpleMenuItemStyle-->
+    <declare-styleable name="SimpleMenuItem">
+        <attr name="imgSrc" format="reference"/>
+        <attr name="itemText" format="string"/>
+    </declare-styleable>
+
 </resources>
