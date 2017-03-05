@@ -3,24 +3,19 @@ package com.soldiersoul.wutu.military;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shuyu.common.CommonRecyclerAdapter;
 import com.shuyu.common.CommonRecyclerManager;
@@ -28,21 +23,15 @@ import com.shuyu.common.listener.LoadMoreScrollListener;
 import com.shuyu.common.listener.OnItemClickListener;
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Holder.CardHolder;
-import com.soldiersoul.wutu.Holder.ClickHolder;
 import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.ImageHolder;
-import com.soldiersoul.wutu.Holder.MutilHolder;
-import com.soldiersoul.wutu.Holder.TextHolder;
+import com.soldiersoul.wutu.Holder.VideoHolder;
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.adapter.Military_Fragment_Adapter;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
 import com.soldiersoul.wutu.utils.DataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -86,6 +75,11 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -126,7 +120,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         CommonRecyclerManager commonRecyclerManager = new CommonRecyclerManager();
         //添加四种类型
         commonRecyclerManager.addType(ImageHolder.ID, ImageHolder.class.getName());
-        commonRecyclerManager.addType(TextHolder.ID, TextHolder.class.getName());
+        commonRecyclerManager.addType(VideoHolder.ID, VideoHolder.class.getName());
         //commonRecyclerManager.addType(ClickHolder.ID, ClickHolder.class.getName());
         //commonRecyclerManager.addType(MutilHolder.ID, MutilHolder.class.getName());
         commonRecyclerManager.addType(CardHolder.ID, CardHolder.class.getName());
@@ -195,6 +189,10 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(Context context, int position) {
+
+                if ((position+1)%5 == 0 ){
+                    startActivity(new Intent(context,VideoListActivity.class));
+                }else
                 startActivity(new Intent(context,CityContentActivity.class));
             }
         });
