@@ -65,8 +65,6 @@ BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAda
 CoverFlow：    compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 
 FlycoTabLayout:     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-//视频小窗依赖
-compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.0'
 
 
 =======

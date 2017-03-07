@@ -3,14 +3,15 @@ package com.soldiersoul.wutu.utils;
 
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Holder.CardHolder;
+import com.soldiersoul.wutu.Holder.ClickHolder;
 import com.soldiersoul.wutu.Holder.ImageHolder;
 import com.soldiersoul.wutu.Holder.MutilHolder;
-import com.soldiersoul.wutu.Holder.VideoHolder;
+import com.soldiersoul.wutu.Holder.TextHolder;
 import com.soldiersoul.wutu.Model.CardModel;
 import com.soldiersoul.wutu.Model.ClickModel;
 import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.Model.MutilModel;
-import com.soldiersoul.wutu.Model.VideoModel;
+import com.soldiersoul.wutu.Model.TextModel;
 import com.soldiersoul.wutu.R;
 
 import java.util.ArrayList;
@@ -146,11 +147,10 @@ public class DataUtils {
         imageModel.setNewsTime("2017.2.27");
         list.add(imageModel);
 
-        VideoModel videoModel = new VideoModel();
-        videoModel.setResLayoutId(VideoHolder.ID);
-        videoModel.setBtnRes(R.drawable.video_click_play_selector);
-        videoModel.setFengmianRes(R.mipmap.xxx1);
-        list.add(videoModel);
+        TextModel textModel = new TextModel();
+        textModel.setResLayoutId(TextHolder.ID);
+        textModel.setText("视频点这里看");
+        list.add(textModel);
 
 
 //        ClickModel clickModel = new ClickModel();
@@ -187,11 +187,10 @@ public class DataUtils {
         imageModel.setNewsTime("2017.2.27");
         list.add(imageModel);
 
-        videoModel = new VideoModel();
-        videoModel.setResLayoutId(VideoHolder.ID);
-        videoModel.setBtnRes(R.drawable.video_click_play_selector);
-        videoModel.setFengmianRes(R.mipmap.xxx1);
-        list.add(videoModel);
+        textModel = new TextModel();
+        textModel.setResLayoutId(TextHolder.ID);
+        textModel.setText("视频点这里看");
+        list.add(textModel);
 
 
         CardModel cardModel = new CardModel();
@@ -212,12 +211,11 @@ public class DataUtils {
             RecyclerBaseModel newModel;
             if (recyclerBaseModel instanceof ClickModel) {
 
-            } else if (recyclerBaseModel instanceof VideoModel) {
-                newModel = new VideoModel();
-                VideoModel videoModel = (VideoModel) newModel;
-                videoModel.setResLayoutId(recyclerBaseModel.getResLayoutId());
-                videoModel.setBtnRes(R.drawable.video_click_play_selector);
-                videoModel.setFengmianRes(R.mipmap.xxx1);
+            } else if (recyclerBaseModel instanceof TextModel) {
+                newModel = new TextModel();
+                TextModel textModel = (TextModel) newModel;
+                textModel.setResLayoutId(recyclerBaseModel.getResLayoutId());
+                textModel.setText("我就老视频哈哈哈哈！！！！！ " + i);
                 list.add(newModel);
             } else if (recyclerBaseModel instanceof ImageModel) {
                 newModel = new ImageModel();
