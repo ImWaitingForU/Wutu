@@ -23,8 +23,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 =======
 <manifest package="com.soldiersoul.wutu"
@@ -79,7 +78,6 @@
         <activity android:name=".military.MadActivity" />
         <activity android:name=".military.MpolicyActivity" />
         <activity android:name=".military.McityActivity" />
-<<<<<<< HEAD
         <activity android:name=".military.CityContentActivity" />
         <activity android:name=".military.VideoListActivity"></activity>
 =======
@@ -97,9 +95,6 @@
         <activity android:name=".login.PerfectInfoActivity">
         </activity>
 >>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
-=======
-        <activity android:name=".military.CityContentActivity"></activity>
->>>>>>> parent of f1c86aa... 整合了视频小窗口控件，但由于两个依赖的adpter有冲突，后期再做调整
     </application>
 
 </manifest>
