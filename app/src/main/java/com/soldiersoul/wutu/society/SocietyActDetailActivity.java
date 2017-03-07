@@ -28,6 +28,7 @@ public class SocietyActDetailActivity extends BaseActivity {
         super.onCreate (savedInstanceState);
         getSupportActionBar ().setDisplayHomeAsUpEnabled (true);
         getSupportActionBar ().setTitle ("社团活动");
+        getSupportActionBar ().setHomeButtonEnabled (true);
 
 
     }
