@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_society_act_detail"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.soldiersoul.wutu.society.SocietyActDetailActivity">
+
+    <TextView
+        android:id="@+id/tvSocietyActName"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="活动名"/>
+
+    <TextView
+        android:id="@+id/tv0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSocietyActName"
+        android:layout_marginTop="8dp"
+        android:text="策划人:"/>
+
+    <TextView
+        android:id="@+id/tvSocietyActPlanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv0"
+        android:layout_toRightOf="@id/tv0"
+        android:text="xxx"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv0"
+        android:layout_marginTop="8dp"
+        android:text="活动地点:"
+        android:layout_alignRight="@+id/tvSocietyActName"/>
+
+    <TextView
+        android:id="@+id/tvSocietyActLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv5"
+        android:layout_toRightOf="@id/tv5"
+        android:text="aaa"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSocietyActLocation"
+        android:layout_marginTop="8dp"
+        android:text="开始时间"/>
+
+    <TextView
+        android:id="@+id/tvSocietyActStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv1"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/tv1"
+        android:text="2017/2/1"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv1"
+        android:layout_below="@id/tvSocietyActLocation"
+        android:layout_toRightOf="@id/tvSocietyActStartTime"
+        android:text="截止时间"/>
+
+    <TextView
+        android:id="@+id/tvSocietyActEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv1"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/tv2"
+        android:text="2017/2/5"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvSocietyActContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvSocietyActStartTime"
+        android:layout_marginTop="12dp"/>
+
+</RelativeLayout>
