@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -103,3 +104,18 @@
 
     </LinearLayout>
 </ScrollView>
+=======
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.soldiersoul.wutu.me.MeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="我的界面"/>
+
+</FrameLayout>
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84

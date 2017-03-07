@@ -2,7 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context="com.soldiersoul.wutu.weapon.ManageFragment">
+=======
+    tools:context="com.soldiersoul.wutu.manage.ManageFragment">
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
     <TextView
         android:layout_width="match_parent"

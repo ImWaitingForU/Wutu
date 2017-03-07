@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # built application files
 *.apk
 # generated files
@@ -33,3 +34,14 @@ _sandbox
 *~
 *.bak
 
+=======
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84

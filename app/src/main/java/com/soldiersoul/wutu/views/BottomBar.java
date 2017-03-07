@@ -1,15 +1,22 @@
 package com.soldiersoul.wutu.views;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
+=======
+import android.util.AttributeSet;
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
 import com.soldiersoul.wutu.R;
 
@@ -24,8 +31,12 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
     /**
      * 图片资源路径
      */
+<<<<<<< HEAD
     private int[] imgArray = {R.drawable.ic_military_pressed, R.drawable.ic_society_pressed, R.drawable.ic_manage_pressed, R
             .drawable.ic_me_pressed};
+=======
+    private int[] imgArray = {R.drawable.ic_military, R.drawable.ic_society, R.drawable.ic_manage, R.drawable.ic_me};
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
     public BottomBar (Context context) {
         super (context);
@@ -38,9 +49,13 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
 
     private void initBottom (Context context) {
         setOrientation (HORIZONTAL);
+<<<<<<< HEAD
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setElevation (4.0f);
         }
+=======
+        setElevation (4.0f);
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
         for (int i = 0; i < imgArray.length; i++) {
             addView (context, imgArray[i], i);
@@ -58,6 +73,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         ImageView iv = new ImageView (context);
         if (tag == 0) {
             //默认显示第一页
+<<<<<<< HEAD
             iv.setImageResource (R.drawable.ic_military);
         } else {
             iv.setImageResource (resId);
@@ -100,6 +116,18 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
         ll.addView (tv, p);
 
         addView (ll);
+=======
+            iv.setImageResource (R.drawable.ic_military_pressed);
+        } else {
+            iv.setImageResource (resId);
+        }
+        iv.setScaleType (ImageView.ScaleType.CENTER_INSIDE);
+        LayoutParams params = new LayoutParams (0, ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        iv.setLayoutParams (params);
+        iv.setOnClickListener (this);
+        iv.setTag (tag);
+        addView (iv);
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
     }
 
     /**
@@ -107,6 +135,7 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
      */
     private void resumeMenu () {
         for (int i = 0; i < getChildCount (); i++) {
+<<<<<<< HEAD
             LinearLayout view = (LinearLayout) getChildAt (i);
             ImageView iv = (ImageView) view.getChildAt (0);
             iv.setImageResource (imgArray[i]);
@@ -148,6 +177,32 @@ public class BottomBar extends LinearLayout implements View.OnClickListener {
                 break;
             case 3:
                 setSelectedUi (iv, R.drawable.ic_me, tv);
+=======
+            ImageView view = (ImageView) getChildAt (i);
+            view.setImageResource (imgArray[i]);
+        }
+    }
+
+    @Override
+    public void onClick (View v) {
+        ImageView iv = (ImageView) v;
+        resumeMenu ();
+        switch ((int) v.getTag ()) {
+            case 0:
+                iv.setImageResource (R.drawable.ic_military_pressed);
+                mListener.onBottomBar1Clicked ();
+                break;
+            case 1:
+                iv.setImageResource (R.drawable.ic_society_pressed);
+                mListener.onBottomBar2Clicked ();
+                break;
+            case 2:
+                iv.setImageResource (R.drawable.ic_manage_pressed);
+                mListener.onBottomBar3Clicked ();
+                break;
+            case 3:
+                iv.setImageResource (R.drawable.ic_me_pressed);
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
                 mListener.onBottomBar4Clicked ();
                 break;
             default:

@@ -8,12 +8,21 @@
     android:orientation="vertical"
     tools:context="com.soldiersoul.wutu.military.MilitaryWorldActivity">
 
+<<<<<<< HEAD
     <!--<com.soldiersoul.wutu.views.TopBar-->
         <!--android:id="@+id/activity_military_world_toolbar"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="50dp">-->
 
     <!--</com.soldiersoul.wutu.views.TopBar>-->
+=======
+    <com.soldiersoul.wutu.views.TopBar
+        android:id="@+id/activity_military_world_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </com.soldiersoul.wutu.views.TopBar>
+>>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
     <LinearLayout
         android:layout_width="match_parent"
