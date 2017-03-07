@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-<<<<<<< HEAD
     <style name="society_tvStyle" parent="TextAppearance.AppCompat.Title">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -26,9 +25,6 @@
         <item name="android:gravity">center</item>
         <item name="android:typeface">monospace</item>
     </style>
-=======
-
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
     <!--轮播图样式-->
     <style name="BannerDefaultStyle">
@@ -75,13 +71,10 @@
         <item name="android:paddingBottom">8dp</item>
     </style>
 
-<<<<<<< HEAD
     <!--SimpleMenuItemStyle-->
     <declare-styleable name="SimpleMenuItem">
         <attr name="imgSrc" format="reference"/>
         <attr name="itemText" format="string"/>
     </declare-styleable>
 
-=======
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 </resources>

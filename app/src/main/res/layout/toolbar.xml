@@ -8,11 +8,7 @@
     android:layout_gravity="top"
     android:background="@color/colorPrimary"
     android:elevation="4dp"
-<<<<<<< HEAD
     android:padding="12dp"
-=======
-    android:padding="6dp"
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -28,18 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/military_world"
-<<<<<<< HEAD
         style="@style/Base.TextAppearance.AppCompat.Title"
-=======
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
         android:textColor="@color/colorWhite"/>
 
     <include
         android:id="@+id/location"
-<<<<<<< HEAD
 
-=======
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
         layout="@layout/location_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

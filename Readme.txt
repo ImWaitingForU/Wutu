@@ -2,7 +2,6 @@
 
 版本号:1.0.0.0(版本号暂时不用管，应用发布后再进行版本升级)
 
-<<<<<<< HEAD
 新修改主界面布局后(170130):
 
 底部:
@@ -19,8 +18,6 @@
     More:       更多
         包括:仿知乎更多
 
-=======
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 新包名说明:
 
     login : 登录
@@ -46,13 +43,9 @@
 网络请求：volley     compile 'com.android.volley:volley:1.0.0'
 引导页/广告轮播:   compile 'com.android.support:support-v4:2.1.6'
                   compile 'cn.bingoogolapple:bga-banner:2.1.6@aar'
-<<<<<<< HEAD
 		compile 'com.nineoldandroids:library:2.4.0' 
 多布局列表，自带上下拉: //LazyRecyclerView
     compile 'com.github.CarGuo:LazyRecyclerAdapter:v2.0.0'（数据待后台加入，考虑使用视频新闻混合显示）
-=======
-		compile 'com.nineoldandroids:library:2.4.0' --Jun添加依赖
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 
 显示密码的Edittext: compile 'com.maksim88:PasswordEditText:v0.9'
 依赖注入ButterKnife： compile 'com.jakewharton:butterknife:8.4.0'
@@ -60,7 +53,6 @@
 
 BaseRecylerViewAdapterHelper:    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.0.0'
 
-<<<<<<< HEAD
 //TODO:武器界面考虑使用
 CoverFlow：    compile 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 
@@ -69,8 +61,6 @@ FlycoTabLayout:     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.0'
 
 
-=======
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 其他:
 下拉刷新使用SwipeRefreshLayout;
 

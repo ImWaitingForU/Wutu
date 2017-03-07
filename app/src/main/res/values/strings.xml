@@ -40,7 +40,6 @@
     <string name="my_center">个人中心</string>
     <string name="my_club">我的社团</string>
 
-<<<<<<< HEAD
     <!-- 社团 -->
     <string name="society_name">我的社团</string>
     <string name="society_Activity">社团特色活动</string>
@@ -105,8 +104,4 @@
 
     </string-array>
 
-=======
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> 8c32f9c62c7fb63ddca42355733fa1fa02ec3c84
 </resources>
