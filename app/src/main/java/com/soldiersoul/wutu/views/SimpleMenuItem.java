@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ public class SimpleMenuItem extends RelativeLayout {
         super (context);
     }
 
+    @RequiresApi (api = Build.VERSION_CODES.LOLLIPOP)
     public SimpleMenuItem (Context context, AttributeSet attrs) {
         super (context, attrs);
 

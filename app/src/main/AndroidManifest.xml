@@ -23,8 +23,8 @@
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -62,15 +62,20 @@
             android:enabled="true"
             android:process=":remote"/>
 
-        <activity android:name=".society.HonorActivity" />
-        <activity android:name=".society.PhotoActivity"
-                  android:parentActivityName=".home.MainActivity"/>
+        <activity android:name=".society.HonorActivity"/>
+        <activity
+            android:name=".society.PhotoActivity"
+            android:parentActivityName=".home.MainActivity"/>
         <activity android:name=".society.SocietyActDetailActivity"/>
-        <activity android:name=".military.MadActivity" />
-        <activity android:name=".military.MpolicyActivity" />
-        <activity android:name=".military.McityActivity" />
-        <activity android:name=".military.CityContentActivity" />
-        <activity android:name=".military.VideoListActivity"></activity>
+        <activity android:name=".military.MadActivity"/>
+        <activity android:name=".military.MpolicyActivity"/>
+        <activity android:name=".military.McityActivity"/>
+        <activity android:name=".military.CityContentActivity"/>
+        <activity android:name=".military.VideoListActivity"/>
+        <activity
+            android:name=".more.UserInfoAct"
+            android:parentActivityName=".home.MainActivity">
+        </activity>
     </application>
 
 </manifest>
