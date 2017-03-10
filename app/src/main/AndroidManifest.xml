@@ -63,7 +63,8 @@
             android:process=":remote"/>
 
         <activity android:name=".society.HonorActivity" />
-        <activity android:name=".society.PhotoActivity" />
+        <activity android:name=".society.PhotoActivity"
+                  android:parentActivityName=".home.MainActivity"/>
         <activity android:name=".society.SocietyActDetailActivity"/>
         <activity android:name=".military.MadActivity" />
         <activity android:name=".military.MpolicyActivity" />

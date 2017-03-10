@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,11 @@ public class MeFragment extends Fragment {
     @BindView (R.id.tvUserName) TextView tvUserName;
     @BindView (R.id.itemPhone) SimpleMenuItem itemPhone;
     @BindView (R.id.itemSchool) SimpleMenuItem itemSchool;
+    @BindView (R.id.itemCollection) SimpleMenuItem itemCollection;
+    @BindView (R.id.itemClearCache) SimpleMenuItem itemClearCache;
+    @BindView (R.id.itemUpdate) SimpleMenuItem itemUpdate;
+    @BindView (R.id.itemAbout) SimpleMenuItem itemAbout;
+    @BindView (R.id.btnQuitLogin) Button btnQuitLogin;
 
     public MeFragment () {
     }
