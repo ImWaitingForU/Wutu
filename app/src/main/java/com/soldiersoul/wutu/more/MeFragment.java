@@ -12,7 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.home.MainActivity;
+import com.soldiersoul.wutu.military.VideoListActivity;
+import com.soldiersoul.wutu.utils.ToastUtil;
 import com.soldiersoul.wutu.views.SimpleMenuItem;
 
 import butterknife.BindView;
@@ -22,7 +26,7 @@ import butterknife.OnClick;
 /**
  * 我的界面Fragment
  */
-public class MeFragment extends Fragment {
+public class MeFragment extends Fragment implements View.OnClickListener {
 
     @BindView (R.id.ivUserAvatar) ImageView ivUserAvatar;
     @BindView (R.id.tvUserName) TextView tvUserName;
@@ -39,6 +43,7 @@ public class MeFragment extends Fragment {
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
+        itemClearCache.setOnClickListener(this);
     }
 
     @Override
@@ -62,4 +67,11 @@ public class MeFragment extends Fragment {
     private void getUserData () {
     }
 
+
+    @Override
+    public void onClick(View v) {
+        GSYVideoManager.clearAllDefaultCache(getContext());
+        ToastUtil util = new ToastUtil(getContext());
+        util.toastShort("已清理视频缓存");
+    }
 }
