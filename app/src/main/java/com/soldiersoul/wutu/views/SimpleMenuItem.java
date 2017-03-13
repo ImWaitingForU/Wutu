@@ -36,7 +36,7 @@ public class SimpleMenuItem extends RelativeLayout {
         String text = typedArray.getString (R.styleable.SimpleMenuItem_itemText);
         Drawable drawable = typedArray.getDrawable (R.styleable.SimpleMenuItem_imgSrc);
 
-        setBackgroundColor (getResources ().getColor (R.color.colorWhite));
+        setBackgroundResource (R.drawable.white_btn_selector);
         setPadding (40, 40, 40, 40);
         setElevation (4);
 
