@@ -45,6 +45,11 @@
         android:layout_gravity="center"
         android:layout_weight="1"/>
 
+    <include
+        android:visibility="gone"
+        android:id="@+id/networkEventView"
+        layout="@layout/network_view"/>
+
     <com.soldiersoul.wutu.views.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

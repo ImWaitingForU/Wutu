@@ -68,7 +68,8 @@
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="20dp"
                 app:imgSrc="@drawable/ic_clearcache"
-                app:itemText="清除缓存"/>
+                app:itemText="清除缓存"
+                />
 
             <com.soldiersoul.wutu.views.SimpleMenuItem
                 android:id="@+id/itemUpdate"

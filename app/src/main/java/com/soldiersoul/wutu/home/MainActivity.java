@@ -1,22 +1,29 @@
 package com.soldiersoul.wutu.home;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.military.MilitaryFragment;
 import com.soldiersoul.wutu.more.MeFragment;
 import com.soldiersoul.wutu.society.frags.SocietyFragment;
 import com.soldiersoul.wutu.utils.BaseActivity;
+import com.soldiersoul.wutu.utils.NetworkBroadcastReceiver;
 import com.soldiersoul.wutu.views.BottomBar;
 import com.soldiersoul.wutu.weapon.WeaponFragment;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements BottomBar.BottomBarClickedListener {
+public class MainActivity extends BaseActivity implements BottomBar.BottomBarClickedListener,
+        NetworkBroadcastReceiver.NetEvent {
 
     @BindView (R.id.bottomBar) BottomBar mBottomBar;
+    @BindView (R.id.networkEventView) View netWorkEventView;
 
     private FragmentManager mFragmentManager;
     private MilitaryFragment mMilitaryFragment;
@@ -24,11 +31,30 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     private WeaponFragment mWeaponFragment;
     private MeFragment mMeFragment;
 
+    private NetworkBroadcastReceiver networkBroadcastReceiver;
+
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
+
+        if (networkBroadcastReceiver == null) {
+            networkBroadcastReceiver = new NetworkBroadcastReceiver ();
+            networkBroadcastReceiver.setNetEvent (MainActivity.this);
+            IntentFilter filter = new IntentFilter ();
+            filter.addAction (WifiManager.NETWORK_STATE_CHANGED_ACTION);
+            filter.addAction (WifiManager.WIFI_STATE_CHANGED_ACTION);
+            filter.addAction (ConnectivityManager.CONNECTIVITY_ACTION);
+            registerReceiver (networkBroadcastReceiver, filter);
+        }
+
         super.onCreate (savedInstanceState);
         mFragmentManager = getSupportFragmentManager ();
         initFragments ();
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume ();
     }
 
     private void initFragments () {
@@ -107,6 +133,15 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     }
 
     @Override
+    protected void onDestroy () {
+        //退出后关闭网络广播监听
+        if (networkBroadcastReceiver != null) {
+            unregisterReceiver (networkBroadcastReceiver);
+        }
+        super.onDestroy ();
+    }
+
+    @Override
     public int getContentViewId () {
         return R.layout.activity_main;
     }
@@ -129,5 +164,14 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     @Override
     public void onBottomBar4Clicked () {
         showMeFragments ();
+    }
+
+    @Override
+    public void onNetChange (boolean isConnected) {
+        if (isConnected) {
+            netWorkEventView.setVisibility (View.GONE);
+        } else {
+            netWorkEventView.setVisibility (View.VISIBLE);
+        }
     }
 }

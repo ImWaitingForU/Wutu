@@ -77,7 +77,7 @@ public class SocietyBaseInfoFragment extends Fragment {
 	/**
 	 * 跳转到拨打社团电话界面
 	 */
-	@OnClick(R.id.cvCall)
+	@OnClick(R.id.ivCall)
 	void gotoCall() {
 		Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tvSocietyPhone.getText().toString()));
 		startActivity(intent);

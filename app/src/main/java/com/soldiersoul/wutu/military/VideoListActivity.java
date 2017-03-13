@@ -1,5 +1,6 @@
 package com.soldiersoul.wutu.military;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class VideoListActivity extends AppCompatActivity {
+
+    private Context context=VideoListActivity.this;
+
 
     @BindView(R.id.list_item_recycler)
     RecyclerView listItemRecycler;
@@ -192,5 +196,9 @@ public class VideoListActivity extends AppCompatActivity {
         }
         if (recyclerBaseAdapter != null)
             recyclerBaseAdapter.notifyDataSetChanged();
+    }
+
+    public  Context getContext(){
+        return context;
     }
 }
