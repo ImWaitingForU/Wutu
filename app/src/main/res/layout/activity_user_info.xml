@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.soldiersoul.wutu.more.UserInfoAct">
 
     <requestFocus/>
+
+    <RelativeLayout
+        android:id="@+id/userAvatarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="18dp"
+            android:gravity="center"
+            android:text="头像"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:scaleType="centerCrop"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tvItemName"
+            android:background="@color/colorGray"/>
+
+    </RelativeLayout>
 
     <com.soldiersoul.wutu.views.SimpleUserInfoItem
         android:id="@+id/itemUserName"
@@ -24,4 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <com.soldiersoul.wutu.views.SimpleUserInfoItem
+        android:id="@+id/itemUserSociety"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

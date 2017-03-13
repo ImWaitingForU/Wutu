@@ -76,6 +76,8 @@
             android:name=".more.UserInfoAct"
             android:parentActivityName=".home.MainActivity">
         </activity>
+        <activity android:name=".more.ChangeAvatarAct">
+        </activity>
     </application>
 
 </manifest>
