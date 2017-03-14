@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:text="用户名"/>
 
-    <EditText
+    <TextView
         android:gravity="bottom"
         android:background="@null"
         android:cursorVisible="false"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:id="@+id/etUserData"
+        android:id="@+id/tvUserData"
         android:drawablePadding="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

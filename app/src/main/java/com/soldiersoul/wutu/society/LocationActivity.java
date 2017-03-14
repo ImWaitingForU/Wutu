@@ -1,5 +1,6 @@
 package com.soldiersoul.wutu.society;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
@@ -11,6 +12,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.Poi;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.more.UserInfoAct;
 import com.soldiersoul.wutu.utils.BaseActivity;
 
 import java.util.List;
@@ -22,6 +24,8 @@ import butterknife.OnClick;
  * by Chan
  * <p>
  * 使用百度定位，实现社团中定位功能的activity,其他界面要使用到定位也可以使用
+ * <p>
+ * 根据字符串获取学校
  */
 public class LocationActivity extends BaseActivity {
 
@@ -36,7 +40,7 @@ public class LocationActivity extends BaseActivity {
      * 定位到城市
      */
     @OnClick (R.id.llLocate)
-    void doLocate(){
+    void doLocate () {
         tvResult.setText (result);
     }
 
@@ -49,15 +53,33 @@ public class LocationActivity extends BaseActivity {
         actionBar.setDisplayHomeAsUpEnabled (true);
         actionBar.setTitle (getResources ().getString (R.string.location_title));
 
+
         initBaiduStaff ();
-        mLocationClient.start();
+        mLocationClient.start ();
+    }
+
+    @Override
+    protected void onStop () {
+        super.onStop ();
+
     }
 
     @Override
     protected void onDestroy () {
+        super.onDestroy ();
         //结束定位
         mLocationClient.stop ();
-        super.onDestroy ();
+
+    }
+
+    @Override
+    public void onBackPressed () {
+        if (getIntent ().getFlags () == UserInfoAct.REQUEST_SCHOOL_CODE) {
+            Intent intent = getIntent ();
+            intent.putExtra ("school", result.toString ());
+            setResult (RESULT_OK, intent);
+            this.finish ();
+        }
     }
 
     /**

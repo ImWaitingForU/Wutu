@@ -3,8 +3,10 @@ package com.soldiersoul.wutu.utils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import butterknife.ButterKnife;
@@ -77,6 +79,53 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * 设置actionbar的返回按钮，让其响应onBackPressed
+     */
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch (item.getItemId ()) {
+            case android.R.id.home:
+                onBackPressed ();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected (item);
+    }
+
+    @Override
+    public void onBackPressed () {
+        this.finish ();
+    }
+
+    /**
+     * 设置homeButton
+     */
+    public void setHomeButtonStaff (@Nullable String title) {
+        ActionBar actionBar = getSupportActionBar ();
+        actionBar.setHomeButtonEnabled (true);
+        actionBar.setDefaultDisplayHomeAsUpEnabled (true);
+        actionBar.setDisplayHomeAsUpEnabled (true);
+        if (title != null) {
+            actionBar.setTitle (title);
+        }
+    }
+
+    /**
+     * 设置homeButton
+     */
+    public void setHomeButtonStaff (int title) {
+        ActionBar actionBar = getSupportActionBar ();
+        actionBar.setHomeButtonEnabled (true);
+        actionBar.setDefaultDisplayHomeAsUpEnabled (true);
+        actionBar.setDisplayHomeAsUpEnabled (true);
+        if (title != 0) {
+            actionBar.setTitle (title);
+        }
+    }
+
 
     /**
      * 设置页面的标题

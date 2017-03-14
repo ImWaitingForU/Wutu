@@ -27,10 +27,10 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
+        android:name=".home.WutuApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".home.WutuApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -53,9 +53,7 @@
         <activity android:name=".login.GuideActivity"/>
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.PerfectInfoActivity"/>
-        <activity
-            android:name=".society.LocationActivity"
-            android:parentActivityName=".home.MainActivity"/>
+        <activity android:name=".society.LocationActivity"/>
 
         <!-- 百度定位Server -->
         <service
@@ -64,21 +62,15 @@
             android:process=":remote"/>
 
         <activity android:name=".society.HonorActivity"/>
-        <activity
-            android:name=".society.PhotoActivity"
-            android:parentActivityName=".home.MainActivity"/>
+        <activity android:name=".society.PhotoActivity"/>
         <activity android:name=".society.SocietyActDetailActivity"/>
         <activity android:name=".military.MadActivity"/>
         <activity android:name=".military.MpolicyActivity"/>
         <activity android:name=".military.McityActivity"/>
         <activity android:name=".military.CityContentActivity"/>
         <activity android:name=".military.VideoListActivity"/>
-        <activity
-            android:name=".more.UserInfoAct"
-            android:parentActivityName=".home.MainActivity">
-        </activity>
-        <activity android:name=".more.ChangeAvatarAct">
-        </activity>
+        <activity android:name=".more.UserInfoAct"/>
+        <activity android:name=".more.ChangeAvatarAct"/>
     </application>
 
 </manifest>

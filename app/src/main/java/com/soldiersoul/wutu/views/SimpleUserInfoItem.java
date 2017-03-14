@@ -3,7 +3,6 @@ package com.soldiersoul.wutu.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -12,7 +11,7 @@ import com.soldiersoul.wutu.R;
 public class SimpleUserInfoItem extends RelativeLayout {
 
     private TextView tvItemName;
-    private EditText etUserData;
+    private TextView tvUserData;
 
     public SimpleUserInfoItem (Context context) {
         super (context);
@@ -23,8 +22,10 @@ public class SimpleUserInfoItem extends RelativeLayout {
         View view = View.inflate (context, R.layout.userinfo_item_layout, null);
         addView (view);
 
+        setBackgroundResource (R.drawable.white_btn_selector);
+
         tvItemName = (TextView) view.findViewById (R.id.tvItemName);
-        etUserData = (EditText) view.findViewById (R.id.etUserData);
+        tvUserData = (TextView) view.findViewById (R.id.tvUserData);
 
     }
 
@@ -35,8 +36,8 @@ public class SimpleUserInfoItem extends RelativeLayout {
     }
 
     public void setUserData (String userData) {
-        if (etUserData != null) {
-            etUserData.setText (userData);
+        if (tvUserData != null) {
+            tvUserData.setText (userData);
         }
     }
 
