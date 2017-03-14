@@ -33,9 +33,8 @@ public class PhotoActivity extends BaseActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
 
-        getSupportActionBar ().setHomeButtonEnabled (true);
         // TODO: 2017/3/10 设置相册名称
-        getSupportActionBar ().setTitle ("相册名");
+        setHomeButtonStaff ("相册名");
 
         initData ();
     }
