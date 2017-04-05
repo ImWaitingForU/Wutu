@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "25.0.1"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.soldiersoul.wutu"
         minSdkVersion 16
@@ -33,6 +34,10 @@ dependencies {
     })
     //轮播图依赖
     //视频小窗口依赖
+    apply plugin: 'com.android.application'
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    compile 'cn.bmob.android:bmob-sms:1.0.1'
+    compile 'cn.bmob.android:http-legacy:1.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.volley:volley:1.0.0'

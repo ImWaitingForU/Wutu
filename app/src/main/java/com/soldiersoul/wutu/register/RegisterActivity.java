@@ -11,6 +11,8 @@ import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.MisoperationDialog;
 
+import cn.bmob.sms.BmobSMS;
+
 public class RegisterActivity extends BaseActivity implements MisoperationDialog.MisoperationListener {
 
     private VerifyFragment mVerifyFragment;
@@ -21,7 +23,7 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
         @Override
         public void handleMessage (Message msg) {
             if (msg.what == VerifyFragment.VERIFY_SUCCESS) {
-                showPwdFragment ();
+                showPwdFragment (msg.obj);
             }
         }
     };
@@ -31,6 +33,7 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
         super.onCreate (savedInstanceState);
         fm = getSupportFragmentManager ();
         showVerifyFragment ();
+        BmobSMS.initialize (this, "2cc3116ad9187a3b8cca8f37da4338e0");
 
         getSupportActionBar ().setDisplayHomeAsUpEnabled (true);
         getSupportActionBar ().setHomeButtonEnabled (true);
@@ -60,13 +63,13 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
     /**
      * 显示填写密码Fragment
      */
-    private void showPwdFragment () {
+    private void showPwdFragment (Object obj) {
         FragmentTransaction transaction = fm.beginTransaction ();
         if (mVerifyFragment != null) {
             transaction.remove (mVerifyFragment);
         }
         if (mPwdFragment == null) {
-            mPwdFragment = new PwdFragment (mHandler);
+            mPwdFragment = new PwdFragment (mHandler, obj);
             transaction.add (R.id.activity_register, mPwdFragment);
         }
         setTitle ("设置密码");

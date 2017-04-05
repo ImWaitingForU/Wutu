@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.home.MainActivity;
 import com.soldiersoul.wutu.login.PerfectInfoActivity;
 import com.soldiersoul.wutu.utils.ToastUtil;
@@ -22,6 +23,8 @@ import com.soldiersoul.wutu.utils.ToastUtil;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * 设置密码的Fragment
@@ -34,12 +37,14 @@ public class PwdFragment extends Fragment {
 
     private Handler mHandler;
     private ToastUtil mToastUtil;
+    private String userName;
 
     public PwdFragment () {
     }
 
-    public PwdFragment (Handler handler) {
+    public PwdFragment (Handler handler, Object userName) {
         mHandler = handler;
+        this.userName = (String) userName;
     }
 
     @Override
@@ -64,13 +69,29 @@ public class PwdFragment extends Fragment {
         String pwd1 = etPwd1.getText ().toString ();
         String pwd2 = etPwd2.getText ().toString ();
         if (pwd1.equals (pwd2)) {
-            //TODO:服务器保存密码
+            UserBean user = new UserBean ();
+            user.setMobilePhoneNumber (userName);
+            //初始用户名就是电话
+            user.setUsername (userName);
+            user.setPassword (etPwd2.getText ().toString ());
+            user.signUp (new SaveListener<String> () {
+                @Override
+                public void done (String s, BmobException e) {
+                    if (e == null) {
+                        mToastUtil.toastShort ("注册成功");
+                    } else {
+                        mToastUtil.toastShort ("注册失败" + e.getMessage ());
+                        return;
+                    }
+                }
+            });
         } else {
             mToastUtil.toastShort ("两次输入密码不一致");
+            return;
         }
 
         //TODO:注册成功后提示是否到完善资料界面
-        //TODO:注册成功要实现自动登录 ，然后跳转到资料完善界面
+        //TODO:注册成功要实现自动登录 ，然后跳转到主界面
         AlertDialog.Builder builder = new AlertDialog.Builder (getActivity ());
         builder.setMessage ("恭喜您注册成功，现在去完善资料吧!").setCancelable (false)
                .setNegativeButton ("以后再说", new DialogInterface.OnClickListener () {
@@ -91,7 +112,6 @@ public class PwdFragment extends Fragment {
                 //TODO:在完善信息界面判断如果是由注册界面跳转过去，返回则跳转到首页。
                 intent.putExtra (PerfectInfoActivity.FROMWHERE, PerfectInfoActivity.REGISTER_TO_INFO);
                 startActivity (intent);
-                mToastUtil.toastShort ("注册成功");
                 getActivity ().finish ();
             }
         }).show ();

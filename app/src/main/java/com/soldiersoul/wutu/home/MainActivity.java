@@ -13,11 +13,13 @@ import com.soldiersoul.wutu.military.MilitaryFragment;
 import com.soldiersoul.wutu.more.MeFragment;
 import com.soldiersoul.wutu.society.frags.SocietyFragment;
 import com.soldiersoul.wutu.utils.BaseActivity;
+import com.soldiersoul.wutu.utils.Constants;
 import com.soldiersoul.wutu.utils.NetworkBroadcastReceiver;
 import com.soldiersoul.wutu.views.BottomBar;
 import com.soldiersoul.wutu.weapon.WeaponFragment;
 
 import butterknife.BindView;
+import cn.bmob.v3.Bmob;
 
 public class MainActivity extends BaseActivity implements BottomBar.BottomBarClickedListener,
         NetworkBroadcastReceiver.NetEvent {
@@ -33,9 +35,14 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
 
     private NetworkBroadcastReceiver networkBroadcastReceiver;
 
+    //初始化bmob有关信息
+    public void initBmob(){
+        Bmob.initialize (this, Constants.BMOB_APPKEY);
+    }
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
+        initBmob ();
 
         if (networkBroadcastReceiver == null) {
             networkBroadcastReceiver = new NetworkBroadcastReceiver ();

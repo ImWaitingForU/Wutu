@@ -3,6 +3,7 @@ package com.soldiersoul.wutu.register;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,13 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.views.CountDownButton;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.sms.BmobSMS;
+import cn.bmob.sms.exception.BmobException;
+import cn.bmob.sms.listener.RequestSMSCodeListener;
+import cn.bmob.sms.listener.VerifySMSCodeListener;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * 接收验证码的Fragment
@@ -30,6 +42,7 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
     @BindView (R.id.btn_verify_next) Button btnNext;
 
     private Handler mHandler;
+    private static boolean isUsedPhone;
     public static final int VERIFY_SUCCESS = 0x111;
 
     public VerifyFragment () {
@@ -37,6 +50,11 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
 
     public VerifyFragment (Handler handler) {
         this.mHandler = handler;
+    }
+
+    @Override
+    public void onCreate (@Nullable Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
     }
 
     @Nullable
@@ -59,10 +77,48 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
         btnVerify.cancelCountDown ();
     }
 
+    /**
+     * 检查手机号是否已经被注册
+     *
+     * @return
+     */
+    private boolean isUsedPhone (String phoneNumber) {
+        BmobQuery<UserBean> query = new BmobQuery<> ();
+        query.addWhereEqualTo ("mobilePhoneNumber", phoneNumber);
+        query.findObjects (new FindListener<UserBean> () {
+            @Override
+            public void done (List<UserBean> list, cn.bmob.v3.exception.BmobException e) {
+                if (list.size () > 0) {
+                    isUsedPhone = true;
+                } else {
+                    isUsedPhone = false;
+                }
+            }
+        });
+        return isUsedPhone;
+    }
+
     @Override
     public void onGettingVerify () {
-        //TODO:验证手机号-->获取验证码-->启动计时器
-        Log.d ("chan", "--获取验证码--");
+        String userName = etUsername.getText ().toString ();
+        if (isUsedPhone (userName)){
+            Toast.makeText (getActivity (), "手机号已被注册", Toast.LENGTH_SHORT).show ();
+            return;
+        }
+        BmobSMS.requestSMSCode (getActivity (), userName, "WutuSms", new RequestSMSCodeListener () {
+
+            @Override
+            public void done (Integer smsId, BmobException ex) {
+                if (ex == null) {//验证码发送成功
+                    Log.i ("bmob", "短信id：" + smsId);//用于查询本次短信发送详情
+                    Toast.makeText (getActivity (), "验证码发送成功", Toast.LENGTH_SHORT).show ();
+                    btnVerify.startCountDown ();
+                } else {
+                    Log.e ("bmob", ex.getMessage ());
+                    Toast.makeText (getActivity (), "验证码发送失败，请检查手机号是否正确", Toast.LENGTH_SHORT).show ();
+                }
+            }
+        });
     }
 
     /**
@@ -70,9 +126,24 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
      */
     @OnClick (R.id.btn_verify_next)
     public void next () {
-        //TODO:验证验证码
+        final String userName = etUsername.getText ().toString ();
+        String verifyCode = etVerify.getText ().toString ();
+        BmobSMS.verifySmsCode (getActivity (), userName, verifyCode, new VerifySMSCodeListener () {
 
-        //验证通过
-        mHandler.sendMessage (mHandler.obtainMessage (VERIFY_SUCCESS));
+            @Override
+            public void done (BmobException ex) {
+                if (ex == null) {//短信验证码已验证成功
+                    Log.i ("bmob", "验证通过");
+                    Toast.makeText (getActivity (), "验证通过", Toast.LENGTH_SHORT).show ();
+                    Message message = new Message ();
+                    message.what = VERIFY_SUCCESS;
+                    message.obj = userName;
+                    mHandler.sendMessage (message);
+                } else {
+                    Log.i ("bmob", "验证失败：code =" + ex.getErrorCode () + ",msg = " + ex.getLocalizedMessage ());
+                    Toast.makeText (getActivity (), "验证码错误", Toast.LENGTH_SHORT).show ();
+                }
+            }
+        });
     }
 }

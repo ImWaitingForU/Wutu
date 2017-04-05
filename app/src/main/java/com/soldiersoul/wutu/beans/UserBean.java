@@ -4,17 +4,17 @@ import com.soldiersoul.wutu.society.bean.SocietyBean;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
+
 /**
  * Created by chan on 2017/2/28.
- *
+ * <p>
  * 用户Bean类
  */
 
-public class UserBean{
+public class UserBean extends BmobUser {
 
-    private String phone;
-    private String pwd;
-    private String userName;
+    /*BombUser已有userName,pwd*/
     private String userAvatar;
     private String school;
 
@@ -24,39 +24,14 @@ public class UserBean{
     //一个用户收藏多种武器
     private List<WeaponBean> weapons;
 
-    public UserBean (String phone, String pwd, String userName, String userAvatar, String school, SocietyBean society,
-                     List<WeaponBean> weapons) {
-        this.phone = phone;
-        this.pwd = pwd;
-        this.userName = userName;
+    public UserBean () {
+    }
+
+    public UserBean ( String userAvatar, String school, SocietyBean society, List<WeaponBean> weapons) {
         this.userAvatar = userAvatar;
         this.school = school;
         this.society = society;
         this.weapons = weapons;
-    }
-
-    public String getPhone () {
-        return phone;
-    }
-
-    public void setPhone (String phone) {
-        this.phone = phone;
-    }
-
-    public String getPwd () {
-        return pwd;
-    }
-
-    public void setPwd (String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getUserName () {
-        return userName;
-    }
-
-    public void setUserName (String userName) {
-        this.userName = userName;
     }
 
     public String getUserAvatar () {
