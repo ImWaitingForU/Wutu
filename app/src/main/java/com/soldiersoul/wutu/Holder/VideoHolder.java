@@ -1,9 +1,7 @@
 package com.soldiersoul.wutu.Holder;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.shuyu.common.RecyclerBaseHolder;
@@ -11,6 +9,7 @@ import com.shuyu.common.model.RecyclerBaseModel;
 import com.shuyu.gsyvideoplayer.utils.ListVideoUtil;
 import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +24,7 @@ public class VideoHolder extends RecyclerBaseHolder {
 
     ListVideoUtil listVideoUtil;
     @BindView(R.id.list_item_container)
-    FrameLayout fengmian;
+    ImageView fengmian;
     @BindView(R.id.list_item_btn)
     ImageView btn_start;
 
@@ -45,8 +44,10 @@ public class VideoHolder extends RecyclerBaseHolder {
     @Override
     public void onBind(RecyclerBaseModel model,final int position) {
         VideoModel videoModel = (VideoModel) (model);
-        fengmian.setBackgroundResource(videoModel.getFengmianRes());
+//        fengmian.setBackgroundResource(videoModel.getFengmianRes());
+        Picasso.with (context).load (model.getResLayoutId ()).into (fengmian);
         btn_start.setBackgroundResource(videoModel.getBtnRes());
+
         //添加播放
 //        listVideoUtil.addVideoPlayer(position, imageView, "RecyclerView2List", fengmian, btn_start);
 //        //开始播放

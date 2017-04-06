@@ -14,6 +14,7 @@ import com.shuyu.common.RecyclerBaseHolder;
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,8 +49,8 @@ public class ImageHolder extends RecyclerBaseHolder {
     @Override
     public void onBind(RecyclerBaseModel model, int position) {
         ImageModel imageModel = (ImageModel) model;
-        itemImage.setImageResource(imageModel.getResId());
-        newsTitle.setText("新闻标题");
+        Picasso.with (context).load (imageModel.getImgUrl ()).into (itemImage);
+        newsTitle.setText(((ImageModel) model).getNewsTitle ());
         newsContent.setText("内容----------------------------------------------------------------------");
         newsTime.setText("2017.2.27");
     }
