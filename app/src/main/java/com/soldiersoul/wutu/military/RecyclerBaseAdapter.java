@@ -33,7 +33,7 @@ public class RecyclerBaseAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                       int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.text_item, parent, false);
-        final RecyclerView.ViewHolder holder = new RecyclerItemViewHolder(context, v);
+        final RecyclerView.ViewHolder holder = new RecyclerItemViewHolder (context, v);
         return holder;
 
     }

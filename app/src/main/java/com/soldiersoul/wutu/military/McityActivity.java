@@ -2,8 +2,8 @@ package com.soldiersoul.wutu.military;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,11 +20,9 @@ import cn.ittiger.indexlist.IndexStickyView;
 import cn.ittiger.indexlist.listener.OnItemClickListener;
 import cn.ittiger.indexlist.listener.OnItemLongClickListener;
 
-public class McityActivity extends AppCompatActivity implements OnItemClickListener<CityEntity>,
-        OnItemLongClickListener<CityEntity> {
+public class McityActivity extends AppCompatActivity implements OnItemClickListener<CityEntity>, OnItemLongClickListener<CityEntity> {
 
-    @BindView(R.id.indexStickyView)
-    IndexStickyView mIndexStickyView;
+    @BindView(R.id.indexStickyView) IndexStickyView mIndexStickyView;
     CityAdapter mAdapter;
     private Context mContext;
 
@@ -35,7 +33,7 @@ public class McityActivity extends AppCompatActivity implements OnItemClickListe
         setContentView(R.layout.activity_mcity);
         ButterKnife.bind(this);
 
-        mIndexStickyView.addItemDecoration(new IndexStickyViewDecoration(this));
+        mIndexStickyView.addItemDecoration(new IndexStickyViewDecoration (this));
         mAdapter = new CityAdapter(initCitys());
         mAdapter.setOnItemClickListener(this);
         mAdapter.setOnItemLongClickListener(this);

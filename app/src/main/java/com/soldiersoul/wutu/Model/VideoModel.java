@@ -7,14 +7,14 @@ import com.shuyu.common.model.RecyclerBaseModel;
  */
 
 public class VideoModel extends RecyclerBaseModel {
-    private String fengmianRes  ;
+    private int fengmianRes  ;
     private int btnRes;
 
-    public String getFengmianRes () {
+    public int getFengmianRes () {
         return fengmianRes;
     }
 
-    public void setFengmianRes (String fengmianRes) {
+    public void setFengmianRes (int fengmianRes) {
         this.fengmianRes = fengmianRes;
     }
 

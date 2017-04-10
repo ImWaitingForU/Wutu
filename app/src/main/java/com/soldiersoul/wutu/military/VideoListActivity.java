@@ -32,12 +32,10 @@ public class VideoListActivity extends AppCompatActivity {
     private Context context=VideoListActivity.this;
 
 
-    @BindView(R.id.list_item_recycler)
-    RecyclerView listItemRecycler;
+    @BindView(R.id.list_item_recycler) RecyclerView listItemRecycler;
     @BindView(R.id.video_full_container)
     FrameLayout videoFullContainer;
-    @BindView(R.id.video_refresh)
-    SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.video_refresh) SwipeRefreshLayout refreshLayout;
 
     LinearLayoutManager linearLayoutManager;
 
@@ -89,7 +87,8 @@ public class VideoListActivity extends AppCompatActivity {
                 lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
                 Debuger.printfLog("firstVisibleItem " + firstVisibleItem + " lastVisibleItem " + lastVisibleItem);
                 //大于0说明有播放,//对应的播放列表TAG
-                if (listVideoUtil.getPlayPosition() >= 0 && listVideoUtil.getPlayTAG().equals(RecyclerItemViewHolder.TAG)) {
+                if (listVideoUtil.getPlayPosition() >= 0 && listVideoUtil.getPlayTAG().equals(RecyclerItemViewHolder
+                                                                                                      .TAG)) {
                     //当前播放的位置
                     int position = listVideoUtil.getPlayPosition();
                     //不可视的是时候
@@ -111,7 +110,7 @@ public class VideoListActivity extends AppCompatActivity {
         });
 
         //小窗口关闭被点击的时候回调处理回复页面
-        listVideoUtil.setVideoAllCallBack(new SampleListener() {
+        listVideoUtil.setVideoAllCallBack(new SampleListener () {
             @Override
             public void onPrepared(String url, Object... objects) {
                 super.onPrepared(url, objects);
@@ -154,16 +153,16 @@ public class VideoListActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager (this);
         listItemRecycler.setLayoutManager(linearLayoutManager);
-        listItemRecycler.addItemDecoration(new DividerItemDecoration(10, DividerItemDecoration.LIST));
+        listItemRecycler.addItemDecoration(new DividerItemDecoration (10, DividerItemDecoration.LIST));
         resolveData();
 
-        recyclerBaseAdapter = new RecyclerBaseAdapter(this, dataList);
+        recyclerBaseAdapter = new RecyclerBaseAdapter (this, dataList);
         listItemRecycler.setAdapter(recyclerBaseAdapter);
 
 
-        listVideoUtil = new ListVideoUtil(this);
+        listVideoUtil = new ListVideoUtil (this);
         listVideoUtil.setFullViewContainer(videoFullContainer);
         listVideoUtil.setHideStatusBar(true);
         recyclerBaseAdapter.setListVideoUtil(listVideoUtil);
@@ -191,7 +190,7 @@ public class VideoListActivity extends AppCompatActivity {
 
     private void resolveData() {
         for (int i = 0; i < 10; i++) {
-            VideoModel videoModel = new VideoModel();
+            VideoModel videoModel = new VideoModel ();
             dataList.add(videoModel);
         }
         if (recyclerBaseAdapter != null)

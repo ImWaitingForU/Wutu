@@ -1,11 +1,9 @@
 package com.soldiersoul.wutu.military;
 
-import android.content.Context;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.soldiersoul.wutu.R;
 
 import java.util.List;
 

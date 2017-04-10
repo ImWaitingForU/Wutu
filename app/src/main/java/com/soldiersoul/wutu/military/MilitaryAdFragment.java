@@ -14,7 +14,6 @@ import com.soldiersoul.wutu.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGABannerUtil;
 

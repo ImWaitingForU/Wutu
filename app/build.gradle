@@ -33,6 +33,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //轮播图依赖
+
     //视频小窗口依赖
     apply plugin: 'com.android.application'
     compile 'cn.bmob.android:bmob-sdk:3.5.0'
@@ -57,9 +58,10 @@ dependencies {
     compile 'com.github.vipulasri:timelineview:1.0.4'
     compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.0'
     compile 'com.android.support.constraint:constraint-layout:+'
-    compile "com.lijunguan:imageseletor:1.0.2"
+    compile 'com.lijunguan:imageseletor:1.0.2'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile files('libs/json-lib-2.4-jdk15.jar')
 }
 
 

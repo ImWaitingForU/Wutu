@@ -1,20 +1,16 @@
 package com.soldiersoul.wutu.military;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.shuyu.common.CommonRecyclerAdapter;
 import com.shuyu.common.CommonRecyclerManager;
-import com.shuyu.common.listener.LoadMoreScrollListener;
 import com.shuyu.common.listener.OnItemClickListener;
 import com.shuyu.common.model.RecyclerBaseModel;
-import com.soldiersoul.wutu.Holder.CardHolder;
 import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.MutilHolder;
 import com.soldiersoul.wutu.R;
@@ -55,54 +51,31 @@ public class MpolicyActivity extends AppCompatActivity {
 
     public void init() {
         //初始化管理器
-        CommonRecyclerManager commonRecyclerManager = new CommonRecyclerManager();
+        CommonRecyclerManager commonRecyclerManager = new CommonRecyclerManager ();
         //添加card类型
         commonRecyclerManager.addType(MutilHolder.ID, MutilHolder.class.getName());
 
         //设置空页面的
         commonRecyclerManager.addType(EmptyHolder.ID, EmptyHolder.class.getName());
         //适配器
-        adapter = new CommonRecyclerAdapter(this, commonRecyclerManager, datas);
+        adapter = new CommonRecyclerAdapter (this, commonRecyclerManager, datas);
         //需要加载更多
-        adapter.setNeedLoadMore(true);
+        //adapter.setNeedLoadMore(true);
         //需要显示空数据页面
-        adapter.setShowNoData(true);
+        //adapter.setShowNoData(true);
         //设置动画支持打开
         adapter.setNeedAnimation(true);
         //配置你自定义的空页面效果，不配置显示默认
         adapter.setNoDataLayoutId(EmptyHolder.ID);
-        RecyclerBaseModel recyclerBaseModel = new RecyclerBaseModel();
+        RecyclerBaseModel recyclerBaseModel = new RecyclerBaseModel ();
         recyclerBaseModel.setResLayoutId(EmptyHolder.ID);
         adapter.setNoDataModel(recyclerBaseModel);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(10, DividerItemDecoration.LIST));
+        recyclerView.setLayoutManager(new LinearLayoutManager (this));
+        recyclerView.addItemDecoration(new DividerItemDecoration (10, DividerItemDecoration.LIST));
         recyclerView.setAdapter(adapter);
 
         //设置上拉加载更多数据
-        recyclerView.setOnScrollListener(new LoadMoreScrollListener() {
-            @Override
-            public void onLoadMore() {
-                //注意加锁
-                if (!isfresh) {
-                    isfresh = true;
-                    recyclerView.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            //TODO：数据加载，等待后台加入
-                            loadMore();
-                        }
-
-                    }, 2000);
-                }
-            }
-
-            @Override
-            public void onScrolled(int firstPosition) {
-                super.onScrolled(firstPosition);
-            }
-
-        });
         //设置下拉刷新
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -121,17 +94,17 @@ public class MpolicyActivity extends AppCompatActivity {
             }
         });
         //设置item点击事件
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener () {
             @Override
             public void onItemClick(Context context, int position) {
 
-                startActivity(new Intent(MpolicyActivity.this,CityContentActivity.class));
+                //startActivity(new Intent(MpolicyActivity.this,CityContentActivity.class));
             }
         });
     }
 
     public void initDatas() {
-        List<RecyclerBaseModel> list = DataUtils.getInitialData();
+        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
         this.datas = list;
         if (adapter != null) {
             adapter.setListData(datas);
@@ -156,7 +129,7 @@ public class MpolicyActivity extends AppCompatActivity {
      * 下拉刷新方法
      */
     private void refresh() {
-        List<RecyclerBaseModel> list = DataUtils.getInitialData();
+        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
