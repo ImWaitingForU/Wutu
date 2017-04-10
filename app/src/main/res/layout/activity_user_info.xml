@@ -12,11 +12,12 @@
     <RelativeLayout
         android:background="@drawable/white_btn_selector"
         android:id="@+id/userAvatarLayout"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tvItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -33,13 +34,13 @@
             android:layout_marginRight="24dp"
             android:scaleType="centerCrop"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/tvItemName"
-            android:background="@color/colorGray"/>
-
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/userAvatar"
+        android:background="@color/colorGray"/>
 
     <com.soldiersoul.wutu.views.SimpleUserInfoItem
         android:id="@+id/itemUserName"

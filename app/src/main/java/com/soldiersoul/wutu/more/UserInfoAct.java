@@ -12,14 +12,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.society.LocationActivity;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.SimpleUserInfoItem;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadFileListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.lijunguan.imgselector.ImageSelector;
 
@@ -35,30 +43,47 @@ public class UserInfoAct extends BaseActivity {
     @BindView (R.id.userAvatar) CircleImageView userAvatar;
     @BindView (R.id.userAvatarLayout) RelativeLayout userAvatarLayout;
 
+    private UserBean user;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-
+        //获取当前用户
+        user = BmobUser.getCurrentUser (UserBean.class);
         setHomeButtonStaff ("个人信息");
+    }
+
+    @Override
+    protected void onResume () {
+        super.onResume ();
         initUserData ();
     }
 
+    @Override
+    public void onBackPressed () {
+        super.onBackPressed ();
+        this.finish ();
+    }
+
     private void initUserData () {
-        //// TODO: 2017/3/14 填充用户信息数据
         itemUserName.setItemName ("用户名");
-        itemUserName.setUserData ("Iwfu");
+        itemUserName.setUserData (user.getUsername ());
 
         itemUserPhone.setItemName ("手机号");
-        itemUserPhone.setUserData ("15079192155");
+        itemUserPhone.setUserData (user.getMobilePhoneNumber ());
 
         itemUserSchool.setItemName ("学校");
-        itemUserSchool.setUserData ("华东交通大学");
+        itemUserSchool.setUserData (user.getSchool ());
 
         itemUserSociety.setItemName ("我的社团");
-        itemUserSociety.setUserData ("军事爱好者社团");
-        
-        //// TODO: 2017/3/14 从服务器获取用户头像设置
-        userAvatar.setImageResource (R.mipmap.ic_launcher);
+        itemUserSociety.setUserData (user.getSociety ());
+
+        if (!user.getUserAvatar ().equals ("")) {
+            Picasso.with (this).load (user.getUserAvatar ()).into (userAvatar);
+        } else {
+            // TODO: 2017/4/10 修改默认头像
+            userAvatar.setImageResource (R.mipmap.ic_launcher);
+        }
     }
 
     /**
@@ -90,11 +115,21 @@ public class UserInfoAct extends BaseActivity {
         }).setPositiveButton ("修改", new DialogInterface.OnClickListener () {
             @Override
             public void onClick (DialogInterface dialogInterface, int i) {
-                // TODO: 2017/3/14 修改用户名
-                mToastUtil.toastShort ("修改完成");
-                String newName = etNewName.getText ().toString ();
+                final String newName = etNewName.getText ().toString ();
                 if (!newName.equals ("")) {
-                    itemUserName.setUserData (newName);
+                    UserBean saveBean = new UserBean ();
+                    saveBean.setUsername (newName);
+                    saveBean.update (user.getObjectId (),new UpdateListener () {
+                        @Override
+                        public void done (BmobException e) {
+                            if (e == null) {
+                                mToastUtil.toastShort ("修改完成");
+                                itemUserName.setUserData (newName);
+                            } else {
+                                mToastUtil.toastLong (e.getMessage ());
+                            }
+                        }
+                    });
                 } else {
                     mToastUtil.toastShort ("用户名不能为空");
                 }
@@ -127,6 +162,7 @@ public class UserInfoAct extends BaseActivity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         super.onActivityResult (requestCode, resultCode, data);
         Log.d ("chan", "onActivityResult: requestCode=" + requestCode + ",resultCode=" + resultCode);
+        //修改学校
         if (requestCode == REQUEST_SCHOOL_CODE && resultCode == RESULT_OK && data != null) {
             String school = data.getStringExtra ("school");
             Log.d ("chan", "onActivityResult: school=" + school);
@@ -138,45 +174,69 @@ public class UserInfoAct extends BaseActivity {
             }
         }
 
-        /*选择头像获取返回*/
+        //修改头像
         if (requestCode == ImageSelector.REQUEST_SELECT_IMAGE && resultCode == RESULT_OK) {
-            ArrayList<String> imagesPath = data.getStringArrayListExtra (ImageSelector.SELECTED_RESULT);
+            final ArrayList<String> imagesPath = data.getStringArrayListExtra (ImageSelector.SELECTED_RESULT);
             if (imagesPath != null) {
-                // TODO: 2017/3/14 上传服务器修改头像
-                userAvatar.setImageURI (Uri.parse (imagesPath.get (0)));
+                final BmobFile bmobFile = new BmobFile (new File (imagesPath.get (0)));
+                bmobFile.uploadblock (new UploadFileListener () {
+                    @Override
+                    public void done (BmobException e) {
+                        if (e == null) {
+                            UserBean saveBean = new UserBean ();
+                            saveBean.setUserAvatar (bmobFile.getFileUrl ());
+                            saveBean.update (user.getObjectId (),new UpdateListener () {
+                                @Override
+                                public void done (BmobException e) {
+                                    if (e == null) {
+                                        userAvatar.setImageURI (Uri.parse (imagesPath.get (0)));
+                                        mToastUtil.toastShort ("修改头像成功~");
+                                    } else {
+                                        mToastUtil.toastShort ("头像修改失败，请检查网络链接");
+                                        e.printStackTrace ();
+                                    }
+                                }
+                            });
+                        } else {
+                            mToastUtil.toastShort ("上传头像失败");
+                            Log.d ("Bmob", e.getMessage ());
+                        }
+                    }
+                });
             }
         }
     }
 
     /**
-     * 修改社团
+     * 修改社团  todo定位后自动修改社团
      */
     @OnClick (R.id.itemUserSociety)
     public void changeUserSociety () {
-        AlertDialog.Builder builder = new AlertDialog.Builder (this);
-        View view = View.inflate (this, R.layout.user_info_changename, null);
-        final EditText etNewName = (EditText) view.findViewById (R.id.etChangeDialog);
-        TextView tvTitle = (TextView) view.findViewById (R.id.tvChangeDialog);
-        tvTitle.setText ("修改社团");
-        builder.setView (view).setNegativeButton ("取消", new DialogInterface.OnClickListener () {
-            @Override
-            public void onClick (DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel ();
-                mToastUtil.toastShort ("取消修改");
-            }
-        }).setPositiveButton ("修改", new DialogInterface.OnClickListener () {
-            @Override
-            public void onClick (DialogInterface dialogInterface, int i) {
-                // TODO: 2017/3/14 修改社团名
-                String newSocietyName = etNewName.getText ().toString ();
-                if (!newSocietyName.equals ("")) {
-                    itemUserSociety.setUserData (newSocietyName);
-                    mToastUtil.toastShort ("修改完成");
-                } else {
-                    mToastUtil.toastShort ("社团名不能为空");
-                }
-            }
-        }).setCancelable (false).show ();
+        mToastUtil.toastLong ("社团到定位学校后自动修改");
+        //        AlertDialog.Builder builder = new AlertDialog.Builder (this);
+        //        View view = View.inflate (this, R.layout.user_info_changename, null);
+        //        final EditText etNewName = (EditText) view.findViewById (R.id.etChangeDialog);
+        //        TextView tvTitle = (TextView) view.findViewById (R.id.tvChangeDialog);
+        //        tvTitle.setText ("修改社团");
+        //        builder.setView (view).setNegativeButton ("取消", new DialogInterface.OnClickListener () {
+        //            @Override
+        //            public void onClick (DialogInterface dialogInterface, int i) {
+        //                dialogInterface.cancel ();
+        //                mToastUtil.toastShort ("取消修改");
+        //            }
+        //        }).setPositiveButton ("修改", new DialogInterface.OnClickListener () {
+        //            @Override
+        //            public void onClick (DialogInterface dialogInterface, int i) {
+        //                // TODO: 2017/3/14 修改社团名
+        //                String newSocietyName = etNewName.getText ().toString ();
+        //                if (!newSocietyName.equals ("")) {
+        //                    itemUserSociety.setUserData (newSocietyName);
+        //                    mToastUtil.toastShort ("修改完成");
+        //                } else {
+        //                    mToastUtil.toastShort ("社团名不能为空");
+        //                }
+        //            }
+        //        }).setCancelable (false).show ();
     }
 
 

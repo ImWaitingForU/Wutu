@@ -1,9 +1,5 @@
 package com.soldiersoul.wutu.beans;
 
-import com.soldiersoul.wutu.society.bean.SocietyBean;
-
-import java.util.List;
-
 import cn.bmob.v3.BmobUser;
 
 /**
@@ -19,15 +15,15 @@ public class UserBean extends BmobUser {
     private String school;
 
     //一个用户对应一个社团
-    private SocietyBean society;
+    private String society;
 
     //一个用户收藏多种武器
-    private List<WeaponBean> weapons;
+    private String weapons;
 
     public UserBean () {
     }
 
-    public UserBean ( String userAvatar, String school, SocietyBean society, List<WeaponBean> weapons) {
+    public UserBean ( String userAvatar, String school, String society, String weapons) {
         this.userAvatar = userAvatar;
         this.school = school;
         this.society = society;
@@ -50,19 +46,19 @@ public class UserBean extends BmobUser {
         this.school = school;
     }
 
-    public SocietyBean getSociety () {
+    public String getSociety () {
         return society;
     }
 
-    public void setSociety (SocietyBean society) {
+    public void setSociety (String society) {
         this.society = society;
     }
 
-    public List<WeaponBean> getWeapons () {
+    public String getWeapons () {
         return weapons;
     }
 
-    public void setWeapons (List<WeaponBean> weapons) {
+    public void setWeapons (String weapons) {
         this.weapons = weapons;
     }
 }

@@ -16,13 +16,16 @@ import android.widget.TextView;
 
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.login.LoginActivity;
 import com.soldiersoul.wutu.utils.ToastUtil;
 import com.soldiersoul.wutu.views.SimpleMenuItem;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
 
 /**
  * 我的界面Fragment
@@ -37,12 +40,27 @@ public class MeFragment extends Fragment {
     @BindView (R.id.itemAbout) SimpleMenuItem itemAbout;
     @BindView (R.id.btnQuitLogin) Button btnQuitLogin;
 
+    private ToastUtil toastUtil;
+
     public MeFragment () {
+    }
+
+    @Override
+    public void onResume () {
+        super.onResume ();
+        UserBean user = BmobUser.getCurrentUser (UserBean.class);
+        if (user != null) {
+            if (!user.getUserAvatar ().equals ("")) {
+                Picasso.with (getActivity ()).load (user.getUserAvatar ()).into (ivUserAvatar);
+            }
+            tvUserName.setText (user.getUsername ());
+        }
     }
 
     @Override
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
+        toastUtil = new ToastUtil (getActivity ());
         ButterKnife.bind (this, view);
     }
 
@@ -58,13 +76,6 @@ public class MeFragment extends Fragment {
     public void goToUserActivity () {
         Intent intent = new Intent (getActivity (), UserInfoAct.class);
         startActivity (intent);
-    }
-
-    /**
-     * todo
-     * 获取用户数据,手机号，学校等
-     */
-    private void getUserData () {
     }
 
     /**
@@ -130,9 +141,11 @@ public class MeFragment extends Fragment {
     }
 
     private void doQuitLogin () {
-        // TODO: 2017/3/13 退出登录
+        BmobUser.logOut ();   //清除缓存用户对象
+        BmobUser currentUser = BmobUser.getCurrentUser (); // 现在的currentUser是null了
         getActivity ().finish ();
         startActivity (new Intent (getActivity (), LoginActivity.class));
+        toastUtil.toastShort ("退出登录成功");
     }
 
 }

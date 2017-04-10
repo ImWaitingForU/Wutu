@@ -1,13 +1,12 @@
 package com.soldiersoul.wutu.register;
 
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.home.MainActivity;
-import com.soldiersoul.wutu.login.PerfectInfoActivity;
 import com.soldiersoul.wutu.utils.ToastUtil;
 
 import butterknife.BindView;
@@ -69,7 +67,7 @@ public class PwdFragment extends Fragment {
         String pwd1 = etPwd1.getText ().toString ();
         String pwd2 = etPwd2.getText ().toString ();
         if (pwd1.equals (pwd2)) {
-            UserBean user = new UserBean ();
+            UserBean user = new UserBean ("","","","");
             user.setMobilePhoneNumber (userName);
             //初始用户名就是电话
             user.setUsername (userName);
@@ -79,8 +77,15 @@ public class PwdFragment extends Fragment {
                 public void done (String s, BmobException e) {
                     if (e == null) {
                         mToastUtil.toastShort ("注册成功");
+                        Intent intent = new Intent (getActivity (), MainActivity.class);
+                        intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity (intent);
+                        mToastUtil.toastShort ("注册成功");
+                        getActivity ().finish ();
                     } else {
-                        mToastUtil.toastShort ("注册失败" + e.getMessage ());
+                        // TODO: 2017/4/10 遗留一个bug，注册成功但是报错
+                        mToastUtil.toastShort (e.getMessage ());
+                        Log.d ("Bmob", "done: 注册失败"+e.getMessage ());
                         return;
                     }
                 }
@@ -90,31 +95,29 @@ public class PwdFragment extends Fragment {
             return;
         }
 
-        //TODO:注册成功后提示是否到完善资料界面
-        //TODO:注册成功要实现自动登录 ，然后跳转到主界面
-        AlertDialog.Builder builder = new AlertDialog.Builder (getActivity ());
-        builder.setMessage ("恭喜您注册成功，现在去完善资料吧!").setCancelable (false)
-               .setNegativeButton ("以后再说", new DialogInterface.OnClickListener () {
-                   @Override
-                   public void onClick (DialogInterface dialog, int which) {
-                       //TODO:点击取消，进行登录，跳转到主界面
-                       Intent intent = new Intent (getActivity (), MainActivity.class);
-                       intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                       startActivity (intent);
-                       mToastUtil.toastShort ("注册成功");
-                       getActivity ().finish ();
-                   }
-               }).setPositiveButton ("去完善", new DialogInterface.OnClickListener () {
-            @Override
-            public void onClick (DialogInterface dialog, int which) {
-                //TODO:点击去完善，进行登录，跳转到完善信息界面
-                Intent intent = new Intent (getActivity (), PerfectInfoActivity.class);
-                //TODO:在完善信息界面判断如果是由注册界面跳转过去，返回则跳转到首页。
-                intent.putExtra (PerfectInfoActivity.FROMWHERE, PerfectInfoActivity.REGISTER_TO_INFO);
-                startActivity (intent);
-                getActivity ().finish ();
-            }
-        }).show ();
+//        AlertDialog.Builder builder = new AlertDialog.Builder (getActivity ());
+//        builder.setMessage ("恭喜您注册成功，现在去完善资料吧!").setCancelable (false)
+//               .setNegativeButton ("以后再说", new DialogInterface.OnClickListener () {
+//                   @Override
+//                   public void onClick (DialogInterface dialog, int which) {
+//                       //TODO:点击取消，进行登录，跳转到主界面
+//                       Intent intent = new Intent (getActivity (), MainActivity.class);
+//                       intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                       startActivity (intent);
+//                       mToastUtil.toastShort ("注册成功");
+//                       getActivity ().finish ();
+//                   }
+//               }).setPositiveButton ("去完善", new DialogInterface.OnClickListener () {
+//            @Override
+//            public void onClick (DialogInterface dialog, int which) {
+//                //TODO:点击去完善，进行登录，跳转到完善信息界面
+//                Intent intent = new Intent (getActivity (), PerfectInfoActivity.class);
+//                //TODO:在完善信息界面判断如果是由注册界面跳转过去，返回则跳转到首页。
+//                intent.putExtra (PerfectInfoActivity.FROMWHERE, PerfectInfoActivity.REGISTER_TO_INFO);
+//                startActivity (intent);
+//                getActivity ().finish ();
+//            }
+//        }).show ();
 
     }
 

@@ -2,13 +2,15 @@ package com.soldiersoul.wutu.society.bean;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by Chan on 2017/1/8 0008.
  * <p>
  * 社团Bean类
  */
 
-public class SocietyBean {
+public class SocietyBean extends BmobObject{
 
 	/**
 	 * 社团名
