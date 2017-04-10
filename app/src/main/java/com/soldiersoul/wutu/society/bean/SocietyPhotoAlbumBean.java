@@ -2,11 +2,13 @@ package com.soldiersoul.wutu.society.bean;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by Rose on 2017/2/4. 社团照片封面Bean
  */
 
-public class SocietyPhotoAlbumBean {
+public class SocietyPhotoAlbumBean extends BmobObject{
 
 	/**
 	 * 相册名称
@@ -27,6 +29,8 @@ public class SocietyPhotoAlbumBean {
 	 * 相册封面地址
 	 */
 	private String albumLogoPath;
+
+	public SocietyPhotoAlbumBean(){}
 
 	public SocietyPhotoAlbumBean(String albumName, String albumTime, List<SocietyPhotoBean> photos,
 			String albumLogoPath) {

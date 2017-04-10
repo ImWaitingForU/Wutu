@@ -17,6 +17,7 @@ import com.github.vipulasri.timelineview.TimelineView;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.society.SocietyActDetailActivity;
 import com.soldiersoul.wutu.society.bean.SocietyActBean;
+import com.soldiersoul.wutu.society.bean.SocietyBean;
 import com.soldiersoul.wutu.utils.VectorDrawableUtils;
 
 import java.util.ArrayList;
@@ -34,8 +35,10 @@ public class SocietyActFragment extends Fragment {
     @BindView (R.id.rvTimeLine) RecyclerView recylerView;
 
     private List<SocietyActBean> actBeen;
+    private SocietyBean society;
 
-    public SocietyActFragment () {
+    public SocietyActFragment (SocietyBean society) {
+        this.society = society;
     }
 
     private void getData () {

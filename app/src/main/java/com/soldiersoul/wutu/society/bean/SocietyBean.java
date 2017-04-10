@@ -1,6 +1,6 @@
 package com.soldiersoul.wutu.society.bean;
 
-import java.util.List;
+import com.soldiersoul.wutu.beans.UserBean;
 
 import cn.bmob.v3.BmobObject;
 
@@ -10,146 +10,167 @@ import cn.bmob.v3.BmobObject;
  * 社团Bean类
  */
 
-public class SocietyBean extends BmobObject{
+public class SocietyBean extends BmobObject {
+    /**
+     * 人员列表  1对多
+     **/
+    private UserBean memberList;
 
-	/**
-	 * 社团名
-	 **/
-	private String name;
-	/**
-	 * 人员列表
-	 **/
-	private List<String> memberList;
+    /**
+     * 社团相册 1对多
+     */
+    private SocietyPhotoAlbumBean albumList;
 
-	/**
-	 * 社团介绍
-	 */
-	private String introduce;
+    /**
+     * 社团名
+     **/
+    private String name;
 
-	/**
-	 * 社团头像
-	 */
-	private String avatar;
+    /**
+     * 社团介绍
+     */
+    private String introduce;
 
-	/**
-	 * 社长名
-	 */
-	private String captailName;
+    /**
+     * 社团所属学校
+     */
+    private String school;
+
+    /**
+     * 社团头像
+     */
+    private String avatar;
+
+    /**
+     * 社长名
+     */
+    private String captailName;
 
     /**
      * 社团地址
      */
     private String location;
 
-	// /**
-	// * 部门
-	// */
-	// private ArrayList<> departments;
 
-	/**
-	 * 社团相册
-	 */
-	private List<SocietyPhotoAlbumBean> albumBean;
+    /**
+     * 社团QQ
+     */
+    private String societyQQ;
 
-	/**
-	 * 社团QQ
-	 */
-	private String societyQQ;
+    /**
+     * 社团手机号
+     */
+    private String societyPhone;
 
-	/**
-	 * 社团手机号
-	 */
-	private String societyPhone;
+    /**
+     * 社团Email
+     */
+    private String societyEmail;
 
-	/**
-	 * 社团Email
-	 */
-	private String societyEmail;
+    public SocietyBean () {
+    }
 
-    public SocietyBean (String name, List<String> memberList, String introduce, String avatar, String captailName,
-                        String location, List<SocietyPhotoAlbumBean> albumBean, String societyQQ, String societyPhone,
-                        String societyEmail) {
-        this.name = name;
+    public SocietyBean (UserBean memberList, SocietyPhotoAlbumBean albumList, String name,
+                        String introduce, String school, String avatar, String captailName, String location,
+                        String societyQQ, String societyPhone, String societyEmail) {
         this.memberList = memberList;
+        this.albumList = albumList;
+        this.name = name;
         this.introduce = introduce;
+        this.school = school;
         this.avatar = avatar;
         this.captailName = captailName;
         this.location = location;
-        this.albumBean = albumBean;
         this.societyQQ = societyQQ;
         this.societyPhone = societyPhone;
         this.societyEmail = societyEmail;
     }
 
-    public String getName() {
-		return name;
-	}
+    public UserBean getMemberList () {
+        return memberList;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setMemberList (UserBean memberList) {
+        this.memberList = memberList;
+    }
 
-	public List<String> getMemberList() {
-		return memberList;
-	}
+    public SocietyPhotoAlbumBean getAlbumList () {
+        return albumList;
+    }
 
-	public void setMemberList(List<String> memberList) {
-		this.memberList = memberList;
-	}
+    public void setAlbumList (SocietyPhotoAlbumBean albumList) {
+        this.albumList = albumList;
+    }
 
-	public String getIntroduce() {
-		return introduce;
-	}
+    public String getName () {
+        return name;
+    }
 
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
+    public void setName (String name) {
+        this.name = name;
+    }
 
-	public String getAvatar() {
-		return avatar;
-	}
+    public String getIntroduce () {
+        return introduce;
+    }
 
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
+    public void setIntroduce (String introduce) {
+        this.introduce = introduce;
+    }
 
-	public List<SocietyPhotoAlbumBean> getAlbumBean() {
-		return albumBean;
-	}
+    public String getSchool () {
+        return school;
+    }
 
-	public void setAlbumBean(List<SocietyPhotoAlbumBean> albumBean) {
-		this.albumBean = albumBean;
-	}
+    public void setSchool (String school) {
+        this.school = school;
+    }
 
-	public String getSocietyQQ() {
-		return societyQQ;
-	}
+    public String getAvatar () {
+        return avatar;
+    }
 
-	public void setSocietyQQ(String societyQQ) {
-		this.societyQQ = societyQQ;
-	}
+    public void setAvatar (String avatar) {
+        this.avatar = avatar;
+    }
 
-	public String getSocietyPhone() {
-		return societyPhone;
-	}
+    public String getCaptailName () {
+        return captailName;
+    }
 
-	public void setSocietyPhone(String societyPhone) {
-		this.societyPhone = societyPhone;
-	}
+    public void setCaptailName (String captailName) {
+        this.captailName = captailName;
+    }
 
-	public String getSocietyEmail() {
-		return societyEmail;
-	}
+    public String getLocation () {
+        return location;
+    }
 
-	public void setSocietyEmail(String societyEmail) {
-		this.societyEmail = societyEmail;
-	}
+    public void setLocation (String location) {
+        this.location = location;
+    }
 
-	public String getCaptailName() {
-		return captailName;
-	}
+    public String getSocietyQQ () {
+        return societyQQ;
+    }
 
-	public void setCaptailName(String captailName) {
-		this.captailName = captailName;
-	}
+    public void setSocietyQQ (String societyQQ) {
+        this.societyQQ = societyQQ;
+    }
+
+    public String getSocietyPhone () {
+        return societyPhone;
+    }
+
+    public void setSocietyPhone (String societyPhone) {
+        this.societyPhone = societyPhone;
+    }
+
+    public String getSocietyEmail () {
+        return societyEmail;
+    }
+
+    public void setSocietyEmail (String societyEmail) {
+        this.societyEmail = societyEmail;
+    }
 }

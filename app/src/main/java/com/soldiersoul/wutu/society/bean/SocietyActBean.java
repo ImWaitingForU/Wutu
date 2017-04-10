@@ -1,12 +1,14 @@
 package com.soldiersoul.wutu.society.bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by Rose on 2017/3/5.
  * <p>
  * 社团活动Bean类
  */
 
-public class SocietyActBean {
+public class SocietyActBean extends BmobObject{
 
     private String actName;
     private String startTime;

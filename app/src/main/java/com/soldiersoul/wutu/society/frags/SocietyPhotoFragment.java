@@ -16,6 +16,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.society.PhotoActivity;
+import com.soldiersoul.wutu.society.bean.SocietyBean;
 import com.soldiersoul.wutu.society.bean.SocietyPhotoAlbumBean;
 
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ public class SocietyPhotoFragment extends Fragment {
     private ArrayList<SocietyPhotoAlbumBean> dataList = new ArrayList<> ();
     private SocietyPhotoAlbumAdapter adapter;
 
-    public SocietyPhotoFragment () {
+    private SocietyBean society;
+    public SocietyPhotoFragment (SocietyBean society) {
+        this.society = society;
     }
 
 
