@@ -8,6 +8,9 @@ import cn.bmob.v3.BmobObject;
 
 public class SocietyAlbumBean extends BmobObject{
 
+	//一个社团有多个相册
+	private SocietyBean societyBean;
+
 	/**
 	 * 相册名称
 	 */
@@ -18,10 +21,10 @@ public class SocietyAlbumBean extends BmobObject{
 	 */
 	private String albumTime;
 
-	/**
-	 * 包含的照片
-	 */
-	private SocietyPhotoBean photos;
+//	/**
+//	 * 包含的照片
+//	 */
+//	private SocietyPhotoBean photos;
 
 	/**
 	 * 相册封面地址
@@ -30,11 +33,19 @@ public class SocietyAlbumBean extends BmobObject{
 
 	public SocietyAlbumBean (){}
 
-	public SocietyAlbumBean (String albumName, String albumTime, SocietyPhotoBean photos, String albumLogoPath) {
+	public SocietyAlbumBean (SocietyBean societyBean, String albumName, String albumTime, String albumLogoPath) {
+		this.societyBean = societyBean;
 		this.albumName = albumName;
 		this.albumTime = albumTime;
-		this.photos = photos;
 		this.albumLogoPath = albumLogoPath;
+	}
+
+	public SocietyBean getSocietyBean () {
+		return societyBean;
+	}
+
+	public void setSocietyBean (SocietyBean societyBean) {
+		this.societyBean = societyBean;
 	}
 
 	public String getAlbumName () {
@@ -51,14 +62,6 @@ public class SocietyAlbumBean extends BmobObject{
 
 	public void setAlbumTime (String albumTime) {
 		this.albumTime = albumTime;
-	}
-
-	public SocietyPhotoBean getPhotos () {
-		return photos;
-	}
-
-	public void setPhotos (SocietyPhotoBean photos) {
-		this.photos = photos;
 	}
 
 	public String getAlbumLogoPath () {

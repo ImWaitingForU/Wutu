@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.society.bean.SocietyBean;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class SocietyBaseInfoListAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private List<SocietyBean> data;
+    private List<UserBean> data;
 
     public SocietyBaseInfoListAdapter (Context context, List data) {
         this.mContext = context;
@@ -64,9 +64,9 @@ public class SocietyBaseInfoListAdapter extends BaseAdapter {
         }
 
 
-        Picasso.with (mContext).load (data.get (position).getAvatar ()).into (holder.memberPhoto);
-        holder.memberName.setText (data.get (position).getName ());
-        holder.memberPhone.setText (data.get (position).getSocietyPhone ());
+        Picasso.with (mContext).load (data.get (position).getUserAvatar ()).into (holder.memberPhoto);
+        holder.memberName.setText (data.get (position).getUsername ());
+        holder.memberPhone.setText (data.get (position).getMobilePhoneNumber ());
 
 
         return convertView;

@@ -8,17 +8,21 @@ import cn.bmob.v3.BmobObject;
  * 社团照片Bean类
  */
 
-public class SocietyPhotoBean extends BmobObject{
+public class SocietyPhotoBean extends BmobObject {
 
     private String photoName;
     private String photoPath;
 
+    //一个相册包含多张照片
+    private SocietyAlbumBean album;
+
     public SocietyPhotoBean () {
     }
 
-    public SocietyPhotoBean (String photoName, String photoPath) {
+    public SocietyPhotoBean (String photoName, String photoPath, SocietyAlbumBean album) {
         this.photoName = photoName;
         this.photoPath = photoPath;
+        this.album = album;
     }
 
     public String getPhotoName () {
@@ -35,5 +39,13 @@ public class SocietyPhotoBean extends BmobObject{
 
     public void setPhotoPath (String photoPath) {
         this.photoPath = photoPath;
+    }
+
+    public SocietyAlbumBean getAlbum () {
+        return album;
+    }
+
+    public void setAlbum (SocietyAlbumBean album) {
+        this.album = album;
     }
 }

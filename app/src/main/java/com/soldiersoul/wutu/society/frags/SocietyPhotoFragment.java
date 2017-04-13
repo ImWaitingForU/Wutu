@@ -42,13 +42,11 @@ public class SocietyPhotoFragment extends Fragment {
 
     private SocietyBean society;
 
-    public SocietyPhotoFragment (SocietyBean society) {
-        this.society = society;
+    public SocietyPhotoFragment () {
     }
 
-
-    @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public SocietyPhotoFragment (SocietyBean society) {
+        this.society = society;
         BmobQuery<SocietyAlbumBean> query = new BmobQuery<> ();
         SocietyAlbumBean album = new SocietyAlbumBean ();
         album.setObjectId ("wLXg888C");
@@ -58,10 +56,22 @@ public class SocietyPhotoFragment extends Fragment {
             public void done (List<SocietyAlbumBean> list, BmobException e) {
                 if (e == null) {
                     dataList = list;
-                    adapter = new SocietyPhotoAlbumAdapter ();
                 }
             }
         });
+    }
+
+    @Override
+    public void onCreate (@Nullable Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+        adapter = new SocietyPhotoAlbumAdapter ();
+
         return inflater.inflate (R.layout.fragment_society_photo, container, false);
     }
 
@@ -82,6 +92,8 @@ public class SocietyPhotoFragment extends Fragment {
                 startActivity (intent);
             }
         });
+
+
     }
 
     /**

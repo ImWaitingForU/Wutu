@@ -37,6 +37,9 @@ public class SocietyActFragment extends Fragment {
     private List<SocietyActBean> actBeen;
     private SocietyBean society;
 
+    public SocietyActFragment () {
+    }
+
     public SocietyActFragment (SocietyBean society) {
         this.society = society;
     }

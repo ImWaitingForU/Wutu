@@ -31,6 +31,9 @@ public class SocietyIntegralFragment extends Fragment {
 
     private SocietyBean society;
 
+    public SocietyIntegralFragment () {
+    }
+
     public SocietyIntegralFragment (SocietyBean society) {
         this.society = society;
     }

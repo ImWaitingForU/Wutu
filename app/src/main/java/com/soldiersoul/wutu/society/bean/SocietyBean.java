@@ -1,7 +1,5 @@
 package com.soldiersoul.wutu.society.bean;
 
-import com.soldiersoul.wutu.beans.UserBean;
-
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -11,15 +9,15 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class SocietyBean extends BmobObject {
-    /**
-     * 人员列表  1对多
-     **/
-    private UserBean memberList;
-
-    /**
-     * 社团相册 1对多
-     */
-    private SocietyAlbumBean albumList;
+//    /**
+//     * 人员列表  1对多
+//     **/
+//    private UserBean memberList;
+//
+//    /**
+//     * 社团相册 1对多
+//     */
+//    private SocietyAlbumBean albumList;
 
     /**
      * 社团名
@@ -70,11 +68,8 @@ public class SocietyBean extends BmobObject {
     public SocietyBean () {
     }
 
-    public SocietyBean (UserBean memberList, SocietyAlbumBean albumList, String name,
-                        String introduce, String school, String avatar, String captailName, String location,
-                        String societyQQ, String societyPhone, String societyEmail) {
-        this.memberList = memberList;
-        this.albumList = albumList;
+    public SocietyBean (String name, String introduce, String school, String avatar, String captailName,
+                        String location, String societyQQ, String societyPhone, String societyEmail) {
         this.name = name;
         this.introduce = introduce;
         this.school = school;
@@ -84,22 +79,6 @@ public class SocietyBean extends BmobObject {
         this.societyQQ = societyQQ;
         this.societyPhone = societyPhone;
         this.societyEmail = societyEmail;
-    }
-
-    public UserBean getMemberList () {
-        return memberList;
-    }
-
-    public void setMemberList (UserBean memberList) {
-        this.memberList = memberList;
-    }
-
-    public SocietyAlbumBean getAlbumList () {
-        return albumList;
-    }
-
-    public void setAlbumList (SocietyAlbumBean albumList) {
-        this.albumList = albumList;
     }
 
     public String getName () {

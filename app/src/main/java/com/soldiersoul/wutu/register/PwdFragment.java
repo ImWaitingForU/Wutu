@@ -67,7 +67,7 @@ public class PwdFragment extends Fragment {
         String pwd1 = etPwd1.getText ().toString ();
         String pwd2 = etPwd2.getText ().toString ();
         if (pwd1.equals (pwd2)) {
-            UserBean user = new UserBean ("","","","");
+            UserBean user = new UserBean ("","",null,"");
             user.setMobilePhoneNumber (userName);
             //初始用户名就是电话
             user.setUsername (userName);

@@ -62,7 +62,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate (savedInstanceState);
         Bmob.initialize (this, Constants.BMOB_APPKEY);
         //检查是否有缓存登录用户
-        BmobUser bmobUser = BmobUser.getCurrentUser (UserBean.class);
+        UserBean bmobUser = BmobUser.getCurrentUser (UserBean.class);
         if (bmobUser != null) {
             // 允许用户使用应用
             startActivity (new Intent (this, MainActivity.class));

@@ -76,7 +76,8 @@ public class UserInfoAct extends BaseActivity {
         itemUserSchool.setUserData (user.getSchool ());
 
         itemUserSociety.setItemName ("我的社团");
-        itemUserSociety.setUserData (user.getSociety ());
+        // TODO: 2017/4/13 判空处理 
+        itemUserSociety.setUserData (user.getSociety ().getName ());
 
         if (!user.getUserAvatar ().equals ("")) {
             Picasso.with (this).load (user.getUserAvatar ()).into (userAvatar);
