@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,48 +74,56 @@ public class SocietyFragment extends Fragment {
     }
 
     @Override
+    public void onCreate (@Nullable Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+        user = BmobUser.getCurrentUser (UserBean.class);
+    }
+
+    @Override
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         toastUtil = new ToastUtil (getActivity ());
+        ButterKnife.bind (this, view);
 
         //判断用户是否加入社团
         if (user.getSociety ().equals ("")) {
             return;
         }
 
-        ButterKnife.bind (this, view);
         //通过user获取所在的社团,如果为空，则自动定位到学校的社团
-        String society = user.getSociety ();
-        BmobQuery<SocietyBean> query = new BmobQuery<> ();
-        query.addWhereEqualTo ("name", society);
-        query.findObjects (new FindListener<SocietyBean> () {
-            @Override
-            public void done (List<SocietyBean> list, BmobException e) {
-                if (e == null && list.size () == 1) {
-                    societyBean = list.get (0);
-                } else {
-                    toastUtil.toastShort ("查询失败");
+        String societyName = user.getSociety ();
+        if (!societyName.equals ("")) {
+            Log.d ("Bmob", "您社团名:" + societyName);
+            BmobQuery<SocietyBean> query = new BmobQuery<> ();
+            query.addWhereEqualTo ("name", societyName);
+            query.findObjects (new FindListener<SocietyBean> () {
+                @Override
+                public void done (List<SocietyBean> list, BmobException e) {
+                    if (e == null && list.size () > 0) {
+                        societyBean = list.get (0);
+                        Log.d ("Bmob", "社团存在,社团名为" + societyBean.getName ());
+                        if (mFragments != null && mFragments.isEmpty ()) {
+                            mFragments.add (new SocietyBaseInfoFragment (societyBean));
+                            mFragments.add (new SocietyPhotoFragment (societyBean));
+                            mFragments.add (new SocietyActFragment (societyBean));
+                            mFragments.add (new SocietyIntegralFragment (societyBean));
+                        }
+
+                        mAdapter = new MyPagerAdapter (getFragmentManager ());
+                        vpSociety.setOffscreenPageLimit (4);
+                        vpSociety.setAdapter (mAdapter);
+                        stl.setViewPager (vpSociety);
+                    } else {
+                        toastUtil.toastShort ("查询失败");
+                    }
                 }
-            }
-        });
-
-        if (mFragments != null && mFragments.isEmpty ()) {
-            mFragments.add (new SocietyBaseInfoFragment (societyBean));
-            mFragments.add (new SocietyPhotoFragment (societyBean));
-            mFragments.add (new SocietyActFragment (societyBean));
-            mFragments.add (new SocietyIntegralFragment (societyBean));
+            });
         }
-
-        mAdapter = new MyPagerAdapter (getFragmentManager ());
-        vpSociety.setOffscreenPageLimit (4);
-        vpSociety.setAdapter (mAdapter);
-        stl.setViewPager (vpSociety);
     }
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //判断是当前用户是否包含社团信息，定位移动到个人信息界面
-        user = BmobUser.getCurrentUser (UserBean.class);
         if (user.getSociety ().equals ("")) {
             return inflater.inflate (R.layout.fragment_society_empty, container, false);
         } else {

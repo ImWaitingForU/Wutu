@@ -1,15 +1,20 @@
 package com.soldiersoul.wutu.society.bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by Rose on 2017/2/6.
  * <p>
  * 社团照片Bean类
  */
 
-public class SocietyPhotoBean {
+public class SocietyPhotoBean extends BmobObject{
 
     private String photoName;
     private String photoPath;
+
+    public SocietyPhotoBean () {
+    }
 
     public SocietyPhotoBean (String photoName, String photoPath) {
         this.photoName = photoName;

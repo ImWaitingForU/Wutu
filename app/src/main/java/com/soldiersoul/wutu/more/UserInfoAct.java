@@ -175,9 +175,16 @@ public class UserInfoAct extends BaseActivity {
         }
 
         //修改头像
+        // TODO: 2017/4/12 存在网络状况不好时的程序重新进入页面错误。无法上传文件修改头像
         if (requestCode == ImageSelector.REQUEST_SELECT_IMAGE && resultCode == RESULT_OK) {
             final ArrayList<String> imagesPath = data.getStringArrayListExtra (ImageSelector.SELECTED_RESULT);
             if (imagesPath != null) {
+                new Thread (){
+                    @Override
+                    public void run () {
+                        super.run ();
+                    }
+                }.start ();
                 final BmobFile bmobFile = new BmobFile (new File (imagesPath.get (0)));
                 bmobFile.uploadblock (new UploadFileListener () {
                     @Override
@@ -189,6 +196,7 @@ public class UserInfoAct extends BaseActivity {
                                 @Override
                                 public void done (BmobException e) {
                                     if (e == null) {
+                                        Log.d ("chan","result_ok-------------");
                                         userAvatar.setImageURI (Uri.parse (imagesPath.get (0)));
                                         mToastUtil.toastShort ("修改头像成功~");
                                     } else {

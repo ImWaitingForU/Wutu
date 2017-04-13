@@ -19,7 +19,7 @@ public class SocietyBean extends BmobObject {
     /**
      * 社团相册 1对多
      */
-    private SocietyPhotoAlbumBean albumList;
+    private SocietyAlbumBean albumList;
 
     /**
      * 社团名
@@ -70,7 +70,7 @@ public class SocietyBean extends BmobObject {
     public SocietyBean () {
     }
 
-    public SocietyBean (UserBean memberList, SocietyPhotoAlbumBean albumList, String name,
+    public SocietyBean (UserBean memberList, SocietyAlbumBean albumList, String name,
                         String introduce, String school, String avatar, String captailName, String location,
                         String societyQQ, String societyPhone, String societyEmail) {
         this.memberList = memberList;
@@ -94,11 +94,11 @@ public class SocietyBean extends BmobObject {
         this.memberList = memberList;
     }
 
-    public SocietyPhotoAlbumBean getAlbumList () {
+    public SocietyAlbumBean getAlbumList () {
         return albumList;
     }
 
-    public void setAlbumList (SocietyPhotoAlbumBean albumList) {
+    public void setAlbumList (SocietyAlbumBean albumList) {
         this.albumList = albumList;
     }
 

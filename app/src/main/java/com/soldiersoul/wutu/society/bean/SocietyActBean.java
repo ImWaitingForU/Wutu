@@ -16,7 +16,7 @@ public class SocietyActBean extends BmobObject{
     private String actContent;
     private String actPlanner;
     private String actLocation;
-    private SocietyPhotoAlbumBean albumBean;
+    private SocietyAlbumBean albumBean;
 
     /**
      * 活动进行中/已结束
@@ -24,7 +24,7 @@ public class SocietyActBean extends BmobObject{
     private boolean isActive;
 
     public SocietyActBean (String actName, String startTime, String endTime, String actContent, String actPlanner,
-                           String actLocation, SocietyPhotoAlbumBean albumBean, boolean isActive) {
+                           String actLocation, SocietyAlbumBean albumBean, boolean isActive) {
         this.actName = actName;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -83,11 +83,11 @@ public class SocietyActBean extends BmobObject{
         this.actLocation = actLocation;
     }
 
-    public SocietyPhotoAlbumBean getAlbumBean () {
+    public SocietyAlbumBean getAlbumBean () {
         return albumBean;
     }
 
-    public void setAlbumBean (SocietyPhotoAlbumBean albumBean) {
+    public void setAlbumBean (SocietyAlbumBean albumBean) {
         this.albumBean = albumBean;
     }
 
