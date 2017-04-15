@@ -5,15 +5,16 @@
     >
     <ImageView
         android:id="@+id/iv_memberphoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@mipmap/ic_launcher"/>
     <TextView
+        android:gravity="center"
         android:id="@+id/tv_membername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/iv_memberphoto"
         android:text="小明"/>
     <TextView
@@ -23,6 +24,7 @@
         android:layout_toRightOf="@id/tv_membername"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
+        android:gravity="center"
         android:layout_centerVertical="true"
         android:text="13333333333"/>
 

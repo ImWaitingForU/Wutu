@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,20 +46,14 @@ public class SocietyBaseInfoFragment extends Fragment {
     @BindView (R.id.lvSocietyMembers) ListView lvSocietyMembers;
     @BindView (R.id.tvSocietyQQ) TextView tvSocietyQQ;
 
-    private SocietyBean society;
     private ToastUtil toastUtil;
 
     public SocietyBaseInfoFragment () {
     }
 
-    public SocietyBaseInfoFragment (SocietyBean society) {
-        this.society = society;
-    }
-
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        society = BmobUser.getCurrentUser (UserBean.class).getSociety ();
         toastUtil = new ToastUtil (getActivity ());
     }
 
@@ -73,19 +68,12 @@ public class SocietyBaseInfoFragment extends Fragment {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
 
-        if (society == null) {
+        if (BmobUser.getCurrentUser (UserBean.class).getSociety () == null) {
             return;
         }
 
-        initMemberData ();
+        initData ();
 
-        tvSocietyName.setText (society.getName ());
-        tvSocietyIntro.setText (society.getIntroduce ());
-        Picasso.with (getActivity ()).load (society.getAvatar ()).into (ivSocietyLogo);
-        tvChairmanName.setText (society.getCaptailName ());
-        tvSocietyLocation.setText (society.getLocation ());
-        tvSocietyPhone.setText (society.getSocietyPhone ());
-        tvSocietyQQ.setText (society.getSocietyQQ ());
     }
 
     /**
@@ -108,7 +96,8 @@ public class SocietyBaseInfoFragment extends Fragment {
     /**
      * 获取数据
      */
-    private void initMemberData () {
+    private void initData () {
+        //初始化人员列表数据
         BmobQuery<UserBean> query = new BmobQuery<> ();
         SocietyBean societyBean = new SocietyBean ();
         UserBean user = BmobUser.getCurrentUser (UserBean.class);
@@ -124,5 +113,52 @@ public class SocietyBaseInfoFragment extends Fragment {
                 }
             }
         });
+
+        //初始化社团数据 // TODO: 2017/4/15 无法用objectId确定一条记录，所以暂用name和school确定
+        BmobQuery<SocietyBean> societyQuery = new BmobQuery<> ();
+        societyQuery.addWhereEqualTo ("name", user.getSociety ().getName ());
+        societyQuery.addWhereEqualTo ("school", user.getSociety ().getSchool ());
+        societyQuery.findObjects (new FindListener<SocietyBean> () {
+            @Override
+            public void done (List<SocietyBean> list, BmobException e) {
+                SocietyBean societyBean = list.get (0);
+                Log.d ("Bmob", list.size () + "");
+                if (e == null) {
+                    tvSocietyName.setText (societyBean.getName ().equals ("") ? "暂无数据" : societyBean.getName ());
+                    tvSocietyIntro
+                            .setText (societyBean.getIntroduce ().equals ("") ? "暂无数据" : societyBean.getIntroduce ());
+                    // TODO: 2017/4/15 修改默认头像
+                    Picasso.with (getActivity ()).load (societyBean.getAvatar ()).into (ivSocietyLogo);
+                    tvChairmanName.setText (
+                            societyBean.getCaptailName ().equals ("") ? "暂无数据" : societyBean.getCaptailName ());
+                    tvSocietyLocation
+                            .setText (societyBean.getLocation ().equals ("") ? "暂无数据" : societyBean.getLocation ());
+                    tvSocietyPhone.setText (
+                            societyBean.getSocietyPhone ().equals ("") ? "暂无数据" : societyBean.getSocietyPhone ());
+                    tvSocietyQQ
+                            .setText (societyBean.getSocietyQQ ().equals ("") ? "暂无数据":societyBean.getSocietyQQ () );
+                } else {
+                    Log.d ("Bmob", e.getMessage ());
+                }
+            }
+        });
+
+        //inner Error:内部错误
+        //        societyQuery.getObject (society.getObjectId (), new QueryListener<SocietyBean> () {
+        //            @Override
+        //            public void done (SocietyBean societyBean, BmobException e) {
+        //                if (e==null){
+        //                    tvSocietyName.setText (societyBean.getName ());
+        //                    tvSocietyIntro.setText (societyBean.getIntroduce ());
+        //                    Picasso.with (getActivity ()).load (societyBean.getAvatar ()).into (ivSocietyLogo);
+        //                    tvChairmanName.setText (societyBean.getCaptailName ());
+        //                    tvSocietyLocation.setText (societyBean.getLocation ());
+        //                    tvSocietyPhone.setText (societyBean.getSocietyPhone ());
+        //                    tvSocietyQQ.setText (societyBean.getSocietyQQ ());
+        //                }else{
+        //                    Log.d ("Bmob",e.getMessage ());
+        //                }
+        //            }
+        //        });
     }
 }

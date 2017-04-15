@@ -32,8 +32,7 @@ public class LoginActivity extends BaseActivity {
      */
     @OnClick (R.id.btn_login)
     void login () {
-        BmobUser.loginByAccount (etPhone.getText ().toString (), etPwd.getText ().toString (),
-                                 new LogInListener<UserBean> () {
+        BmobUser.loginByAccount (etPhone.getText ().toString (), etPwd.getText ().toString (), new LogInListener<UserBean> () {
 
                                      @Override
                                      public void done (UserBean userBean, cn.bmob.v3.exception.BmobException e) {
@@ -72,7 +71,6 @@ public class LoginActivity extends BaseActivity {
             //缓存用户对象为空时， 可打开用户注册界面…
             mToastUtil.toastShort ("您还没有登录，请登录/注册账号");
         }
-
     }
 
     @Override

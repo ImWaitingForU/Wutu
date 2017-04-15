@@ -72,7 +72,7 @@
                     android:layout_alignTop="@id/ivSocietyLogo"
                     android:layout_toRightOf="@id/ivSocietyLogo"
                     android:gravity="center"
-                    android:text="成都理工军事社团"
+                    android:text="正在读取社团名.."
                     android:textSize="20sp"/>
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:layout_below="@id/ivSocietyLogo"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="这里是简介。。。。。asadsadadasdadasdad"/>
+                    android:text="暂无简介"/>
 
             </RelativeLayout>
 
@@ -122,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="RoseChan"
+                        android:text="加载中"
                         android:textSize="18sp"/>
 
                 </LinearLayout>
@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="学院街xxxx号xxx室"
+                        android:text="加载中"
                         android:textSize="18sp"/>
                 </LinearLayout>
 
@@ -190,7 +190,7 @@
                         android:layout_gravity="center|center_vertical"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="15079192155"
+                        android:text="加载中"
                         android:textSize="18sp"/>
 
                     <ImageView
@@ -220,7 +220,7 @@
                         android:layout_gravity="center|center_vertical"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="870536460"
+                        android:text="加载中"
                         android:textSize="18sp"/>
 
                 </LinearLayout>
