@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -45,33 +45,14 @@ public class SocietyPhotoFragment extends Fragment {
     public SocietyPhotoFragment () {
     }
 
-    public SocietyPhotoFragment (SocietyBean society) {
-        this.society = society;
-        BmobQuery<SocietyAlbumBean> query = new BmobQuery<> ();
-        SocietyAlbumBean album = new SocietyAlbumBean ();
-        album.setObjectId ("wLXg888C");
-        query.addWhereEqualTo ("albumList", new BmobPointer ());
-        query.findObjects (new FindListener<SocietyAlbumBean> () {
-            @Override
-            public void done (List<SocietyAlbumBean> list, BmobException e) {
-                if (e == null) {
-                    dataList = list;
-                }
-            }
-        });
-    }
-
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
+
     }
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
-        adapter = new SocietyPhotoAlbumAdapter ();
-
         return inflater.inflate (R.layout.fragment_society_photo, container, false);
     }
 
@@ -80,19 +61,36 @@ public class SocietyPhotoFragment extends Fragment {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
 
-        adapter.setEmptyView (View.inflate (getActivity (), R.layout.societyalbum_empty_layout, null));
-        rvSocietyPhoto.setLayoutManager (new LinearLayoutManager (getActivity ()));
-        rvSocietyPhoto.setAdapter (adapter);
-        rvSocietyPhoto.addOnItemTouchListener (new OnItemChildClickListener () {
+
+
+        BmobQuery<SocietyAlbumBean> query = new BmobQuery<> ();
+        SocietyAlbumBean album = new SocietyAlbumBean ();
+        album.setObjectId ("wLXg888C");
+        query.findObjects (new FindListener<SocietyAlbumBean> () {
             @Override
-            public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                //跳转到相册展示界面
-                Intent intent = new Intent (getActivity (), PhotoActivity.class);
-                intent.putExtra ("position", i);
-                startActivity (intent);
+            public void done (List<SocietyAlbumBean> list, BmobException e) {
+                if (e == null) {
+                    dataList = list;
+                    adapter = new SocietyPhotoAlbumAdapter ();
+//                    adapter.notifyDataSetChanged ();
+                    rvSocietyPhoto.setAdapter (adapter);
+                    adapter.setEmptyView (View.inflate (getActivity (), R.layout.societyalbum_empty_layout, null));
+                    rvSocietyPhoto.setLayoutManager (new LinearLayoutManager (getActivity ()));
+                    rvSocietyPhoto.addOnItemTouchListener (new OnItemChildClickListener () {
+                        @Override
+                        public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                            //跳转到相册展示界面
+                            Intent intent = new Intent (getActivity (), PhotoActivity.class);
+                            intent.putExtra ("position", i);
+                            startActivity (intent);
+                        }
+                    });
+                    Log.d ("Bmob","dataList==="+list.size ());
+                }else{
+                    Log.d ("Bmob",e.getMessage ());
+                }
             }
         });
-
 
     }
 
@@ -107,12 +105,13 @@ public class SocietyPhotoFragment extends Fragment {
 
         @Override
         protected void convert (BaseViewHolder baseViewHolder, SocietyAlbumBean societyAlbumBean) {
+            Log.d ("chan","SocietyPhotoAlbumAdapter===");
             baseViewHolder.setText (R.id.tvAlbumName, societyAlbumBean.getAlbumName ())
                           .setText (R.id.tvAlbumTime, societyAlbumBean.getAlbumTime ())
                           .addOnClickListener (R.id.cvAlbum);
 
             Picasso.with (getActivity ()).load (societyAlbumBean.getAlbumLogoPath ())
-                   .into ((ImageView) baseViewHolder.getConvertView ().findViewById (R.id.ivBigPhoto));
+                   .into ((ImageView) baseViewHolder.getConvertView ().findViewById (R.id.ivAlbumLogo));
         }
     }
 
