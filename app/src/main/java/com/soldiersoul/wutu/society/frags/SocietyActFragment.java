@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,20 @@ import android.widget.TextView;
 
 import com.github.vipulasri.timelineview.TimelineView;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.society.SocietyActDetailActivity;
-import com.soldiersoul.wutu.society.bean.SocietyActBean;
+import com.soldiersoul.wutu.society.bean.SocietyAct;
 import com.soldiersoul.wutu.society.bean.SocietyBean;
 import com.soldiersoul.wutu.utils.VectorDrawableUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 
 /**
@@ -34,51 +39,57 @@ public class SocietyActFragment extends Fragment {
 
     @BindView (R.id.rvTimeLine) RecyclerView recylerView;
 
-    private List<SocietyActBean> actBeen;
-    private SocietyBean society;
+    private TimeLineAdapter adapter;
+
+    private List<SocietyAct> actBeen;
 
     public SocietyActFragment () {
-    }
-
-    public SocietyActFragment (SocietyBean society) {
-        this.society = society;
-    }
-
-    private void getData () {
-        actBeen = new ArrayList<> ();
-        actBeen.add (new SocietyActBean ("act1", "20170101", null, null, null, null, null, true));
-        actBeen.add (new SocietyActBean ("act2", "20170101", null, null, null, null, null, true));
-        actBeen.add (new SocietyActBean ("act3", "20170101", null, null, null, null, null, false));
-        actBeen.add (new SocietyActBean ("act4", "20170101", null, null, null, null, null, false));
-        actBeen.add (new SocietyActBean ("act5", "20170101", null, null, null, null, null, false));
-        actBeen.add (new SocietyActBean ("act6", "20170101", null, null, null, null, null, false));
-        actBeen.add (new SocietyActBean ("act7", "20170101", null, null, null, null, null, false));
     }
 
     @Override
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
-        TimeLineAdapter adapter = new TimeLineAdapter (actBeen);
-        recylerView.setAdapter (adapter);
-        recylerView.setLayoutManager (new LinearLayoutManager (getActivity (), LinearLayoutManager.VERTICAL, false));
-        recylerView.setHasFixedSize (true);
+
+        BmobQuery<SocietyAct> actQuery = new BmobQuery<> ();
+        SocietyBean society = new SocietyBean ();
+
+        //        society.setObjectId (BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
+        //        actQuery.addWhereEqualTo ("societyBean", society);
+        // TODO: 2017/4/16  修改为通过时间分割活动
+        actQuery.addWhereEqualTo ("societyBean", BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
+        actQuery.findObjects (new FindListener<SocietyAct> () {
+            @Override
+            public void done (List<SocietyAct> list, BmobException e) {
+                if (e == null) {
+                    Log.d ("Bmob","SocietyAct===="+list.size ());
+                    actBeen = list;
+                    adapter = new TimeLineAdapter (actBeen);
+                    // TODO: 2017/4/16 设置列表空布局
+                    recylerView.setAdapter (adapter);
+                    recylerView.setLayoutManager (new LinearLayoutManager (getActivity (), LinearLayoutManager.VERTICAL, false));
+                    recylerView.setHasFixedSize (true);
+                } else {
+                    Log.d ("Bmob", e.getMessage ());
+                }
+            }
+        });
+
+
     }
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        getData ();
         return inflater.inflate (R.layout.fragment_society_act, container, false);
     }
 
     public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
 
         private Context context;
-        private List<SocietyActBean> beanList;
+        private List<SocietyAct> beanList;
         private LayoutInflater inflater;
 
-        public TimeLineAdapter (List<SocietyActBean> beanList) {
+        public TimeLineAdapter (List<SocietyAct> beanList) {
             this.beanList = beanList;
         }
 
@@ -91,8 +102,8 @@ public class SocietyActFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder (TimeLineViewHolder holder, int position) {
-            SocietyActBean bean = beanList.get (position);
+        public void onBindViewHolder (TimeLineViewHolder holder, final int position) {
+            SocietyAct bean = beanList.get (position);
 
             if (bean.isActive ()) {
                 holder.mTimelineView.setMarker (
@@ -104,6 +115,16 @@ public class SocietyActFragment extends Fragment {
 
             holder.tvTitle.setText (bean.getActName ());
             holder.tvDate.setText (bean.getStartTime ());
+
+            holder.itemView.setOnClickListener (new View.OnClickListener () {
+                @Override
+                public void onClick (View v) {
+                    //// TODO: 2017/3/7 传递SocietyAct的值
+                    Intent intent = new Intent (getActivity (), SocietyActDetailActivity.class);
+                    intent.putExtra ("societyAct",actBeen.get (position));
+                    startActivity (intent);
+                }
+            });
         }
 
         @Override
@@ -129,15 +150,7 @@ public class SocietyActFragment extends Fragment {
             tvDate = (TextView) itemView.findViewById (R.id.text_timeline_date);
             tvTitle = (TextView) itemView.findViewById (R.id.text_timeline_title);
             CardView cardView = (CardView) itemView.findViewById (R.id.timelineItem);
-            cardView.setOnClickListener (new View.OnClickListener () {
-                @Override
-                public void onClick (View v) {
-                    //// TODO: 2017/3/7 传递SocietyAct的值 
-                    startActivity (new Intent (getActivity (), SocietyActDetailActivity.class));
-                }
-            });
+
         }
-
     }
-
 }

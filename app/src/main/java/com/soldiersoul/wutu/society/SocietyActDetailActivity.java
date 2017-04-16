@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.society.bean.SocietyAct;
 import com.soldiersoul.wutu.utils.BaseActivity;
 
 import butterknife.BindView;
@@ -20,8 +21,6 @@ public class SocietyActDetailActivity extends BaseActivity {
     @BindView (R.id.tvSocietyActLocation) TextView tvActLocation;
     @BindView (R.id.tvSocietyActContent) TextView tvActContent;
 
-    // TODO: 2017/3/7 填充活动详情界面内容，考虑吧积分加入 
-
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -30,7 +29,19 @@ public class SocietyActDetailActivity extends BaseActivity {
         getSupportActionBar ().setTitle ("社团活动");
         getSupportActionBar ().setHomeButtonEnabled (true);
 
+        SocietyAct act = (SocietyAct) getIntent ().getSerializableExtra ("societyAct");
+        if (act == null) { return; }
+        tvActName.setText (act.getActName ());
+        tvActContent.setText (act.getActContent ());
+        tvStartTime.setText (act.getStartTime ());
+        tvEndTime.setText (act.getEndTime ());
+        tvActLocation.setText (act.getActLocation ());
+        tvActPlanner.setText (act.getActPlanner ());
+    }
 
+    @Override
+    protected void onResume () {
+        super.onResume ();
     }
 
     @Override

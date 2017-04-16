@@ -8,7 +8,7 @@ import cn.bmob.v3.BmobObject;
  * 社团活动Bean类
  */
 
-public class SocietyActBean extends BmobObject{
+public class SocietyAct extends BmobObject {
 
     private String actName;
     private String startTime;
@@ -16,15 +16,22 @@ public class SocietyActBean extends BmobObject{
     private String actContent;
     private String actPlanner;
     private String actLocation;
+    //一个相册对应一个社团活动
     private SocietyAlbumBean albumBean;
+
+    //一个社团有很多社团活动
+    private SocietyBean societyBean;
 
     /**
      * 活动进行中/已结束
      */
     private boolean isActive;
 
-    public SocietyActBean (String actName, String startTime, String endTime, String actContent, String actPlanner,
-                           String actLocation, SocietyAlbumBean albumBean, boolean isActive) {
+    public SocietyAct () {
+    }
+
+    public SocietyAct (String actName, String startTime, String endTime, String actContent, String actPlanner,
+                       String actLocation, SocietyAlbumBean albumBean, SocietyBean societyBean, boolean isActive) {
         this.actName = actName;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -32,6 +39,7 @@ public class SocietyActBean extends BmobObject{
         this.actPlanner = actPlanner;
         this.actLocation = actLocation;
         this.albumBean = albumBean;
+        this.societyBean = societyBean;
         this.isActive = isActive;
     }
 
@@ -89,6 +97,14 @@ public class SocietyActBean extends BmobObject{
 
     public void setAlbumBean (SocietyAlbumBean albumBean) {
         this.albumBean = albumBean;
+    }
+
+    public SocietyBean getSocietyBean () {
+        return societyBean;
+    }
+
+    public void setSocietyBean (SocietyBean societyBean) {
+        this.societyBean = societyBean;
     }
 
     public boolean isActive () {
