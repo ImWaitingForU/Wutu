@@ -14,46 +14,75 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.society.bean.SocietyAlbumBean;
+import com.soldiersoul.wutu.society.bean.SocietyPhoto;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobPointer;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 public class PhotoActivity extends BaseActivity {
 
     @BindView (R.id.rvPhoto) RecyclerView rvPhoto;
 
     //照片数据集
-    private List<String> photoList;
+    private List<SocietyPhoto> photoList;
+
+    //相册id
+    private String albumId;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
 
-        // TODO: 2017/3/10 设置相册名称
-        setHomeButtonStaff ("相册名");
+        setHomeButtonStaff (
+                !getIntent ().getStringExtra ("albumName").equals ("") ? getIntent ().getStringExtra ("albumName") :
+                        "相册名");
 
+        albumId = getIntent ().getStringExtra ("albumId");
+        Log.d ("Bmob", "albumId=====" + albumId);
+
+    }
+
+    @Override
+    protected void onResume () {
         initData ();
+        super.onResume ();
     }
 
     private void initData () {
-        photoList = new ArrayList<> ();
-        photoList.add ("http://img3.imgtn.bdimg.com/it/u=3468624775,1187831868&fm=21&gp=0.jpg");
-        photoList.add ("http://image.tianjimedia.com/uploadImages/2011/283/9JX88YC3T5G5.jpg");
-        photoList.add ("http://img2.niutuku.com/desk/1207/1343/bizhi-1343-25218.jpg");
-        photoList.add ("http://tupian.enterdesk.com/2014/mxy/02/28/1/7.jpg");
-        photoList.add ("http://pic1.win4000.com/wallpaper/e/539ebd97cb335.jpg");
-
-        rvPhoto.setLayoutManager (new GridLayoutManager (this, 2, GridLayoutManager.VERTICAL, false));
-        //        rvPhoto.setHasFixedSize (true);
-        rvPhoto.setAdapter (new PhotoAdapter (this));
-        rvPhoto.addOnItemTouchListener (new OnItemClickListener () {
+        BmobQuery<SocietyPhoto> query = new BmobQuery<> ();
+        SocietyAlbumBean albumBean = new SocietyAlbumBean ();
+        //        albumBean.setObjectId ("1Sy92223");
+        albumBean.setObjectId (albumId.trim ());
+        query.addWhereEqualTo ("album", new BmobPointer (albumBean));
+        query.findObjects (new FindListener<SocietyPhoto> () {
             @Override
-            public void SimpleOnItemClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                showBigPic (photoList.get (i));
+            public void done (List<SocietyPhoto> list, BmobException e) {
+                if (e == null) {
+                    Log.d ("Bmob", "BmobScietyPhotoList===" + list.size ());
+
+                    photoList = list;
+                    // TODO: 2017/4/16 设置空布局
+                    rvPhoto.setLayoutManager (
+                            new GridLayoutManager (PhotoActivity.this, 2, GridLayoutManager.VERTICAL, false));
+                    //        rvPhoto.setHasFixedSize (true);
+                    rvPhoto.setAdapter (new PhotoAdapter (PhotoActivity.this));
+                    rvPhoto.addOnItemTouchListener (new OnItemClickListener () {
+                        @Override
+                        public void SimpleOnItemClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                            showBigPic (photoList.get (i).getPhotoPath ());
+                        }
+                    });
+                } else {
+                    Log.d ("Bmob", "BmobQuery===" + e.getMessage ());
+                }
             }
         });
     }
@@ -63,7 +92,7 @@ public class PhotoActivity extends BaseActivity {
         return R.layout.activity_photo;
     }
 
-    private class PhotoAdapter extends BaseQuickAdapter<String> {
+    private class PhotoAdapter extends BaseQuickAdapter<SocietyPhoto> {
 
         private Context context;
 
@@ -73,13 +102,14 @@ public class PhotoActivity extends BaseActivity {
         }
 
         @Override
-        protected void convert (BaseViewHolder baseViewHolder, final String s) {
-            Log.d (TAG, "converts: ====================");
-            // TODO: 2017/3/10 picasso加载相册图片
-            Picasso.with (context).load (s).placeholder (R.mipmap.ic_launcher)
+        protected void convert (BaseViewHolder baseViewHolder, SocietyPhoto societyPhoto) {
+
+            baseViewHolder.setText (R.id.tvPhotoName, societyPhoto.getPhotoName ());
+            // TODO: 2017/4/16 placeHolder更换
+
+            Picasso.with (context).load (societyPhoto.getPhotoPath ()).placeholder (R.mipmap.ic_launcher)
                    .into ((ImageView) baseViewHolder.getView (R.id.ivSocietyPhoto));
         }
-
     }
 
     private void showBigPic (String url) {

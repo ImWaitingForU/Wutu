@@ -24,7 +24,7 @@ public class SocietyAlbumBean extends BmobObject{
 //	/**
 //	 * 包含的照片
 //	 */
-//	private SocietyPhotoBean photos;
+//	private SocietyPhoto photos;
 
 	/**
 	 * 相册封面地址

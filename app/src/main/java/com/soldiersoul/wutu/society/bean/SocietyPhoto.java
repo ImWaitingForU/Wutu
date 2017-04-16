@@ -8,7 +8,7 @@ import cn.bmob.v3.BmobObject;
  * 社团照片Bean类
  */
 
-public class SocietyPhotoBean extends BmobObject {
+public class SocietyPhoto extends BmobObject {
 
     private String photoName;
     private String photoPath;
@@ -16,10 +16,10 @@ public class SocietyPhotoBean extends BmobObject {
     //一个相册包含多张照片
     private SocietyAlbumBean album;
 
-    public SocietyPhotoBean () {
+    public SocietyPhoto () {
     }
 
-    public SocietyPhotoBean (String photoName, String photoPath, SocietyAlbumBean album) {
+    public SocietyPhoto (String photoName, String photoPath, SocietyAlbumBean album) {
         this.photoName = photoName;
         this.photoPath = photoPath;
         this.album = album;

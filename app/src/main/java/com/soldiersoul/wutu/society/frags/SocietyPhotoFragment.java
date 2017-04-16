@@ -17,9 +17,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.society.PhotoActivity;
 import com.soldiersoul.wutu.society.bean.SocietyAlbumBean;
-import com.soldiersoul.wutu.society.bean.SocietyBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,6 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -39,8 +40,6 @@ public class SocietyPhotoFragment extends Fragment {
     @BindView (R.id.rvSocietyPhoto) RecyclerView rvSocietyPhoto;
     private List<SocietyAlbumBean> dataList = new ArrayList<> ();
     private SocietyPhotoAlbumAdapter adapter;
-
-    private SocietyBean society;
 
     public SocietyPhotoFragment () {
     }
@@ -60,19 +59,17 @@ public class SocietyPhotoFragment extends Fragment {
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
-
-
-
         BmobQuery<SocietyAlbumBean> query = new BmobQuery<> ();
-        SocietyAlbumBean album = new SocietyAlbumBean ();
-        album.setObjectId ("wLXg888C");
+        //获取到的Id是"  xxx",所以要去除空格
+        Log.d ("Bmob","pointer Id==="+BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
+        query.addWhereEqualTo ("societyBean", BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
         query.findObjects (new FindListener<SocietyAlbumBean> () {
             @Override
             public void done (List<SocietyAlbumBean> list, BmobException e) {
                 if (e == null) {
                     dataList = list;
                     adapter = new SocietyPhotoAlbumAdapter ();
-//                    adapter.notifyDataSetChanged ();
+                    adapter.notifyDataSetChanged ();
                     rvSocietyPhoto.setAdapter (adapter);
                     adapter.setEmptyView (View.inflate (getActivity (), R.layout.societyalbum_empty_layout, null));
                     rvSocietyPhoto.setLayoutManager (new LinearLayoutManager (getActivity ()));
@@ -81,13 +78,14 @@ public class SocietyPhotoFragment extends Fragment {
                         public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
                             //跳转到相册展示界面
                             Intent intent = new Intent (getActivity (), PhotoActivity.class);
-                            intent.putExtra ("position", i);
+                            intent.putExtra ("albumName", dataList.get (i).getAlbumName ());
+                            intent.putExtra ("albumId", dataList.get (i).getObjectId ());
                             startActivity (intent);
                         }
                     });
-                    Log.d ("Bmob","dataList==="+list.size ());
-                }else{
-                    Log.d ("Bmob",e.getMessage ());
+                    Log.d ("Bmob", "dataList===" + list.size ());
+                } else {
+                    Log.d ("Bmob", e.getMessage ());
                 }
             }
         });
@@ -105,7 +103,7 @@ public class SocietyPhotoFragment extends Fragment {
 
         @Override
         protected void convert (BaseViewHolder baseViewHolder, SocietyAlbumBean societyAlbumBean) {
-            Log.d ("chan","SocietyPhotoAlbumAdapter===");
+            Log.d ("chan", "SocietyPhotoAlbumAdapter===");
             baseViewHolder.setText (R.id.tvAlbumName, societyAlbumBean.getAlbumName ())
                           .setText (R.id.tvAlbumTime, societyAlbumBean.getAlbumTime ())
                           .addOnClickListener (R.id.cvAlbum);
