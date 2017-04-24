@@ -327,17 +327,17 @@ public class DataUtils {
         return list;
     }
 
-    //获取社团成员数据
-    public static List<Map<String, Object>> getSocietyMemberInfo(final Context context){
-         List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
-        for (int i = 0; i < 5; i++) {
-            Map<String, Object> listem = new HashMap<String, Object>();
-            listem.put("name", "小明");
-            listem.put("phone","156116111616156");
-            listems.add(listem);
-        }
-        return listems;
-    }
+//    //获取社团成员数据
+//    public static List<Map<String, Object>> getSocietyMemberInfo(final Context context){
+//         List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
+//        for (int i = 0; i < 5; i++) {
+//            Map<String, Object> listem = new HashMap<String, Object>();
+//            listem.put("name", "小明");
+//            listem.put("phone","156116111616156");
+//            listems.add(listem);
+//        }
+//        return listems;
+//    }
     //获取社团任务数据
 //    public static List<SocietyIntegral> getSocietyIntegralInfo(final Context context){
 //        List<SocietyIntegral> dataList = new ArrayList<>();

@@ -24,18 +24,21 @@
         android:src="@mipmap/ic_launcher"/>
 
     <ImageView
+        android:id="@+id/ivMusket"
         android:layout_width="match_parent"
         android:layout_height="126dp"
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher"/>
 
     <ImageView
+        android:id="@+id/ivMissile"
         android:layout_width="match_parent"
         android:layout_height="126dp"
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher"/>
 
     <ImageView
+        android:id="@+id/ivTank"
         android:layout_width="match_parent"
         android:layout_height="126dp"
         android:scaleType="fitCenter"
