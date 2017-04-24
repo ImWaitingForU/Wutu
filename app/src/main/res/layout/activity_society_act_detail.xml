@@ -17,6 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="活动名"/>
+    
+    <ImageView
+        android:layout_margin="20dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/ivIsActive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tv0"
@@ -42,7 +49,7 @@
         android:layout_below="@id/tv0"
         android:layout_marginTop="8dp"
         android:text="活动地点:"
-        android:layout_alignRight="@+id/tvSocietyActName"/>
+        android:layout_alignLeft="@+id/tvSocietyActName"/>
 
     <TextView
         android:id="@+id/tvSocietyActLocation"

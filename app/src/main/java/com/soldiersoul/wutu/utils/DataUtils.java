@@ -22,7 +22,6 @@ import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.military.MilitaryAdBean;
 import com.soldiersoul.wutu.military.MilitaryNewsBean;
-import com.soldiersoul.wutu.society.bean.SocietyIntegralBean;
 
 import net.sf.json.JSONObject;
 
@@ -340,17 +339,17 @@ public class DataUtils {
         return listems;
     }
     //获取社团任务数据
-    public static List<SocietyIntegralBean> getSocietyIntegralInfo(final Context context){
-        List<SocietyIntegralBean> dataList = new ArrayList<>();
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        dataList.add(new SocietyIntegralBean("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
-        return dataList;
-    }
+//    public static List<SocietyIntegral> getSocietyIntegralInfo(final Context context){
+//        List<SocietyIntegral> dataList = new ArrayList<>();
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        dataList.add(new SocietyIntegral("抓小鸡", "在操场玩老鹰抓小鸡", "2017.4.10", "奖励一根冰棒"));
+//        return dataList;
+//    }
     //utf-8 to string
     public static String getUTF8XMLString(String xml) {
         // A StringBuffer Object

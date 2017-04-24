@@ -2,24 +2,38 @@ package com.soldiersoul.wutu.society.bean;
 
 /**
  * Created by wxj on 2017/4/10.
+ *
+ * 社团任务界面
  */
 
-public class SocietyIntegralBean {
+public class SocietyIntegral {
 
     private String integralName;
     private String integralContent;
     private String deadline;
     private String integralReward;
+    //社团任务1对多
+    private SocietyBean societyBean;
 
-    public SocietyIntegralBean() {
+    public SocietyIntegral () {
 
     }
 
-    public SocietyIntegralBean(String integralName, String integralContent, String deadline, String integralReward) {
+    public SocietyIntegral (String integralName, String integralContent, String deadline, String integralReward,
+                            SocietyBean societyBean) {
         this.integralName = integralName;
         this.integralContent = integralContent;
         this.deadline = deadline;
         this.integralReward = integralReward;
+        this.societyBean = societyBean;
+    }
+
+    public SocietyBean getSocietyBean () {
+        return societyBean;
+    }
+
+    public void setSocietyBean (SocietyBean societyBean) {
+        this.societyBean = societyBean;
     }
 
     public String getIntegralName() {

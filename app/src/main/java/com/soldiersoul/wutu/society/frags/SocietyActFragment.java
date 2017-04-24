@@ -28,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -47,35 +48,42 @@ public class SocietyActFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated (view, savedInstanceState);
-        ButterKnife.bind (this, view);
-
+    public void onResume () {
+        super.onResume ();
         BmobQuery<SocietyAct> actQuery = new BmobQuery<> ();
         SocietyBean society = new SocietyBean ();
 
-        //        society.setObjectId (BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
-        //        actQuery.addWhereEqualTo ("societyBean", society);
+        society.setObjectId (BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
         // TODO: 2017/4/16  修改为通过时间分割活动
-        actQuery.addWhereEqualTo ("societyBean", BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
+        // TODO: 2017/4/16  是否有相册，有相册就跳转到照片界面
+        actQuery.addWhereEqualTo ("societyBean", new BmobPointer (society));
         actQuery.findObjects (new FindListener<SocietyAct> () {
             @Override
             public void done (List<SocietyAct> list, BmobException e) {
                 if (e == null) {
-                    Log.d ("Bmob","SocietyAct===="+list.size ());
-                    actBeen = list;
-                    adapter = new TimeLineAdapter (actBeen);
-                    // TODO: 2017/4/16 设置列表空布局
-                    recylerView.setAdapter (adapter);
-                    recylerView.setLayoutManager (new LinearLayoutManager (getActivity (), LinearLayoutManager.VERTICAL, false));
-                    recylerView.setHasFixedSize (true);
+                    Log.d ("Bmob", "SocietyAct====" + list.size ());
+                    if(adapter==null){
+                        actBeen = list;
+                        adapter = new TimeLineAdapter (actBeen);
+                        // TODO: 2017/4/16 设置列表空布局
+                        recylerView.setAdapter (adapter);
+                        recylerView.setLayoutManager (
+                                new LinearLayoutManager (getActivity (), LinearLayoutManager.VERTICAL, false));
+                        recylerView.setHasFixedSize (true);
+                    }else{
+                        adapter.notifyDataSetChanged ();
+                    }
                 } else {
                     Log.d ("Bmob", e.getMessage ());
                 }
             }
         });
+    }
 
-
+    @Override
+    public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated (view, savedInstanceState);
+        ButterKnife.bind (this, view);
     }
 
     @Override
@@ -121,7 +129,7 @@ public class SocietyActFragment extends Fragment {
                 public void onClick (View v) {
                     //// TODO: 2017/3/7 传递SocietyAct的值
                     Intent intent = new Intent (getActivity (), SocietyActDetailActivity.class);
-                    intent.putExtra ("societyAct",actBeen.get (position));
+                    intent.putExtra ("societyAct", actBeen.get (position));
                     startActivity (intent);
                 }
             });
