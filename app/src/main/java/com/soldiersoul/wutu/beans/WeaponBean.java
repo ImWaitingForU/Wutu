@@ -1,5 +1,7 @@
 package com.soldiersoul.wutu.beans;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by chan on 2017/2/28.
  *
@@ -8,12 +10,13 @@ package com.soldiersoul.wutu.beans;
  * 暂时使用图文列表，暂不使用3d模型文件。
  */
 
-public class WeaponBean {
+public class WeaponBean extends BmobObject{
 
     private String weaponName;
     private String weaponType;
     private String country;
     private String weaponInfo;
+    private String weaponInfo2;
 
 
     //一个用户收藏多个武器
@@ -29,12 +32,26 @@ public class WeaponBean {
     // TODO: 2017/2/28 模型3d文件
 
 
-    public WeaponBean (String weaponName, String weaponType, String country, String weaponInfo, UserBean userBean,
-                       String img1, String img2) {
+    public WeaponBean (String weaponName, String weaponType, String country, String weaponInfo, String weaponInfo2,
+                       UserBean userBean, String img1, String img2) {
         this.weaponName = weaponName;
         this.weaponType = weaponType;
         this.country = country;
         this.weaponInfo = weaponInfo;
+        this.weaponInfo2 = weaponInfo2;
+        this.userBean = userBean;
+        this.img1 = img1;
+        this.img2 = img2;
+    }
+
+    public WeaponBean (String tableName, String weaponName, String weaponType, String country, String weaponInfo,
+                       String weaponInfo2, UserBean userBean, String img1, String img2) {
+        super (tableName);
+        this.weaponName = weaponName;
+        this.weaponType = weaponType;
+        this.country = country;
+        this.weaponInfo = weaponInfo;
+        this.weaponInfo2 = weaponInfo2;
         this.userBean = userBean;
         this.img1 = img1;
         this.img2 = img2;
@@ -94,5 +111,13 @@ public class WeaponBean {
 
     public void setUserBean (UserBean userBean) {
         this.userBean = userBean;
+    }
+
+    public String getWeaponInfo2 () {
+        return weaponInfo2;
+    }
+
+    public void setWeaponInfo2 (String weaponInfo2) {
+        this.weaponInfo2 = weaponInfo2;
     }
 }

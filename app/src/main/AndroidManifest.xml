@@ -25,12 +25,12 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--允许读取手机状态 用于创建BmobInstallation-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".home.WutuApplication"
@@ -49,7 +49,6 @@
             android:name=".home.MainActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
         <activity android:name=".login.LoginActivity">
             <intent-filter>
@@ -59,7 +58,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".login.GuideActivity">
-
         </activity>
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.PerfectInfoActivity"/>
@@ -82,6 +80,8 @@
         <activity android:name=".more.UserInfoAct"/>
         <activity android:name=".more.ChangeAvatarAct"/>
         <activity android:name=".weapon.ShowWeaponActivity"/>
+        <activity android:name=".weapon.WeaponDetailActivity">
+        </activity>
     </application>
 
 </manifest>

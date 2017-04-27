@@ -7,16 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.WeaponBean;
 import com.soldiersoul.wutu.utils.BaseActivity;
-import com.soldiersoul.wutu.weapon.openGL.GLRenderer;
-import com.soldiersoul.wutu.weapon.openGL.GLView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,16 +32,16 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class ShowWeaponActivity extends BaseActivity {
 
-    private boolean supportsEs2;
-    private GLView glView;
-    private float rotateDegree = 0;
-    private GLRenderer glRenderer;
-    private SeekBar seekBar;
+    //    private boolean supportsEs2;
+    //    private GLView glView;
+    //    private float rotateDegree = 0;
+    //    private GLRenderer glRenderer;
+    //    private SeekBar seekBar;
 
     @BindView (R.id.rvWeapon) RecyclerView rvWeapon;
 
     private List<WeaponBean> weaponList;
-    private WeaponAdapter adapter ;
+    private WeaponAdapter adapter;
 
 
     //根据传递的武器类型加载不同信息
@@ -54,10 +53,26 @@ public class ShowWeaponActivity extends BaseActivity {
         //判断武器类型，加载不同数据
         Intent i = getIntent ();
         String type = i.getStringExtra ("WeaponType");
-        if (i!=null && !type.equals ("")){
+        if (i != null && !type.equals ("")) {
             setHomeButtonStaff (type);
             loadDate (type);
         }
+
+        rvWeapon.setLayoutManager (
+                new LinearLayoutManager (ShowWeaponActivity.this, LinearLayoutManager.VERTICAL, false));
+        rvWeapon.addOnItemTouchListener (new OnItemChildClickListener () {
+            @Override
+            public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                if (view.getId () == R.id.rlWeapon) {
+                    //跳转到武器详细介绍界面,传入武器的id
+                    Intent intent = new Intent (ShowWeaponActivity.this, WeaponDetailActivity.class);
+                    intent.putExtra ("weaponId", weaponList.get (i).getObjectId ());
+                    startActivity (intent);
+                } else if (view.getId () == R.id.ivLike) {
+
+                }
+            }
+        });
 
 
         //        seekBar = (SeekBar) findViewById(R.id.seekBar);
@@ -98,60 +113,88 @@ public class ShowWeaponActivity extends BaseActivity {
 
     /**
      * 根据类型做筛选
+     * todo:空页面布局，列表到底部布局
      */
     private void loadDate (String type) {
         BmobQuery<WeaponBean> query = new BmobQuery<> ();
-        query.addWhereEqualTo ("WeaponType", type);
+        query.addWhereEqualTo ("weaponType", type);
+        Log.d ("Bmob", "WeaponType===" + type);
         query.findObjects (new FindListener<WeaponBean> () {
             @Override
             public void done (List<WeaponBean> list, BmobException e) {
                 if (e == null) {
-                    Log.d ("Bmob","加载武器数据成功");
+                    Log.d ("Bmob", "加载武器数据成功" + list.size ());
                     weaponList = list;
-                    rvWeapon.setLayoutManager (new LinearLayoutManager (ShowWeaponActivity.this,LinearLayoutManager.VERTICAL,false));
-                    rvWeapon.setAdapter (new WeaponAdapter (R.layout.weapon_list_layout,list));
-                    rvWeapon.addOnItemTouchListener (new OnItemChildClickListener () {
-                        @Override
-                        public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                        }
-                    });
+
+                    if (adapter == null) {
+                        adapter = new WeaponAdapter ();
+                        rvWeapon.setAdapter (adapter);
+                    } else {
+                        adapter.notifyDataSetChanged ();
+                    }
+
                 } else {
-                    Log.d ("Bmob","加载武器数据失败:"+e.getMessage ());
+                    Log.d ("Bmob", "加载武器数据失败:" + e.getMessage ());
                 }
             }
         });
     }
 
-    public class WeaponAdapter extends BaseQuickAdapter<WeaponBean>{
+    public class WeaponAdapter extends BaseQuickAdapter<WeaponBean> {
 
 
-        public WeaponAdapter (int layoutResId, List<WeaponBean> data) {
-            super (layoutResId, data);
+        public WeaponAdapter () {
+            super (R.layout.weapon_list_layout, weaponList);
         }
 
         @Override
         protected void convert (BaseViewHolder baseViewHolder, WeaponBean weaponBean) {
             baseViewHolder.setText (R.id.tvWeaponTitle, weaponBean.getWeaponName ())
-                          .setText (R.id.tvCountry, weaponBean.getCountry ())
-                          .addOnClickListener (R.id.rlWeapon);
+                          .setText (R.id.tvWeaponCountry, weaponBean.getCountry ()).
+                                  addOnClickListener (R.id.rlWeapon).
+                                  addOnClickListener (R.id.ivLike);
 
             Picasso.with (ShowWeaponActivity.this).load (weaponBean.getImg1 ())
                    .into ((ImageView) baseViewHolder.getConvertView ().findViewById (R.id.ivWeaponImg));
+
+            //            baseViewHolder.getView (R.id.rlWeapon).setOnClickListener (new View.OnClickListener () {
+            //                @Override
+            //                public void onClick (View v) {
+            //                    Intent intent = new Intent(ShowWeaponActivity.this,WeaponDetailActivity.class);
+            //                    intent.putExtra ("weaponId",weaponList.get (i).getObjectId ());
+            //                    startActivity (intent);
+            //                }
+            //            });
+
+            LikeButton likeButton = baseViewHolder.getView (R.id.ivLike);
+            // TODO: 2017/4/27 添加武器收藏界面
+            likeButton.setOnLikeListener (new OnLikeListener () {
+                @Override
+                public void liked (LikeButton likeButton) {
+                    Log.d ("chan","like");
+                }
+
+                @Override
+                public void unLiked (LikeButton likeButton) {
+                    Log.d ("chan","unLiked");
+
+                }
+            });
         }
 
     }
 
-//    public void rotate (float degree) {
-//        glRenderer.rotate (degree);
-//        glView.invalidate ();
-//    }
-//
-//    private Handler handler = new Handler () {
-//        @Override
-//        public void handleMessage (Message msg) {
-//            rotate (rotateDegree);
-//        }
-//    };
+    //    public void rotate (float degree) {
+    //        glRenderer.rotate (degree);
+    //        glView.invalidate ();
+    //    }
+    //
+    //    private Handler handler = new Handler () {
+    //        @Override
+    //        public void handleMessage (Message msg) {
+    //            rotate (rotateDegree);
+    //        }
+    //    };
 
     @Override
     protected void onResume () {
@@ -182,25 +225,25 @@ public class ShowWeaponActivity extends BaseActivity {
 
     }
 
-//    private void checkSupported () {
-//        ActivityManager activityManager = (ActivityManager) getSystemService (ACTIVITY_SERVICE);
-//        ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo ();
-//        supportsEs2 = configurationInfo.reqGlEsVersion >= 0x2000;
-//
-//        boolean isEmulator = Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1 &&
-//                (Build.FINGERPRINT.startsWith ("generic") || Build.FINGERPRINT.startsWith ("unknown") ||
-//                        Build.MODEL.contains ("google_sdk") || Build.MODEL.contains ("Emulator") ||
-//                        Build.MODEL.contains ("Android SDK built for x86"));
-//
-//        supportsEs2 = supportsEs2 || isEmulator;
-//    }
-//
-//    @Override
-//    protected void onPause () {
-//        super.onPause ();
-//        //        if (glView != null) {
-//        //            glView.onPause();
-//        //        }
-//    }
+    //    private void checkSupported () {
+    //        ActivityManager activityManager = (ActivityManager) getSystemService (ACTIVITY_SERVICE);
+    //        ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo ();
+    //        supportsEs2 = configurationInfo.reqGlEsVersion >= 0x2000;
+    //
+    //        boolean isEmulator = Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1 &&
+    //                (Build.FINGERPRINT.startsWith ("generic") || Build.FINGERPRINT.startsWith ("unknown") ||
+    //                        Build.MODEL.contains ("google_sdk") || Build.MODEL.contains ("Emulator") ||
+    //                        Build.MODEL.contains ("Android SDK built for x86"));
+    //
+    //        supportsEs2 = supportsEs2 || isEmulator;
+    //    }
+    //
+    //    @Override
+    //    protected void onPause () {
+    //        super.onPause ();
+    //        //        if (glView != null) {
+    //        //            glView.onPause();
+    //        //        }
+    //    }
 
 }
