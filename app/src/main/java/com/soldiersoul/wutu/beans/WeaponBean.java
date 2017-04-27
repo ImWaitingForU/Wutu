@@ -31,6 +31,7 @@ public class WeaponBean extends BmobObject{
     // TODO: 2017/2/28 武器模型图 
     // TODO: 2017/2/28 模型3d文件
 
+    public WeaponBean(){}
 
     public WeaponBean (String weaponName, String weaponType, String country, String weaponInfo, String weaponInfo2,
                        UserBean userBean, String img1, String img2) {
