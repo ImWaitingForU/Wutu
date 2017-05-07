@@ -1,12 +1,14 @@
 package com.soldiersoul.wutu.society.bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by wxj on 2017/4/10.
  *
  * 社团任务界面
  */
 
-public class SocietyIntegral {
+public class SocietyIntegral extends BmobObject{
 
     private String integralName;
     private String integralContent;

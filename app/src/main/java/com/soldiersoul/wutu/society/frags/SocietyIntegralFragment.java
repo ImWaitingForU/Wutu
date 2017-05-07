@@ -1,6 +1,7 @@
 package com.soldiersoul.wutu.society.frags;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.UserBean;
+import com.soldiersoul.wutu.society.SocietyIntegralDetailAct;
 import com.soldiersoul.wutu.society.bean.SocietyIntegral;
 
 import java.util.ArrayList;
@@ -51,11 +53,22 @@ public class SocietyIntegralFragment extends Fragment {
         }
 
         @Override
-        protected void convert (BaseViewHolder baseViewHolder, SocietyIntegral societyIntegral) {
+        protected void convert (BaseViewHolder baseViewHolder, final SocietyIntegral societyIntegral) {
             baseViewHolder.setText (R.id.tv_integralname, societyIntegral.getIntegralName ())
-                          .setText (R.id.tv_integralcontent, societyIntegral.getIntegralContent ())
-                          .setText (R.id.tv_integralreward, societyIntegral.getIntegralReward ())
-                          .setText (R.id.tv_deadline, societyIntegral.getDeadline ());
+                          //                          .setText (R.id.tv_integralcontent, societyIntegral
+                          // .getIntegralContent ())
+                          .setText (R.id.tv_integralreward, "奖励 : " + societyIntegral.getIntegralReward ())
+                          .setText (R.id.tv_deadline, "截至 ：" + societyIntegral.getDeadline ());
+
+            baseViewHolder.getView (R.id.cvIntegral).setOnClickListener (new View.OnClickListener () {
+                @Override
+                public void onClick (View v) {
+                    //跳转到任务详情界面
+                    Intent intent = new Intent (getActivity (), SocietyIntegralDetailAct.class);
+                    intent.putExtra ("SocietyIntegral",societyIntegral);
+                    startActivity (intent);
+                }
+            });
         }
     }
 
@@ -66,21 +79,22 @@ public class SocietyIntegralFragment extends Fragment {
         if (dataList == null) {
             dataList = new ArrayList<> ();
             BmobQuery<SocietyIntegral> query = new BmobQuery<> ();
-            Log.d ("Bmob","社团ID:"+BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
+            Log.d ("Bmob", "社团ID:" + BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
             query.addWhereEqualTo ("societyBean",
                                    BmobUser.getCurrentUser (UserBean.class).getSociety ().getObjectId ().trim ());
             query.findObjects (new FindListener<SocietyIntegral> () {
                 @Override
                 public void done (List<SocietyIntegral> list, BmobException e) {
                     if (e == null) {
-                        Log.d ("Bmob","社团任务list===="+list.size ());
+                        Log.d ("Bmob", "社团任务list====" + list.size ());
                         dataList = list;
                         adapter = new SocietyIntegralAdapter ();
-                        // TODO: 2017/4/24 更换空布局view
                         // TODO: 2017/4/24 跳转到详情
-                        adapter.setEmptyView (View.inflate (getActivity (), R.layout.societyalbum_empty_layout, null));
+                        adapter.setEmptyView (
+                                View.inflate (getActivity (), R.layout.societyintegral_empty_layout, null));
                         rvSocietyIntegral.setLayoutManager (new LinearLayoutManager (getActivity ()));
                         rvSocietyIntegral.setAdapter (adapter);
+
                     } else {
                         Log.d ("Bmob", "读取社团任务失败:" + e.getMessage ());
                     }
@@ -96,7 +110,6 @@ public class SocietyIntegralFragment extends Fragment {
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated (view, savedInstanceState);
         ButterKnife.bind (this, view);
-
 
 
     }
