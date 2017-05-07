@@ -89,7 +89,6 @@ public class SocietyIntegralFragment extends Fragment {
                         Log.d ("Bmob", "社团任务list====" + list.size ());
                         dataList = list;
                         adapter = new SocietyIntegralAdapter ();
-                        // TODO: 2017/4/24 跳转到详情
                         adapter.setEmptyView (
                                 View.inflate (getActivity (), R.layout.societyintegral_empty_layout, null));
                         rvSocietyIntegral.setLayoutManager (new LinearLayoutManager (getActivity ()));

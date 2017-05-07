@@ -1,5 +1,6 @@
 package com.soldiersoul.wutu.weapon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.soldiersoul.wutu.R;
@@ -41,7 +43,20 @@ public class WeapontCollectionAct extends BaseActivity {
         currentUser = BmobUser.getCurrentUser (UserBean.class);
 
         rvWeaponCollection.setLayoutManager (new LinearLayoutManager (this, LinearLayoutManager.VERTICAL, false));
-
+        rvWeaponCollection.addOnItemTouchListener (new OnItemChildClickListener () {
+            @Override
+            public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                if (view.getId () == R.id.rlWeapon || view.getId () == R.id.tvWeaponTitle ||
+                        view.getId () == R.id.tvWeaponCountry || view.getId () == R.id.ivWeaponImg) {
+                    //跳转到武器详细介绍界面,传入武器的id
+                    Intent intent = new Intent (WeapontCollectionAct.this, WeaponDetailActivity.class);
+                    intent.putExtra ("weaponId", weaponList.get (i).getObjectId ());
+                    startActivity (intent);
+                } else if (view.getId () == R.id.ivLike) {
+                    //避免使用外部布局时会和收藏按钮产生冲突
+                }
+            }
+        });
         getData (currentUser.getObjectId ());
     }
 

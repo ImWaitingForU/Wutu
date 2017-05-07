@@ -59,14 +59,13 @@ public class SocietyBaseInfoListAdapter extends BaseAdapter {
             convertView.setTag (holder);
 
         } else {
-
             holder = (ViewHolder) convertView.getTag ();
         }
 
-        Picasso.with (mContext).load (data.get (position).getUserAvatar ()).into (holder.memberPhoto);
+        Picasso.with (mContext).load (data.get (position).getUserAvatar ()).placeholder (R.drawable.ic_army)
+               .into (holder.memberPhoto);
         holder.memberName.setText (data.get (position).getUsername ());
         holder.memberPhone.setText (data.get (position).getMobilePhoneNumber ());
-
         return convertView;
     }
 

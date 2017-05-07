@@ -69,11 +69,12 @@ public class PhotoActivity extends BaseActivity {
                     Log.d ("Bmob", "BmobScietyPhotoList===" + list.size ());
 
                     photoList = list;
-                    // TODO: 2017/4/16 设置空布局
                     rvPhoto.setLayoutManager (
                             new GridLayoutManager (PhotoActivity.this, 2, GridLayoutManager.VERTICAL, false));
                     //        rvPhoto.setHasFixedSize (true);
-                    rvPhoto.setAdapter (new PhotoAdapter (PhotoActivity.this));
+                    PhotoAdapter adapter = new PhotoAdapter (PhotoActivity.this);
+                    adapter.setEmptyView (View.inflate (PhotoActivity.this, R.layout.societyalbum_empty_layout, null));
+                    rvPhoto.setAdapter (adapter);
                     rvPhoto.addOnItemTouchListener (new OnItemClickListener () {
                         @Override
                         public void SimpleOnItemClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
@@ -105,9 +106,8 @@ public class PhotoActivity extends BaseActivity {
         protected void convert (BaseViewHolder baseViewHolder, SocietyPhoto societyPhoto) {
 
             baseViewHolder.setText (R.id.tvPhotoName, societyPhoto.getPhotoName ());
-            // TODO: 2017/4/16 placeHolder更换
 
-            Picasso.with (context).load (societyPhoto.getPhotoPath ()).placeholder (R.mipmap.ic_launcher)
+            Picasso.with (context).load (societyPhoto.getPhotoPath ()).placeholder (R.drawable.ic_loadimg_failed)
                    .into ((ImageView) baseViewHolder.getView (R.id.ivSocietyPhoto));
         }
     }

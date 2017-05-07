@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
@@ -49,7 +48,10 @@ public class UserInfoAct extends BaseActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         //获取当前用户
-        user = BmobUser.getCurrentUser (UserBean.class);
+//        user = BmobUser.getCurrentUser (UserBean.class);
+
+        //获取传入的用户，显示传入的用户信息，而不是只显示个人用户信息
+        user = (UserBean) getIntent ().getSerializableExtra ("user");
         setHomeButtonStaff ("个人信息");
     }
 
@@ -82,8 +84,7 @@ public class UserInfoAct extends BaseActivity {
         if (!user.getUserAvatar ().equals ("")) {
             Picasso.with (this).load (user.getUserAvatar ()).into (userAvatar);
         } else {
-            // TODO: 2017/4/10 修改默认头像
-            userAvatar.setImageResource (R.mipmap.ic_launcher);
+            userAvatar.setImageResource (R.drawable.ic_army);
         }
     }
 

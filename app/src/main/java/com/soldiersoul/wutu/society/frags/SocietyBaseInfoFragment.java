@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.UserBean;
+import com.soldiersoul.wutu.more.UserInfoAct;
 import com.soldiersoul.wutu.society.bean.SocietyBean;
 import com.soldiersoul.wutu.utils.ToastUtil;
 import com.squareup.picasso.Picasso;
@@ -105,9 +107,18 @@ public class SocietyBaseInfoFragment extends Fragment {
         query.addWhereEqualTo ("society", new BmobPointer (societyBean));
         query.findObjects (new FindListener<UserBean> () {
             @Override
-            public void done (List<UserBean> list, BmobException e) {
+            public void done (final List<UserBean> list, BmobException e) {
                 if (e == null) {
                     lvSocietyMembers.setAdapter (new SocietyBaseInfoListAdapter (getContext (), list));
+                    lvSocietyMembers.setOnItemClickListener (new AdapterView.OnItemClickListener () {
+                        @Override
+                        public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
+                            //跳转到用户详情界面
+                            Intent intent = new Intent (getActivity (), UserInfoAct.class);
+                            intent.putExtra ("user",list.get (position));
+                            startActivity (intent);
+                        }
+                    });
                 } else {
                     toastUtil.toastShort ("查询失败");
                 }
@@ -125,8 +136,8 @@ public class SocietyBaseInfoFragment extends Fragment {
                     tvSocietyName.setText (societyBean.getName ().equals ("") ? "暂无数据" : societyBean.getName ());
                     tvSocietyIntro
                             .setText (societyBean.getIntroduce ().equals ("") ? "暂无数据" : societyBean.getIntroduce ());
-                    // TODO: 2017/4/15 修改默认头像
-                    Picasso.with (getActivity ()).load (societyBean.getAvatar ()).into (ivSocietyLogo);
+                    Picasso.with (getActivity ()).load (societyBean.getAvatar ()).placeholder (R.drawable.ic_army).into
+                            (ivSocietyLogo);
                     tvChairmanName.setText (
                             societyBean.getCaptailName ().equals ("") ? "暂无数据" : societyBean.getCaptailName ());
                     tvSocietyLocation

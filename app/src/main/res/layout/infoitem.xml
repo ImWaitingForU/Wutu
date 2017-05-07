@@ -17,6 +17,7 @@
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/iv_memberphoto"
         android:text="小明"/>
+
     <TextView
         android:id="@+id/tv_memberphone"
         android:layout_width="wrap_content"
@@ -24,7 +25,8 @@
         android:layout_toRightOf="@id/tv_membername"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="20dp"
-        android:gravity="center"
+        android:gravity="right"
+        android:layout_marginRight="20dp"
         android:layout_centerVertical="true"
         android:text="13333333333"/>
 
