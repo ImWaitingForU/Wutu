@@ -82,6 +82,8 @@
         <activity android:name=".weapon.ShowWeaponActivity"/>
         <activity android:name=".weapon.WeaponDetailActivity"/>
         <activity android:name=".society.SocietyIntegralDetailAct"/>
+        <activity android:name=".weapon.WeapontCollectionAct">
+        </activity>
     </application>
 
 </manifest>

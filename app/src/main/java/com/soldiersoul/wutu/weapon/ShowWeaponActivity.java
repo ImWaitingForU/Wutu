@@ -70,13 +70,14 @@ public class ShowWeaponActivity extends BaseActivity {
         rvWeapon.addOnItemTouchListener (new OnItemChildClickListener () {
             @Override
             public void SimpleOnItemChildClick (BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                if (view.getId () == R.id.rlWeapon) {
+                if (view.getId () == R.id.rlWeapon || view.getId () == R.id.tvWeaponTitle ||
+                        view.getId () == R.id.tvWeaponCountry || view.getId () == R.id.ivWeaponImg) {
                     //跳转到武器详细介绍界面,传入武器的id
                     Intent intent = new Intent (ShowWeaponActivity.this, WeaponDetailActivity.class);
                     intent.putExtra ("weaponId", weaponList.get (i).getObjectId ());
                     startActivity (intent);
                 } else if (view.getId () == R.id.ivLike) {
-
+                    //避免使用外部布局时会和收藏按钮产生冲突
                 }
             }
         });
@@ -134,8 +135,8 @@ public class ShowWeaponActivity extends BaseActivity {
 
                     if (adapter == null) {
                         adapter = new WeaponAdapter ();
-                        adapter.setEmptyView (View.inflate (ShowWeaponActivity.this, R.layout
-                                .weaponlist_empty_layout, null));
+                        adapter.setEmptyView (
+                                View.inflate (ShowWeaponActivity.this, R.layout.weaponlist_empty_layout, null));
                         rvWeapon.setAdapter (adapter);
                     } else {
                         adapter.notifyDataSetChanged ();
@@ -160,7 +161,9 @@ public class ShowWeaponActivity extends BaseActivity {
         protected void convert (final BaseViewHolder baseViewHolder, WeaponBean weaponBean) {
             baseViewHolder.setText (R.id.tvWeaponTitle, weaponBean.getWeaponName ())
                           .setText (R.id.tvWeaponCountry, weaponBean.getCountry ()).
-                                  addOnClickListener (R.id.rlWeapon).
+                                  addOnClickListener (R.id.tvWeaponTitle).
+                                  addOnClickListener (R.id.tvWeaponCountry).
+                                  addOnClickListener (R.id.ivWeaponImg).
                                   addOnClickListener (R.id.ivLike);
 
             Picasso.with (ShowWeaponActivity.this).load (weaponBean.getImg1 ())
@@ -186,7 +189,6 @@ public class ShowWeaponActivity extends BaseActivity {
                 Log.d ("Bmob", "未收藏");
             }
 
-            // TODO: 2017/4/27 添加武器收藏界面
             likeButton.setOnLikeListener (new OnLikeListener () {
                 @Override
                 public void liked (LikeButton likeButton) {
@@ -207,7 +209,7 @@ public class ShowWeaponActivity extends BaseActivity {
     /**
      * 添加到收藏
      */
-    private void doLike (int position) {
+    public void doLike (int position) {
         Log.d ("Bmob", "position===" + position);
         WeaponBean weapon = new WeaponBean ();
         WeaponBean curWeapon = weaponList.get (position);
@@ -230,7 +232,7 @@ public class ShowWeaponActivity extends BaseActivity {
     /**
      * 移除收藏
      */
-    private void doUnLike (int position) {
+    public void doUnLike (int position) {
         WeaponBean weapon = new WeaponBean ();
         WeaponBean curWeapon = weaponList.get (position);
         //需要new新的userbean，不能直接设置为空。

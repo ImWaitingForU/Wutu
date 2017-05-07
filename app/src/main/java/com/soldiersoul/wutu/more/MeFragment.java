@@ -20,6 +20,7 @@ import com.soldiersoul.wutu.beans.UserBean;
 import com.soldiersoul.wutu.login.LoginActivity;
 import com.soldiersoul.wutu.utils.ToastUtil;
 import com.soldiersoul.wutu.views.SimpleMenuItem;
+import com.soldiersoul.wutu.weapon.WeapontCollectionAct;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -79,12 +80,13 @@ public class MeFragment extends Fragment {
     }
 
     /**
-     * todo
      * 我的收藏
      */
     @OnClick (R.id.itemCollection)
     public void myCollection () {
-
+        Intent intent = new Intent (getActivity (),WeapontCollectionAct.class);
+//        intent.putExtra ("userBean", BmobUser.getCurrentUser (UserBean.class).getObjectId ());
+        startActivity (intent);
     }
 
     /**
