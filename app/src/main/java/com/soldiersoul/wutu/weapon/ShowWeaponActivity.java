@@ -120,7 +120,6 @@ public class ShowWeaponActivity extends BaseActivity {
 
     /**
      * 根据类型做筛选
-     * todo:空页面布局，列表到底部布局
      */
     private void loadDate (String type) {
         BmobQuery<WeaponBean> query = new BmobQuery<> ();
@@ -135,6 +134,8 @@ public class ShowWeaponActivity extends BaseActivity {
 
                     if (adapter == null) {
                         adapter = new WeaponAdapter ();
+                        adapter.setEmptyView (View.inflate (ShowWeaponActivity.this, R.layout
+                                .weaponlist_empty_layout, null));
                         rvWeapon.setAdapter (adapter);
                     } else {
                         adapter.notifyDataSetChanged ();
@@ -142,6 +143,7 @@ public class ShowWeaponActivity extends BaseActivity {
 
                 } else {
                     Log.d ("Bmob", "加载武器数据失败:" + e.getMessage ());
+                    mToastUtil.toastShort ("加载数据出了点问题，请稍后再来吧~");
                 }
             }
         });
@@ -175,13 +177,13 @@ public class ShowWeaponActivity extends BaseActivity {
 
             LikeButton likeButton = baseViewHolder.getView (R.id.ivLike);
             //根据收藏情况展示不同的心形布局
-            Log.d ("Bmob","武器收藏UserBean=="+weaponBean.getUserBean ().getObjectId ());
+            Log.d ("Bmob", "武器收藏UserBean==" + weaponBean.getUserBean ().getObjectId ());
             if (weaponBean.getUserBean ().getObjectId ().equals (currentUser.getObjectId ())) {
                 likeButton.setLiked (true);
-                Log.d ("Bmob","已收藏");
+                Log.d ("Bmob", "已收藏");
             } else {
                 likeButton.setLiked (false);
-                Log.d ("Bmob","未收藏");
+                Log.d ("Bmob", "未收藏");
             }
 
             // TODO: 2017/4/27 添加武器收藏界面

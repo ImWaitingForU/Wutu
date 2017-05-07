@@ -1,47 +1,163 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context="com.soldiersoul.wutu.weapon.WeaponFragment">
-    
-    <android.support.v7.widget.Toolbar
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.soldiersoul.wutu.weapon.WeaponFragment"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:title="武器模型"
-        app:titleTextColor="@color/colorWhite"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    </android.support.v7.widget.Toolbar>
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:title="武器模型"
+            app:titleTextColor="@color/colorWhite">
 
-    <ImageView
-        android:id="@+id/ivPistol"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_shouqiang"/>
+        </android.support.v7.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/ivMusket"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_chongfengqiang"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivMissile"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_daodan"/>
+            <ImageView
+                android:id="@+id/ivPistol"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/shouqiang"/>
 
-    <ImageView
-        android:id="@+id/ivTank"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_tank"/>
+            <TextView
+                android:id="@+id/tvPistol"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="手枪 >>"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+        </LinearLayout>
 
-</LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivMusket"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/buqiang"/>
+
+            <TextView
+                android:id="@+id/tvMusket"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="步枪 >>"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivMissile"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/daodan"/>
+
+            <TextView
+                android:id="@+id/tvMissile"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="导弹 >>"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivTank"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tanke"/>
+
+            <TextView
+                android:id="@+id/tvTank"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="坦克 >>"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivJujiqiang"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/jujiqiang"/>
+
+            <TextView
+                android:id="@+id/tvJujiqiang"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="狙击 >>"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

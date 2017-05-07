@@ -21,6 +21,7 @@
         <TextView
             android:id="@+id/tv_integralname"
             android:text="任务名"
+            android:paddingBottom="8dp"
             android:maxLines="1"
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"

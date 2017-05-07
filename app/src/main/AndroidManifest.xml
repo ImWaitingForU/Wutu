@@ -80,10 +80,8 @@
         <activity android:name=".more.UserInfoAct"/>
         <activity android:name=".more.ChangeAvatarAct"/>
         <activity android:name=".weapon.ShowWeaponActivity"/>
-        <activity android:name=".weapon.WeaponDetailActivity">
-        </activity>
-        <activity android:name=".society.SocietyIntegralDetailAct">
-        </activity>
+        <activity android:name=".weapon.WeaponDetailActivity"/>
+        <activity android:name=".society.SocietyIntegralDetailAct"/>
     </application>
 
 </manifest>

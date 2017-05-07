@@ -32,7 +32,6 @@ public class WeaponDetailActivity extends BaseActivity {
 
     private WeaponBean weapon;
 
-    // TODO: 2017/4/26 添加加载失败页面 
     private void setData(){
         title.setText (weapon.getWeaponName ());
         country.setText ("国家:"+weapon.getCountry ());
