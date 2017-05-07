@@ -28,6 +28,7 @@ import com.soldiersoul.wutu.Holder.VideoHolder;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
 import com.soldiersoul.wutu.utils.DataUtils;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
             // TODO: 2017/5/7 添加加载动画
             if (adapter != null && msg.what == 0x111) {
                 adapter.setListData (datas);
+                loadingView.hide ();
+                refreshLayout.setVisibility (View.VISIBLE);
                 Log.d ("chan", "handler == set adapter data:" + datas.size ());
             }
         }
@@ -56,6 +59,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     private Button btn_ad;
     private Button btn_policy;
     private Button btn_city;
+    private AVLoadingIndicatorView loadingView;
 
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
@@ -102,6 +106,8 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         btn_city.getBackground ().setAlpha (150);
         refreshLayout = (SwipeRefreshLayout) view.findViewById (R.id.military_refresh);
         recyclerView = (RecyclerView) view.findViewById (R.id.military_news);
+        loadingView = (AVLoadingIndicatorView) view.findViewById (R.id.loading_view);
+        loadingView.show ();
         //加载新闻列表
         init ();
         initDatas ();
