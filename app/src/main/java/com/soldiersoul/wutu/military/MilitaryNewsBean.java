@@ -30,6 +30,9 @@ public class MilitaryNewsBean extends RecyclerBaseModel {
      */
     private String newsContent;
 
+    /**标识新闻的编号*/
+    private Integer no;
+
     /**
      * 视频url
      */
@@ -45,6 +48,14 @@ public class MilitaryNewsBean extends RecyclerBaseModel {
         this.newsSource = newsSource;
         this.newsContent = newsContent;
         this.videoUrl = videoUrl;
+    }
+
+    public Integer getNo () {
+        return no;
+    }
+
+    public void setNo (Integer no) {
+        this.no = no;
     }
 
     public String getVideoUrl () {

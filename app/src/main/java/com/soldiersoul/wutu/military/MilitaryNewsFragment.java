@@ -27,7 +27,7 @@ import cn.bingoogolapple.bgabanner.BGABanner;
 import cn.bingoogolapple.bgabanner.BGABannerUtil;
 
 /**
- * MilitaryNewsFragment
+ * 军事新闻Fragment
  */
 public class MilitaryNewsFragment extends Fragment {
 

@@ -22,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/*军事宣传界面*/
 public class MadActivity extends AppCompatActivity {
 
     //列表
