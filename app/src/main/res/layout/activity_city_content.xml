@@ -1,95 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_city_content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="5dp"
-    android:orientation="vertical"
-    tools:context="com.soldiersoul.wutu.military.CityContentActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<ScrollView android:id="@+id/activity_city_content"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            tools:context="com.soldiersoul.wutu.military.CityContentActivity">
 
-    <ImageView
-        android:id="@+id/city_detail_img"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@mipmap/ic_launcher"
-        />
-
-    <TextView
-        android:id="@+id/city_detail_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Title"
-        android:text="标题"/>
-
-    <TextView
-        android:id="@+id/city_detail_content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="省份征兵政策具体内容，待添加--------------
-        --------------------------------------------
-        ---------------------------------------------------------
-        -----------------------------------------------
-        -------------------------------------------
-        ----------------------------------------
-        ------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        ----------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        ----------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        ----------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        ----------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        ----------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        --------------------------------------------
-        -
-        -----------------------------------------
-        -----------------------------------------"/>
-    <TextView
-        android:id="@+id/city_detail_sourceandtime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="新闻来源：发布时间"/>
+        android:orientation="vertical">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/city_detail_img"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/city_detail_title"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="标题"/>
+
+        <TextView
+            android:id="@+id/city_detail_content"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/city_detail_sourceandtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="end"
+            android:text="新闻来源：发布时间"/>
+
+    </LinearLayout>
 
 
 </ScrollView>

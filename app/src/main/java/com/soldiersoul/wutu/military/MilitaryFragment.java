@@ -25,6 +25,7 @@ import com.soldiersoul.wutu.Holder.CardHolder;
 import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.ImageHolder;
 import com.soldiersoul.wutu.Holder.VideoHolder;
+import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
 import com.soldiersoul.wutu.utils.DataUtils;
@@ -39,11 +40,10 @@ import java.util.List;
  */
 public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
-    private Handler mHandler = new Handler (){
+    private Handler mHandler = new Handler () {
         @Override
         public void handleMessage (Message msg) {
             //防止初次进入时加载不出新闻
-            // TODO: 2017/5/7 添加加载动画
             if (adapter != null && msg.what == 0x111) {
                 adapter.setListData (datas);
                 loadingView.hide ();
@@ -65,9 +65,9 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerView;
 
     //数据
-    private  List<RecyclerBaseModel> datas = new ArrayList<> ();
+    private List<RecyclerBaseModel> datas = new ArrayList<> ();
     //适配器
-    private  CommonRecyclerAdapter adapter;
+    private CommonRecyclerAdapter adapter;
     //网络加载锁
     private final Object lock = new Object ();
     //刷新标签
@@ -213,9 +213,26 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onItemClick (Context context, int position) {
                 // TODO: 2017/5/7 修改新闻详细界面逻辑
-                if ((position + 1) % 5 == 0) {
-                    startActivity (new Intent (context, VideoListActivity.class));
-                } else { startActivity (new Intent (context, CityContentActivity.class)); }
+                String clsName = datas.get (position).getClass ().getName ();
+                Log.d ("chan", "clsName === " + clsName);
+                //判断是图片新闻还是视频新闻
+                if (clsName.equals ("com.soldiersoul.wutu.Model.ImageModel")) {
+                    Intent intent = new Intent (context, CityContentActivity.class);
+                    ImageModel curNews = (ImageModel) datas.get (position);
+                    intent.putExtra ("newsTitle", curNews.getNewsTitle ());
+                    intent.putExtra ("newsContent", curNews.getNewsContent ());
+                    intent.putExtra ("newsDate", curNews.getNewsTime ());
+                    intent.putExtra ("newsImg", curNews.getImgUrl ());
+                    startActivity (intent);
+                } else {
+                    //视频新闻(更换新视频播放框架)
+                }
+
+
+                //原方法按照数据判断，每五个插入一条视频新闻。
+                //                if ((position + 1) % 5 == 0) {
+                //                    startActivity (new Intent (context, VideoListActivity.class));
+                //                } else { startActivity (new Intent (context, CityContentActivity.class)); }
             }
         });
     }
@@ -246,7 +263,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
      * 下拉刷新方法
      */
     private void refresh () {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas ,null);
+        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, null);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
@@ -264,9 +281,9 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     public void initDatas () {
         List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler);
         this.datas = list;
-//        if (adapter != null) {
-//            adapter.setListData (datas);
-//            Log.d ("chan", "set adapter data:" + datas.size ());
-//        }
+        //        if (adapter != null) {
+        //            adapter.setListData (datas);
+        //            Log.d ("chan", "set adapter data:" + datas.size ());
+        //        }
     }
 }

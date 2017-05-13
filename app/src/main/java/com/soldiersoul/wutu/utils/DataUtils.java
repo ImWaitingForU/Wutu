@@ -180,7 +180,7 @@ public class DataUtils {
                             imageModel.setImgUrl (bean.getNewsImageUrl ());
                             imageModel.setNewsTitle (bean.getNewsTitle ());
                             imageModel.setNewsContent (bean.getNewsContent ());
-                            imageModel.setNewsTime (bean.getNewsDate ());
+                            imageModel.setNewsTime ("新闻来源:"+bean.getNewsSource ()+"  "+bean.getNewsDate ());
                             outList.add (imageModel);
                         }
                     }
