@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.UserBean;
-import com.soldiersoul.wutu.society.LocationActivity;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.SimpleUserInfoItem;
 import com.squareup.picasso.Picasso;

@@ -61,7 +61,6 @@
         </activity>
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.PerfectInfoActivity"/>
-        <activity android:name=".society.LocationActivity"/>
 
         <!-- 百度定位Server -->
         <service
@@ -83,6 +82,8 @@
         <activity android:name=".weapon.WeaponDetailActivity"/>
         <activity android:name=".society.SocietyIntegralDetailAct"/>
         <activity android:name=".weapon.WeapontCollectionAct">
+        </activity>
+        <activity android:name=".military.VideoPlayAct">
         </activity>
     </application>
 
