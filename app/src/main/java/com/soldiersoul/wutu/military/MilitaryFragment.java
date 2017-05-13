@@ -26,6 +26,7 @@ import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.ImageHolder;
 import com.soldiersoul.wutu.Holder.VideoHolder;
 import com.soldiersoul.wutu.Model.ImageModel;
+import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
 import com.soldiersoul.wutu.utils.DataUtils;
@@ -226,6 +227,13 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                     startActivity (intent);
                 } else {
                     //视频新闻(更换新视频播放框架)
+                    Intent intent = new Intent (context,VideoPlayerAct.class);
+                    VideoModel videoModel = (VideoModel) datas.get (position);
+                    intent.putExtra ("url",videoModel.getVideoUrl ());
+                    intent.putExtra ("title",videoModel.getVideoTitle ());
+                    intent.putExtra ("logo",videoModel.getFengmianRes ());
+                    intent.putExtra ("resource",videoModel.getVideoResouce ());
+                    startActivity (intent);
                 }
 
 

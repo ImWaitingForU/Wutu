@@ -152,9 +152,9 @@ public class UserInfoAct extends BaseActivity {
      */
     @OnClick (R.id.itemUserSchool)
     public void changeUserSchool () {
-        Intent intent = new Intent (this, LocationActivity.class);
-        intent.setFlags (REQUEST_SCHOOL_CODE);
-        startActivityForResult (intent, REQUEST_SCHOOL_CODE);
+//        Intent intent = new Intent (this, LocationActivity.class);
+//        intent.setFlags (REQUEST_SCHOOL_CODE);
+//        startActivityForResult (intent, REQUEST_SCHOOL_CODE);
     }
 
     public static final int REQUEST_SCHOOL_CODE = 1;

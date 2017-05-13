@@ -172,6 +172,9 @@ public class DataUtils {
                             videoModel.setResLayoutId (VideoHolder.ID);
                             videoModel.setBtnRes (R.drawable.video_click_play_selector);
                             videoModel.setFengmianRes (bean.getNewsImageUrl ());
+                            videoModel.setVideoUrl (bean.getVideoUrl ());
+                            videoModel.setVideoResouce (bean.getNewsSource ());
+                            videoModel.setVideoTitle (bean.getNewsTitle ());
                             outList.add (videoModel);
                         } else {
                             //否则是普通文本新闻

@@ -62,12 +62,6 @@
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.PerfectInfoActivity"/>
 
-        <!-- 百度定位Server -->
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote"/>
-
         <activity android:name=".society.HonorActivity"/>
         <activity android:name=".society.PhotoActivity"/>
         <activity android:name=".society.SocietyActDetailActivity"/>
@@ -83,7 +77,9 @@
         <activity android:name=".society.SocietyIntegralDetailAct"/>
         <activity android:name=".weapon.WeapontCollectionAct">
         </activity>
-        <activity android:name=".military.VideoPlayAct">
+        <activity android:name=".military.VideoPlayerAct"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:screenOrientation="portrait" >
         </activity>
     </application>
 

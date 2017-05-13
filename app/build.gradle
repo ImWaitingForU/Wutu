@@ -37,6 +37,7 @@ dependencies {
     //视频小窗口依赖
     apply plugin: 'com.android.application'
     compile files('libs/json-lib-2.4-jdk15.jar')
+    compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
     compile 'cn.bmob.android:bmob-sdk:3.5.1'
     compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
     compile 'cn.bmob.android:bmob-sms:1.0.1'
@@ -65,6 +66,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
+
 
 
 
