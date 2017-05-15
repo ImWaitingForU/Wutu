@@ -10,6 +10,7 @@ import com.shuyu.common.RecyclerBaseHolder;
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Model.MutilModel;
 import com.soldiersoul.wutu.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +46,7 @@ public class MutilHolder extends RecyclerBaseHolder {
     public void onBind(RecyclerBaseModel model, int position) {
         MutilModel mutilModel = (MutilModel) model;
 
-        itemImage1.setImageResource(mutilModel.getImage1());
+        Picasso.with (context).load (mutilModel.getImageUrl ()).into (itemImage1);
         madTitle.setText("标题");
         madContent.setText("内容----------------------------------------------------------------------" +
                 "---------------------------------------------------------------------------------------" +

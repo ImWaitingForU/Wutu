@@ -1,48 +1,59 @@
 package com.soldiersoul.wutu.military;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by wxj on 2017/4/9.
  */
 
-public class MilitaryAdBean {
+public class MilitaryAdBean extends BmobObject{
 
     private String imgUrl;
-    private String tv1;
-    private String tv2;
-    private String tv3;
+    private String title;
+    private String content;
+    private String time;
+    private int no;
 
-    public MilitaryAdBean( ) {
+    public MilitaryAdBean () {
     }
 
-    public String getImgUrl() {
+    public String getImgUrl () {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public void setImgUrl (String imgUrl) {
         this.imgUrl = imgUrl;
     }
 
-    public String getTv1() {
-        return tv1;
+    public String getTitle () {
+        return title;
     }
 
-    public void setTv1(String tv1) {
-        this.tv1 = tv1;
+    public void setTitle (String title) {
+        this.title = title;
     }
 
-    public String getTv2() {
-        return tv2;
+    public String getContent () {
+        return content;
     }
 
-    public void setTv2(String tv2) {
-        this.tv2 = tv2;
+    public void setContent (String content) {
+        this.content = content;
     }
 
-    public String getTv3() {
-        return tv3;
+    public String getTime () {
+        return time;
     }
 
-    public void setTv3(String tv3) {
-        this.tv3 = tv3;
+    public void setTime (String time) {
+        this.time = time;
+    }
+
+    public int getNo () {
+        return no;
+    }
+
+    public void setNo (int no) {
+        this.no = no;
     }
 }

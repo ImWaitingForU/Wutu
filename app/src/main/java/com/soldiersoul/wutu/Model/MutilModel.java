@@ -7,40 +7,40 @@ import com.shuyu.common.model.RecyclerBaseModel;
  */
 
 public class MutilModel extends RecyclerBaseModel {
-    private int image1;
-    private String tv1;
-    private String tv2;
-    private String tv3;
+    private String imageUrl;
+    private String title;
+    private String content;
+    private String time;
 
-    public int getImage1() {
-        return image1;
+    public String getImageUrl () {
+        return imageUrl;
     }
 
-    public void setImage1(int image1) {
-        this.image1 = image1;
+    public void setImageUrl (String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getTv1() {
-        return tv1;
+    public String getTitle () {
+        return title;
     }
 
-    public void setTv1(String tv1) {
-        this.tv1 = tv1;
+    public void setTitle (String title) {
+        this.title = title;
     }
 
-    public String getTv2() {
-        return tv2;
+    public String getContent () {
+        return content;
     }
 
-    public void setTv2(String tv2) {
-        this.tv2 = tv2;
+    public void setContent (String content) {
+        this.content = content;
     }
 
-    public String getTv3() {
-        return tv3;
+    public String getTime () {
+        return time;
     }
 
-    public void setTv3(String tv3) {
-        this.tv3 = tv3;
+    public void setTime (String time) {
+        this.time = time;
     }
 }

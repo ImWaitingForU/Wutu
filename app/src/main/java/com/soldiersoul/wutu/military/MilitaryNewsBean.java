@@ -30,14 +30,18 @@ public class MilitaryNewsBean extends RecyclerBaseModel {
      */
     private String newsContent;
 
-    /**标识新闻的编号*/
+    /**
+     * 标识新闻的编号
+     */
     private Integer no;
 
     /**
      * 视频url
      */
     private String videoUrl;
-    public MilitaryNewsBean(){}
+
+    public MilitaryNewsBean () {
+    }
 
     //构造器
     public MilitaryNewsBean (String newsTitle, String newsImageUrl, String newsDate, String newsSource,

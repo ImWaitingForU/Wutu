@@ -15,7 +15,6 @@ import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.MutilHolder;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
-import com.soldiersoul.wutu.utils.DataUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ public class MpolicyActivity extends AppCompatActivity {
         initViews();
         //加载新闻列表
         init();
-        initDatas();
+//        initDatas();
     }
 
     private void initViews() {
@@ -103,24 +102,24 @@ public class MpolicyActivity extends AppCompatActivity {
         });
     }
 
-    public void initDatas() {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
-        this.datas = list;
-        if (adapter != null) {
-            adapter.setListData(datas);
-        }
-    }
+//    public void initDatas() {
+//        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
+//        this.datas = list;
+//        if (adapter != null) {
+//            adapter.setListData(datas);
+//        }
+//    }
 
     /**
      * 上拉加载更多
      */
     private void loadMore() {
-        List<RecyclerBaseModel> list = DataUtils.getLoadMoreData(datas);
+//        List<RecyclerBaseModel> list = DataUtils.getLoadMoreData(datas);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
             //adapter.setLoadMoreState(LoadMoreHolder.NULL_DATA_STATE);
-            adapter.setListData(list);
+//            adapter.setListData(list);
             isfresh = false;
         }
     }
@@ -129,11 +128,11 @@ public class MpolicyActivity extends AppCompatActivity {
      * 下拉刷新方法
      */
     private void refresh() {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
+//        List<RecyclerBaseModel> list = DataUtils.getRefreshAdData(this);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
-            datas = list;
+//            datas = list;
             adapter.setListData(datas);
             refreshLayout.setRefreshing(false);
             isfresh = false;
