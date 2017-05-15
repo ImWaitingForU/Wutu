@@ -51,13 +51,16 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity android:name=".login.LoginActivity">
+
+        </activity>
+        <activity
+            android:name=".login.GuideActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".login.GuideActivity">
         </activity>
         <activity android:name=".register.RegisterActivity"/>
         <activity android:name=".login.PerfectInfoActivity"/>
@@ -77,9 +80,10 @@
         <activity android:name=".society.SocietyIntegralDetailAct"/>
         <activity android:name=".weapon.WeapontCollectionAct">
         </activity>
-        <activity android:name=".military.VideoPlayerAct"
-                  android:configChanges="orientation|screenSize|keyboardHidden"
-                  android:screenOrientation="portrait" >
+        <activity
+            android:name=".military.VideoPlayerAct"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

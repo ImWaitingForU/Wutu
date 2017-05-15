@@ -29,6 +29,10 @@ public class SpUtils {
      */
     public static final String KEY_IS_FIRST_LOGIN = "IsFirstLogin";
 
+    /**
+     * 是否第一次使用
+     */
+    public static final String KEY_IS_FIRST_USE = "IsFirstLogin";
 
     private static SharedPreferences sp;
 

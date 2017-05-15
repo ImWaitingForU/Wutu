@@ -17,13 +17,13 @@
         android:layout_alignParentRight="true"
         android:text="@string/login_tv_goFindPwd"/>
 
-    <TextView
-        android:id="@+id/tv_noPwdEnter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="@string/login_tv_noPwdEnter"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_noPwdEnter"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:text="@string/login_tv_noPwdEnter"/>-->
 
     <RelativeLayout
         android:layout_width="wrap_content"
