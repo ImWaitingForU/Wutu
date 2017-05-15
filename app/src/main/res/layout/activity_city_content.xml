@@ -6,47 +6,62 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:orientation="vertical"
-            tools:context="com.soldiersoul.wutu.military.CityContentActivity">
+            tools:context="com.soldiersoul.wutu.military.CityContentActivity"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/city_detail_img"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            />
-
-        <TextView
-            android:id="@+id/city_detail_title"
-            style="@style/Base.TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:textSize="20sp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:text="标题"/>
-
-        <TextView
-            android:id="@+id/city_detail_content"
-            style="@style/TextAppearance.AppCompat.Body1"
+        <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16sp"/>
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/city_detail_sourceandtime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="end"
-            android:text="新闻来源：发布时间"/>
+            <ImageView
+                android:id="@+id/city_detail_img"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/city_detail_title"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:gravity="left"
+                android:text="标题"
+                android:textSize="20sp"/>
 
+            <TextView
+                android:id="@+id/city_detail_content"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"/>
 
+            <TextView
+                android:id="@+id/city_detail_sourceandtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="end"
+                android:text="新闻来源：发布时间"/>
+
+        </LinearLayout>
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/city_loading_view"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallClipRotatePulseIndicator"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 </ScrollView>

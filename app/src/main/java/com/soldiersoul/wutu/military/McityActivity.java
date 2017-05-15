@@ -25,6 +25,8 @@ public class McityActivity extends AppCompatActivity implements OnItemClickListe
     @BindView(R.id.indexStickyView) IndexStickyView mIndexStickyView;
     CityAdapter mAdapter;
     private Context mContext;
+    //城市列表
+    private List<CityEntity> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,10 @@ public class McityActivity extends AppCompatActivity implements OnItemClickListe
     @Override
     public void onItemClick(View childView, int position, CityEntity item) {
         //省份政策详情展示
-        startActivity(new Intent(this,CityContentActivity.class));
+        Intent intent = new Intent(this,CityContentActivity.class);
+        intent.putExtra ("actTitle",item.getCityName ());
+        intent.putExtra ("isCity",true);
+        startActivity (intent);
     }
 
     @Override
@@ -52,8 +57,8 @@ public class McityActivity extends AppCompatActivity implements OnItemClickListe
     }
 
     List<CityEntity> initCitys() {
-        List<CityEntity> list = new ArrayList<>();
-        // 初始化数据
+        list = new ArrayList<>();
+        // 初始化城市列表数据
         List<String> contactStrings = Arrays.asList(getResources().getStringArray(R.array.city_array));
         for (int i = 0; i < contactStrings.size(); i++) {
             CityEntity cityEntity = new CityEntity(contactStrings.get(i));
