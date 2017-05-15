@@ -10,11 +10,13 @@ import android.widget.Toast;
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Holder.ImageHolder;
 import com.soldiersoul.wutu.Holder.MutilHolder;
+import com.soldiersoul.wutu.Holder.PolicyHolder;
 import com.soldiersoul.wutu.Holder.VideoHolder;
 import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.Model.MutilModel;
 import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.MpolicyBean;
 import com.soldiersoul.wutu.military.MilitaryAdBean;
 import com.soldiersoul.wutu.military.MilitaryNewsBean;
 
@@ -138,6 +140,44 @@ public class DataUtils {
 //
 //        return list;
 //    }
+    /**
+     * 获取福利政策数据 MPolicyBean ,数据无动态性
+     */
+    public static List<RecyclerBaseModel> getRefreshPolicyData (final Context context, final List outList,
+                                                            final Handler handler) {
+        BmobQuery<MpolicyBean> query = new BmobQuery<> ();
+        query.findObjects (new FindListener<MpolicyBean> () {
+            @Override
+            public void done (List<MpolicyBean> resultList, BmobException e) {
+                if (e != null) {
+                    e.printStackTrace ();
+                    Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
+                } else {
+                    Log.d ("chan", "resultList:" + resultList.size ());
+
+                    for (int i = 0; i < resultList.size (); i++) {
+                        MpolicyBean bean = resultList.get (i);
+                        MutilModel model = new MutilModel ();
+                        model.setResLayoutId (PolicyHolder.ID);
+                        model.setTitle (bean.getTitle ());
+                        model.setContent (bean.getContent ());
+                        model.setResource (bean.getSource ());
+                        outList.add (model);
+                    }
+
+
+                    if (handler != null) {
+                        handler.sendEmptyMessage (0x111);
+                    }
+
+                }
+            }
+        });
+
+        Log.d ("chan", "policy : query success");
+        return outList;
+    }
+
 
     /**
      * 获取军事宣传数据

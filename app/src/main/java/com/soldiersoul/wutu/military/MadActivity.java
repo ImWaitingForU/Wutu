@@ -26,8 +26,6 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
 /*军事宣传界面*/
 public class MadActivity extends BaseActivity {
 
@@ -65,7 +63,6 @@ public class MadActivity extends BaseActivity {
         recyclerView = (RecyclerView) findViewById (R.id.military_mad_recyclerview);
         loadingView = (AVLoadingIndicatorView) findViewById (R.id.loading_view);
         loadingView.show ();
-        ButterKnife.bind(this);
 
         //加载新闻列表
         init();
@@ -178,11 +175,4 @@ public class MadActivity extends BaseActivity {
         }
     }
 
-    /**
-     * dip转为PX
-     */
-    public static int dip2px(Context context, float dipValue) {
-        float fontScale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * fontScale + 0.5f);
-    }
 }

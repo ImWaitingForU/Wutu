@@ -11,6 +11,15 @@ public class MutilModel extends RecyclerBaseModel {
     private String title;
     private String content;
     private String time;
+    private String resource;
+
+    public String getResource () {
+        return resource;
+    }
+
+    public void setResource (String resource) {
+        this.resource = resource;
+    }
 
     public String getImageUrl () {
         return imageUrl;

@@ -1,6 +1,7 @@
 package com.soldiersoul.wutu.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -32,6 +33,14 @@ public class Constants {
      */
     public static View getRootView (Activity context) {
         return ((ViewGroup) context.findViewById (android.R.id.content)).getChildAt (0);
+    }
+
+    /**
+     * dip转为PX
+     */
+    public static int dip2px(Context context, float dipValue) {
+        float fontScale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * fontScale + 0.5f);
     }
 
 
