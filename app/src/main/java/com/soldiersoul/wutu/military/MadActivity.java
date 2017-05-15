@@ -1,6 +1,7 @@
 package com.soldiersoul.wutu.military;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +17,7 @@ import com.shuyu.common.listener.OnItemClickListener;
 import com.shuyu.common.model.RecyclerBaseModel;
 import com.soldiersoul.wutu.Holder.EmptyHolder;
 import com.soldiersoul.wutu.Holder.MutilHolder;
+import com.soldiersoul.wutu.Model.MutilModel;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.DividerItemDecoration;
 import com.soldiersoul.wutu.utils.BaseActivity;
@@ -122,11 +124,19 @@ public class MadActivity extends BaseActivity {
                 }
             }
         });
+
         //设置item点击事件
         adapter.setOnItemClickListener(new OnItemClickListener () {
             @Override
             public void onItemClick(Context context, int position) {
-                //startActivity(new Intent(MadActivity.this, CityContentActivity.class));
+                Intent intent = new Intent (MadActivity.this,CityContentActivity.class);
+                MutilModel model = (MutilModel) datas.get (position);
+                intent.putExtra ("actTitle","宣传");
+                intent.putExtra ("newsTitle",model.getTitle ());
+                intent.putExtra ("newsContent",model.getContent ());
+                intent.putExtra ("newsDate",model.getTime ());
+                intent.putExtra ("newsImg",model.getImageUrl ());
+                startActivity(intent);
             }
         });
     }

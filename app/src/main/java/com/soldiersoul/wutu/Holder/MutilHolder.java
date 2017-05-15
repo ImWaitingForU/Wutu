@@ -47,10 +47,9 @@ public class MutilHolder extends RecyclerBaseHolder {
         MutilModel mutilModel = (MutilModel) model;
 
         Picasso.with (context).load (mutilModel.getImageUrl ()).into (itemImage1);
-        madTitle.setText("标题");
-        madContent.setText("内容----------------------------------------------------------------------" +
-                "---------------------------------------------------------------------------------------" +
-                "------------------------------------------------------------------------------------");
-        madTime.setText("2017.2.28");
+        madTitle.setText(mutilModel.getTitle ());
+        //列表只显示15个字符内容..
+        madContent.setText(mutilModel.getContent ().substring (0,15)+"...");
+        madTime.setText(mutilModel.getTime ());
     }
 }

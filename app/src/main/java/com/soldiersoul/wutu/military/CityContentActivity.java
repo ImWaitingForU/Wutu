@@ -30,11 +30,12 @@ public class CityContentActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        setHomeButtonStaff ("军事新闻");
 
         //TODO:插入数据
         Intent intent = getIntent();
         Bundle bundle=intent.getExtras();
+        String  actTitle = bundle.getString("actTitle");
+        setHomeButtonStaff (actTitle);
         String title = bundle.getString("newsTitle");
         String content = bundle.getString("newsContent");
         String date = bundle.getString("newsDate");

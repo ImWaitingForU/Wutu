@@ -221,6 +221,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                     Intent intent = new Intent (context, CityContentActivity.class);
                     ImageModel curNews = (ImageModel) datas.get (position);
                     intent.putExtra ("newsTitle", curNews.getNewsTitle ());
+                    intent.putExtra ("actTitle", "新闻");
                     intent.putExtra ("newsContent", curNews.getNewsContent ());
                     intent.putExtra ("newsDate", curNews.getNewsTime ());
                     intent.putExtra ("newsImg", curNews.getImgUrl ());
