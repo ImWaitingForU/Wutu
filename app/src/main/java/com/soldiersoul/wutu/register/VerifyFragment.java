@@ -28,7 +28,6 @@ import cn.bmob.sms.exception.BmobException;
 import cn.bmob.sms.listener.RequestSMSCodeListener;
 import cn.bmob.sms.listener.VerifySMSCodeListener;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
 
 /**
@@ -44,12 +43,16 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
     private Handler mHandler;
     private static boolean isUsedPhone;
     public static final int VERIFY_SUCCESS = 0x111;
+    private Boolean isFindPwd;
+
+    private int smsCode;
 
     public VerifyFragment () {
     }
 
-    public VerifyFragment (Handler handler) {
+    public VerifyFragment (Handler handler, Boolean isFindPwd) {
         this.mHandler = handler;
+        this.isFindPwd = isFindPwd;
     }
 
     @Override
@@ -101,10 +104,11 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
     @Override
     public void onGettingVerify () {
         String userName = etUsername.getText ().toString ();
-        if (isUsedPhone (userName)){
+        if (!isFindPwd && isUsedPhone (userName)) {
             Toast.makeText (getActivity (), "手机号已被注册", Toast.LENGTH_SHORT).show ();
             return;
         }
+
         BmobSMS.requestSMSCode (getActivity (), userName, "WutuSms", new RequestSMSCodeListener () {
 
             @Override
@@ -112,6 +116,7 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
                 if (ex == null) {//验证码发送成功
                     Log.i ("bmob", "短信id：" + smsId);//用于查询本次短信发送详情
                     Toast.makeText (getActivity (), "验证码发送成功", Toast.LENGTH_SHORT).show ();
+                    smsCode = smsId;
                     btnVerify.startCountDown ();
                 } else {
                     Log.e ("bmob", ex.getMessage ());
@@ -127,23 +132,34 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
     @OnClick (R.id.btn_verify_next)
     public void next () {
         final String userName = etUsername.getText ().toString ();
-        String verifyCode = etVerify.getText ().toString ();
-        BmobSMS.verifySmsCode (getActivity (), userName, verifyCode, new VerifySMSCodeListener () {
+        final String verifyCode = etVerify.getText ().toString ();
+        //如果是修改密码就不验证，否则验证码会失效
+        if (isFindPwd && smsCode != 0 && !verifyCode.equals ("")) {
+            Message message = new Message ();
+            message.what = VERIFY_SUCCESS;
+            message.arg1 = Integer.parseInt (verifyCode);
+            message.obj = userName;
+            mHandler.sendMessage (message);
+        } else {
+            BmobSMS.verifySmsCode (getActivity (), userName, verifyCode, new VerifySMSCodeListener () {
 
-            @Override
-            public void done (BmobException ex) {
-                if (ex == null) {//短信验证码已验证成功
-                    Log.i ("bmob", "验证通过");
-                    Toast.makeText (getActivity (), "验证通过", Toast.LENGTH_SHORT).show ();
-                    Message message = new Message ();
-                    message.what = VERIFY_SUCCESS;
-                    message.obj = userName;
-                    mHandler.sendMessage (message);
-                } else {
-                    Log.i ("bmob", "验证失败：code =" + ex.getErrorCode () + ",msg = " + ex.getLocalizedMessage ());
-                    Toast.makeText (getActivity (), "验证码错误", Toast.LENGTH_SHORT).show ();
+                @Override
+                public void done (BmobException ex) {
+                    if (ex == null) {//短信验证码已验证成功
+                        Log.i ("bmob", "验证通过");
+                        Toast.makeText (getActivity (), "验证通过", Toast.LENGTH_SHORT).show ();
+                        Message message = new Message ();
+                        message.what = VERIFY_SUCCESS;
+                        message.arg1 = Integer.parseInt (verifyCode);
+                        message.obj = userName;
+                        mHandler.sendMessage (message);
+                    } else {
+                        Log.i ("bmob", "验证失败：code =" + ex.getErrorCode () + ",msg = " + ex.getLocalizedMessage ());
+                        Toast.makeText (getActivity (), "验证码错误", Toast.LENGTH_SHORT).show ();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+
 }

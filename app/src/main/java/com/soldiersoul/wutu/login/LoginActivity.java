@@ -56,6 +56,16 @@ public class LoginActivity extends BaseActivity {
         LogUtils.d ("注册");
     }
 
+    /**
+     * 重置密码 , 直接使用注册界面的功能
+     */
+    @OnClick(R.id.tv_goToFindPwd)
+    void goFindPwd(){
+        Intent intent = new Intent (this,RegisterActivity.class);
+        intent.putExtra ("isFindPwd",true);
+        startActivity (intent);
+    }
+
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);

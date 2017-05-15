@@ -72,7 +72,6 @@ public class GuideActivity extends AppCompatActivity {
             goToLoginPage ();
             LogUtils.d ("直接跳转登陆");
         }
-
     }
 
     private void goToLoginPage () {
