@@ -267,6 +267,74 @@ public class DataUtils {
                         }
                     }
 
+                    if (handler != null) {
+                        handler.sendEmptyMessage (0x111);
+                    }
+
+                }
+            }
+        });
+
+        Log.d ("chan", "query success");
+        return outList;
+    }
+
+    /**
+     * 查询新闻方法,根据标题查询
+     * @param context
+     * @param outList
+     * @param handler
+     * @param keyword
+     * @return
+     */
+    public static List<RecyclerBaseModel> getSearchData (final Context context, final List outList,
+                                                         final Handler handler, final String keyword) {
+        BmobQuery<MilitaryNewsBean> query = new BmobQuery<> ();
+//        query.addWhereContains ("newsTitle","aaa");
+//        query.addWhereMatches ("newsTitle",".*党.*");
+//        String bql = "select * from MilitaryNewsBean";
+//        query.doSQLQuery (bql, new SQLQueryListener<MilitaryNewsBean> () {
+//            @Override
+//            public void done (BmobQueryResult<MilitaryNewsBean> bmobQueryResult, BmobException e) {
+//                Log.d ("Bmob","========="+bmobQueryResult.getCount ());
+//            }
+//        });
+        query.findObjects (new FindListener<MilitaryNewsBean> () {
+            @Override
+            public void done (List<MilitaryNewsBean> resultList, BmobException e) {
+                if (e != null) {
+                    e.printStackTrace ();
+                    Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
+                } else {
+                    Log.d ("chan", "resultList:" + resultList.size ());
+
+                    for (int i = 0; i < resultList.size (); i++) {
+                        MilitaryNewsBean bean = resultList.get (i);
+                        if (!bean.getNewsTitle ().contains (keyword)){
+                            continue;
+                        }
+
+                        if (bean.getVideoUrl () != null) {
+                            //如果videoUrl字段不为空，证明是一条视频新闻，按照视频格式加载
+                            VideoModel videoModel = new VideoModel ();
+                            videoModel.setResLayoutId (VideoHolder.ID);
+                            videoModel.setBtnRes (R.drawable.video_click_play_selector);
+                            videoModel.setFengmianRes (bean.getNewsImageUrl ());
+                            videoModel.setVideoUrl (bean.getVideoUrl ());
+                            videoModel.setVideoResouce (bean.getNewsSource ());
+                            videoModel.setVideoTitle (bean.getNewsTitle ());
+                            outList.add (videoModel);
+                        } else {
+                            //否则是普通文本新闻
+                            ImageModel imageModel = new ImageModel ();
+                            imageModel.setResLayoutId (ImageHolder.ID);
+                            imageModel.setImgUrl (bean.getNewsImageUrl ());
+                            imageModel.setNewsTitle (bean.getNewsTitle ());
+                            imageModel.setNewsContent (bean.getNewsContent ());
+                            imageModel.setNewsTime ("新闻来源:" + bean.getNewsSource () + " ; " + bean.getNewsDate ());
+                            outList.add (imageModel);
+                        }
+                    }
 
                     if (handler != null) {
                         handler.sendEmptyMessage (0x111);

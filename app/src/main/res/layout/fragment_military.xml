@@ -98,6 +98,34 @@
 
     </RelativeLayout>
 
+    <FrameLayout
+        android:id="@+id/searchLayout"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="wrap_content">
+        
+        <LinearLayout
+            android:background="@drawable/search_bg"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="搜索新闻"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/ic_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="wrap_content"

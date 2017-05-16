@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.shuyu.common.CommonRecyclerAdapter;
 import com.shuyu.common.CommonRecyclerManager;
@@ -64,6 +65,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
 
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView recyclerView;
+    private FrameLayout searchLayout;
 
     //数据
     private List<RecyclerBaseModel> datas = new ArrayList<> ();
@@ -107,6 +109,14 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         btn_city.getBackground ().setAlpha (150);
         refreshLayout = (SwipeRefreshLayout) view.findViewById (R.id.military_refresh);
         recyclerView = (RecyclerView) view.findViewById (R.id.military_news);
+        searchLayout = (FrameLayout) view.findViewById (R.id.searchLayout);
+        searchLayout.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View view) {
+                startActivity (new Intent (getActivity (),SearchNewsAct.class));
+            }
+        });
+
         loadingView = (AVLoadingIndicatorView) view.findViewById (R.id.loading_view);
         loadingView.show ();
         //加载新闻列表
@@ -164,7 +174,9 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         recyclerBaseModel.setResLayoutId (EmptyHolder.ID);
         adapter.setNoDataModel (recyclerBaseModel);
 
-        recyclerView.setLayoutManager (new LinearLayoutManager (context));
+        LinearLayoutManager llm = new LinearLayoutManager (context);
+        llm.setReverseLayout (true);
+        recyclerView.setLayoutManager (llm);
         recyclerView.addItemDecoration (new DividerItemDecoration (10, DividerItemDecoration.LIST));
         recyclerView.setAdapter (adapter);
 
@@ -212,7 +224,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         adapter.setOnItemClickListener (new OnItemClickListener () {
             @Override
             public void onItemClick (Context context, int position) {
-                // TODO: 2017/5/7 修改新闻详细界面逻辑
                 String clsName = datas.get (position).getClass ().getName ();
                 Log.d ("chan", "clsName === " + clsName);
                 //判断是图片新闻还是视频新闻

@@ -28,14 +28,13 @@ public class VideoPlayerAct extends BaseActivity {
         setHomeButtonStaff ("视频新闻");
 
         Intent intent = getIntent ();
-//        String url = intent.getStringExtra ("url");
+        String url = intent.getStringExtra ("url");
         String titleText = intent.getStringExtra ("title");
         String logo = intent.getStringExtra ("logo");
         String resourceText = intent.getStringExtra ("resource");
 
         //配置视频信息
-        //// TODO: 2017/5/13 修改成真实的视频地址
-        String url = "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4";
+//        String url = "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4";
         videoPlayer.setUp (url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, titleText);
         videoPlayer.thumbImageView.setImageURI (Uri.parse (logo));
         title.setText (titleText);

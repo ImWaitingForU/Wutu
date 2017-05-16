@@ -77,10 +77,12 @@ public class UserInfoAct extends BaseActivity {
         itemUserSchool.setUserData (user.getSchool ());
 
         itemUserSociety.setItemName ("我的社团");
-        if (user.getSociety ().getName ().equals ("")) {
-            itemUserSociety.setUserData ("暂未加入社团");
-        } else {
-            itemUserSociety.setUserData (user.getSociety ().getName ());
+        if (null != user.getSociety ().getName ()) {
+            if (user.getSociety ().getName ().equals ("")) {
+                itemUserSociety.setUserData ("暂未加入社团");
+            } else {
+                itemUserSociety.setUserData (user.getSociety ().getName ());
+            }
         }
 
         if (!user.getUserAvatar ().equals ("")) {
@@ -152,7 +154,7 @@ public class UserInfoAct extends BaseActivity {
 
     /**
      * 修改学校（跳转到定位界面修改）
-     *
+     * <p>
      * todo 百度地图定位到学校识别名字，从而判断出学校，再选择社团
      * todo 社团表新建字段，添加学校。
      */
