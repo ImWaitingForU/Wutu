@@ -3,24 +3,24 @@ package com.soldiersoul.wutu.military;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.itemDecoration.IndexStickyViewDecoration;
+import com.soldiersoul.wutu.utils.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.ittiger.indexlist.IndexStickyView;
 import cn.ittiger.indexlist.listener.OnItemClickListener;
 import cn.ittiger.indexlist.listener.OnItemLongClickListener;
 
-public class McityActivity extends AppCompatActivity implements OnItemClickListener<CityEntity>, OnItemLongClickListener<CityEntity> {
+public class McityActivity extends BaseActivity implements OnItemClickListener<CityEntity>,
+        OnItemLongClickListener<CityEntity> {
 
     @BindView(R.id.indexStickyView) IndexStickyView mIndexStickyView;
     CityAdapter mAdapter;
@@ -32,14 +32,18 @@ public class McityActivity extends AppCompatActivity implements OnItemClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        setContentView(R.layout.activity_mcity);
-        ButterKnife.bind(this);
+        setHomeButtonStaff ("选择省市");
 
         mIndexStickyView.addItemDecoration(new IndexStickyViewDecoration (this));
         mAdapter = new CityAdapter(initCitys());
         mAdapter.setOnItemClickListener(this);
         mAdapter.setOnItemLongClickListener(this);
         mIndexStickyView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public int getContentViewId () {
+        return R.layout.activity_mcity;
     }
 
     @Override

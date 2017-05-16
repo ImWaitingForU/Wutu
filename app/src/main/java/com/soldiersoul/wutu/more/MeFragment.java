@@ -76,6 +76,7 @@ public class MeFragment extends Fragment {
     @OnClick ({R.id.ivUserAvatar, R.id.tvUserName})
     public void goToUserActivity () {
         Intent intent = new Intent (getActivity (), UserInfoAct.class);
+        intent.putExtra ("user",BmobUser.getCurrentUser (UserBean.class));
         startActivity (intent);
     }
 
@@ -120,7 +121,7 @@ public class MeFragment extends Fragment {
      */
     @OnClick (R.id.itemAbout)
     public void about () {
-
+        
     }
 
     /**

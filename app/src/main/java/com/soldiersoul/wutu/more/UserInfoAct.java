@@ -47,7 +47,7 @@ public class UserInfoAct extends BaseActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         //获取当前用户
-//        user = BmobUser.getCurrentUser (UserBean.class);
+        //        user = BmobUser.getCurrentUser (UserBean.class);
 
         //获取传入的用户，显示传入的用户信息，而不是只显示个人用户信息
         user = (UserBean) getIntent ().getSerializableExtra ("user");
@@ -77,8 +77,11 @@ public class UserInfoAct extends BaseActivity {
         itemUserSchool.setUserData (user.getSchool ());
 
         itemUserSociety.setItemName ("我的社团");
-        // TODO: 2017/4/13 判空处理 
-        itemUserSociety.setUserData (user.getSociety ().getName ());
+        if (user.getSociety ().getName ().equals ("")) {
+            itemUserSociety.setUserData ("暂未加入社团");
+        } else {
+            itemUserSociety.setUserData (user.getSociety ().getName ());
+        }
 
         if (!user.getUserAvatar ().equals ("")) {
             Picasso.with (this).load (user.getUserAvatar ()).into (userAvatar);
@@ -120,7 +123,7 @@ public class UserInfoAct extends BaseActivity {
                 if (!newName.equals ("")) {
                     UserBean saveBean = new UserBean ();
                     saveBean.setUsername (newName);
-                    saveBean.update (user.getObjectId (),new UpdateListener () {
+                    saveBean.update (user.getObjectId (), new UpdateListener () {
                         @Override
                         public void done (BmobException e) {
                             if (e == null) {
@@ -149,12 +152,16 @@ public class UserInfoAct extends BaseActivity {
 
     /**
      * 修改学校（跳转到定位界面修改）
+     *
+     * todo 百度地图定位到学校识别名字，从而判断出学校，再选择社团
+     * todo 社团表新建字段，添加学校。
      */
     @OnClick (R.id.itemUserSchool)
     public void changeUserSchool () {
-//        Intent intent = new Intent (this, LocationActivity.class);
-//        intent.setFlags (REQUEST_SCHOOL_CODE);
-//        startActivityForResult (intent, REQUEST_SCHOOL_CODE);
+        mToastUtil.toastShort ("敬请期待");
+        //        Intent intent = new Intent (this, LocationActivity.class);
+        //        intent.setFlags (REQUEST_SCHOOL_CODE);
+        //        startActivityForResult (intent, REQUEST_SCHOOL_CODE);
     }
 
     public static final int REQUEST_SCHOOL_CODE = 1;
@@ -180,7 +187,7 @@ public class UserInfoAct extends BaseActivity {
         if (requestCode == ImageSelector.REQUEST_SELECT_IMAGE && resultCode == RESULT_OK) {
             final ArrayList<String> imagesPath = data.getStringArrayListExtra (ImageSelector.SELECTED_RESULT);
             if (imagesPath != null) {
-                new Thread (){
+                new Thread () {
                     @Override
                     public void run () {
                         super.run ();
@@ -193,11 +200,11 @@ public class UserInfoAct extends BaseActivity {
                         if (e == null) {
                             UserBean saveBean = new UserBean ();
                             saveBean.setUserAvatar (bmobFile.getFileUrl ());
-                            saveBean.update (user.getObjectId (),new UpdateListener () {
+                            saveBean.update (user.getObjectId (), new UpdateListener () {
                                 @Override
                                 public void done (BmobException e) {
                                     if (e == null) {
-                                        Log.d ("chan","result_ok-------------");
+                                        Log.d ("chan", "result_ok-------------");
                                         userAvatar.setImageURI (Uri.parse (imagesPath.get (0)));
                                         mToastUtil.toastShort ("修改头像成功~");
                                     } else {

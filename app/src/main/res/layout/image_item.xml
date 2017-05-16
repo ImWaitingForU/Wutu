@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="5dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:src="@mipmap/ic_launcher"
             android:id="@+id/ivNewsPic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"/>
 
         <TextView
             android:id="@+id/tvNewsTitle"
-            android:text="新闻标题"
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="center"
+            android:textSize="18sp"
             android:layout_alignTop="@id/ivNewsPic"
-            android:layout_toRightOf="@id/ivNewsPic"/>
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ivNewsPic"
+            android:gravity="center"
+            android:text="新闻标题"/>
 
         <TextView
-            android:text="内容----------------------------------------------------------------------------------------------------------------"
             android:id="@+id/tvNewsContent"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/tvNewsTitle"
-            android:layout_toRightOf="@id/ivNewsPic"/>
+            android:layout_toRightOf="@id/ivNewsPic"
+            android:text="内容----------------------------------------------------------------------------------------------------------------"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/tvNewsTime"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/tvNewsContent"
-            android:text="2017.2.27"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ivNewsPic"
             android:gravity="end"
-            android:paddingRight="30dp"/>
+            android:paddingRight="20dp"
+            />
 
     </RelativeLayout>
 </LinearLayout>

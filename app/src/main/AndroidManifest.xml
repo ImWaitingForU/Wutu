@@ -85,6 +85,8 @@
         </activity>
         <activity android:name=".login.FindPwdAct">
         </activity>
+        <activity android:name=".more.AboutAct">
+        </activity>
     </application>
 
 </manifest>

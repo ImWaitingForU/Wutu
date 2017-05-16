@@ -139,7 +139,6 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-
     public void init () {
         //初始化管理器
         CommonRecyclerManager commonRecyclerManager = new CommonRecyclerManager ();
