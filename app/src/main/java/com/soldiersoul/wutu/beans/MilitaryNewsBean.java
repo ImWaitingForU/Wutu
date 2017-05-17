@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.military;
+package com.soldiersoul.wutu.beans;
 
 import com.shuyu.common.model.RecyclerBaseModel;
 
@@ -40,7 +40,20 @@ public class MilitaryNewsBean extends RecyclerBaseModel {
      */
     private String videoUrl;
 
+    /**
+     * 新闻来源url
+     */
+    private String webUrl;
+
     public MilitaryNewsBean () {
+    }
+
+    public String getWebUrl () {
+        return webUrl;
+    }
+
+    public void setWebUrl (String webUrl) {
+        this.webUrl = webUrl;
     }
 
     //构造器

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.MilitaryNewsBean;
 
 import java.util.ArrayList;
 import java.util.Collection;

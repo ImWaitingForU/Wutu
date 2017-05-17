@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +17,11 @@ import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.CityPolicyBean;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.squareup.picasso.Picasso;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
@@ -39,6 +47,9 @@ public class CityContentActivity extends BaseActivity {
     private CityPolicyBean cityPolicyBean;
     private String cityName;
 
+    private String sharedImgUrl;
+    private String sharedTitle;
+
     private Handler mHander = new Handler () {
         @Override
         public void handleMessage (Message msg) {
@@ -63,6 +74,48 @@ public class CityContentActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater ();
+        inflater.inflate (R.menu.share_menu, menu);
+        return super.onCreateOptionsMenu (menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId ()) {
+            case R.id.action_share:
+                doShare ();
+                return true;
+            default:
+                return super.onOptionsItemSelected (item);
+        }
+    }
+
+    /**
+     * 社会化分享
+     */
+    private void doShare () {
+        UMWeb web = new UMWeb ("http://www.81.cn/jmywyl/2017-05/16/content_7604286.htm");
+        web.setTitle (sharedTitle);//标题
+        web.setThumb (new UMImage (this, sharedImgUrl));  //缩略图
+        web.setDescription ("--- 伍途");
+
+        new ShareAction (this).withMedia (web).setDisplayList (SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
+                              .setCallback (null).open ();
+
+//        new ShareAction (this).withText ("aaaa").setDisplayList (SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
+//                              .setCallback (null).open ();
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult (requestCode, resultCode, data);
+        UMShareAPI.get (this).onActivityResult (requestCode, resultCode, data);
+    }
+
+    @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         ButterKnife.bind (this);
@@ -81,6 +134,7 @@ public class CityContentActivity extends BaseActivity {
         setHomeButtonStaff (actTitle);
         if (intent.getBooleanExtra ("isCity", false)) {
             cityName = actTitle;
+            sharedTitle = actTitle;
             loadData ();
         } else {
             layout.setVisibility (View.VISIBLE);
@@ -89,10 +143,12 @@ public class CityContentActivity extends BaseActivity {
             String content = bundle.getString ("newsContent");
             String date = bundle.getString ("newsDate");
             String imgUrl = bundle.getString ("newsImg");
-
+            sharedImgUrl = imgUrl;
+            sharedTitle = title;
             inputData (title, content, date, imgUrl);
         }
     }
+
 
     /**
      * 加载数据,根据城市名称查找相应政策

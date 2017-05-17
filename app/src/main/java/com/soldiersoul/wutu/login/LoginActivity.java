@@ -28,11 +28,21 @@ public class LoginActivity extends BaseActivity {
     @BindView (R.id.et_pwd) PasswordEditText etPwd;
 
     /**
+     * 不登录直接进入
+     */
+    @OnClick (R.id.tv_noPwdEnter)
+    void noPwdEnter () {
+        startActivity (new Intent (LoginActivity.this, MainActivity.class));
+        finish ();
+    }
+
+    /**
      * 登录
      */
     @OnClick (R.id.btn_login)
     void login () {
-        BmobUser.loginByAccount (etPhone.getText ().toString (), etPwd.getText ().toString (), new LogInListener<UserBean> () {
+        BmobUser.loginByAccount (etPhone.getText ().toString (), etPwd.getText ().toString (),
+                                 new LogInListener<UserBean> () {
 
                                      @Override
                                      public void done (UserBean userBean, cn.bmob.v3.exception.BmobException e) {
@@ -59,10 +69,10 @@ public class LoginActivity extends BaseActivity {
     /**
      * 重置密码 , 直接使用注册界面的功能
      */
-    @OnClick(R.id.tv_goToFindPwd)
-    void goFindPwd(){
-        Intent intent = new Intent (this,RegisterActivity.class);
-        intent.putExtra ("isFindPwd",true);
+    @OnClick (R.id.tv_goToFindPwd)
+    void goFindPwd () {
+        Intent intent = new Intent (this, RegisterActivity.class);
+        intent.putExtra ("isFindPwd", true);
         startActivity (intent);
     }
 
@@ -76,7 +86,7 @@ public class LoginActivity extends BaseActivity {
             // 允许用户使用应用
             startActivity (new Intent (this, MainActivity.class));
             finish ();
-            Log.d ("chan","已存在用户");
+            Log.d ("chan", "已存在用户");
         } else {
             //缓存用户对象为空时， 可打开用户注册界面…
             mToastUtil.toastShort ("您还没有登录，请登录/注册账号");

@@ -179,29 +179,36 @@ public class ShowWeaponActivity extends BaseActivity {
             //            });
 
             LikeButton likeButton = baseViewHolder.getView (R.id.ivLike);
-            //根据收藏情况展示不同的心形布局
-            Log.d ("Bmob", "武器收藏UserBean==" + weaponBean.getUserBean ().getObjectId ());
-            if (weaponBean.getUserBean ().getObjectId ().equals (currentUser.getObjectId ())) {
-                likeButton.setLiked (true);
-                Log.d ("Bmob", "已收藏");
+
+            if (BmobUser.getCurrentUser (UserBean.class) == null) {
+                likeButton.setVisibility (View.GONE);
             } else {
-                likeButton.setLiked (false);
-                Log.d ("Bmob", "未收藏");
+                likeButton.setVisibility (View.VISIBLE);
+
+                //根据收藏情况展示不同的心形布局
+                Log.d ("Bmob", "武器收藏UserBean==" + weaponBean.getUserBean ().getObjectId ());
+                if (weaponBean.getUserBean ().getObjectId ().equals (currentUser.getObjectId ())) {
+                    likeButton.setLiked (true);
+                    Log.d ("Bmob", "已收藏");
+                } else {
+                    likeButton.setLiked (false);
+                    Log.d ("Bmob", "未收藏");
+                }
+
+                likeButton.setOnLikeListener (new OnLikeListener () {
+                    @Override
+                    public void liked (LikeButton likeButton) {
+                        Log.d ("chan", "like");
+                        doLike (baseViewHolder.getPosition ());
+                    }
+
+                    @Override
+                    public void unLiked (LikeButton likeButton) {
+                        Log.d ("chan", "unLiked");
+                        doUnLike (baseViewHolder.getPosition ());
+                    }
+                });
             }
-
-            likeButton.setOnLikeListener (new OnLikeListener () {
-                @Override
-                public void liked (LikeButton likeButton) {
-                    Log.d ("chan", "like");
-                    doLike (baseViewHolder.getPosition ());
-                }
-
-                @Override
-                public void unLiked (LikeButton likeButton) {
-                    Log.d ("chan", "unLiked");
-                    doUnLike (baseViewHolder.getPosition ());
-                }
-            });
         }
 
     }

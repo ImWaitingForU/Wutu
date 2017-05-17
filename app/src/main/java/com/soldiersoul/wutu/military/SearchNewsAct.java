@@ -51,18 +51,25 @@ public class SearchNewsAct extends BaseActivity {
         }
     };
 
-
 //    @BindView (R.id.btnSearch) Button btn;
     @BindView (R.id.etSearchNews) EditText searchInput;
     @BindView (R.id.rvSearch) RecyclerView rv;
     @BindView (R.id.search_loading_view) AVLoadingIndicatorView loadingView;
 
     /**
-     * 模糊搜索新闻
+     * 模糊搜索新闻，应允许标题和时间搜索
      */
     @OnClick(R.id.btnSearch)
     void doSearch(){
         datas.clear ();
+
+        //关键词为空则不搜索
+        if(searchInput.getText ().toString ().equals ("")){
+            mToastUtil.toastShort ("请输入搜索关键字");
+            return ;
+        }
+
+        loadingView.setVisibility (View.VISIBLE);
         List<RecyclerBaseModel> list = DataUtils.getSearchData (this,datas,mHandler,searchInput.getText ().toString ());
         this.datas = list;
     }

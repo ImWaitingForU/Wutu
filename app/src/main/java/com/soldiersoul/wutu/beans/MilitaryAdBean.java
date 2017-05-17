@@ -1,4 +1,4 @@
-package com.soldiersoul.wutu.military;
+package com.soldiersoul.wutu.beans;
 
 import cn.bmob.v3.BmobObject;
 
@@ -13,8 +13,17 @@ public class MilitaryAdBean extends BmobObject{
     private String content;
     private String time;
     private int no;
+    private String webUrl;
 
     public MilitaryAdBean () {
+    }
+
+    public String getWebUrl () {
+        return webUrl;
+    }
+
+    public void setWebUrl (String webUrl) {
+        this.webUrl = webUrl;
     }
 
     public String getImgUrl () {

@@ -17,8 +17,8 @@ import com.soldiersoul.wutu.Model.MutilModel;
 import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.MpolicyBean;
-import com.soldiersoul.wutu.military.MilitaryAdBean;
-import com.soldiersoul.wutu.military.MilitaryNewsBean;
+import com.soldiersoul.wutu.beans.MilitaryAdBean;
+import com.soldiersoul.wutu.beans.MilitaryNewsBean;
 
 import net.sf.json.JSONObject;
 
@@ -289,6 +289,7 @@ public class DataUtils {
      */
     public static List<RecyclerBaseModel> getSearchData (final Context context, final List outList,
                                                          final Handler handler, final String keyword) {
+
         BmobQuery<MilitaryNewsBean> query = new BmobQuery<> ();
 //        query.addWhereContains ("newsTitle","aaa");
 //        query.addWhereMatches ("newsTitle",".*党.*");

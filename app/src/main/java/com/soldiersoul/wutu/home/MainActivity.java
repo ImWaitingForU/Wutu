@@ -1,5 +1,6 @@
 package com.soldiersoul.wutu.home;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
@@ -9,6 +10,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.soldiersoul.wutu.R;
+import com.soldiersoul.wutu.beans.UserBean;
+import com.soldiersoul.wutu.login.LoginActivity;
 import com.soldiersoul.wutu.military.MilitaryFragment;
 import com.soldiersoul.wutu.more.MeFragment;
 import com.soldiersoul.wutu.society.frags.SocietyFragment;
@@ -20,6 +23,7 @@ import com.soldiersoul.wutu.weapon.WeaponFragment;
 
 import butterknife.BindView;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 
 public class MainActivity extends BaseActivity implements BottomBar.BottomBarClickedListener,
         NetworkBroadcastReceiver.NetEvent {
@@ -36,14 +40,14 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
     private NetworkBroadcastReceiver networkBroadcastReceiver;
 
     //初始化bmob有关信息
-    public void initBmob(){
+    public void initBmob () {
         Bmob.initialize (this, Constants.BMOB_APPKEY);
     }
+
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         initBmob ();
-
         if (networkBroadcastReceiver == null) {
             networkBroadcastReceiver = new NetworkBroadcastReceiver ();
             networkBroadcastReceiver.setNetEvent (MainActivity.this);
@@ -170,7 +174,13 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
 
     @Override
     public void onBottomBar4Clicked () {
-        showMeFragments ();
+        //如果没登陆则进入登陆界面
+        if (BmobUser.getCurrentUser (UserBean.class) == null) {
+            startActivity (new Intent (MainActivity.this, LoginActivity.class));
+            this.finish ();
+        } else {
+            showMeFragments ();
+        }
     }
 
     @Override
