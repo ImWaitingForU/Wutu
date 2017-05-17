@@ -77,7 +77,10 @@ public class CityContentActivity extends BaseActivity {
     public boolean onCreateOptionsMenu (Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater ();
-        inflater.inflate (R.menu.share_menu, menu);
+        //如果是政策福利和省市政策则不显示分享
+        if (getIntent ().getBooleanExtra ("isShare", false)) {
+            inflater.inflate (R.menu.share_menu, menu);
+        }
         return super.onCreateOptionsMenu (menu);
     }
 
@@ -105,8 +108,9 @@ public class CityContentActivity extends BaseActivity {
         new ShareAction (this).withMedia (web).setDisplayList (SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
                               .setCallback (null).open ();
 
-//        new ShareAction (this).withText ("aaaa").setDisplayList (SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
-//                              .setCallback (null).open ();
+        //        new ShareAction (this).withText ("aaaa").setDisplayList (SHARE_MEDIA.SINA, SHARE_MEDIA.QQ,
+        // SHARE_MEDIA.WEIXIN)
+        //                              .setCallback (null).open ();
     }
 
     @Override

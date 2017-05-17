@@ -99,7 +99,9 @@ public class MadActivity extends BaseActivity {
         recyclerBaseModel.setResLayoutId(EmptyHolder.ID);
         adapter.setNoDataModel(recyclerBaseModel);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager (this));
+        LinearLayoutManager llm = new LinearLayoutManager (this);
+        llm.setReverseLayout (true);
+        recyclerView.setLayoutManager(llm);
         recyclerView.addItemDecoration(new DividerItemDecoration (10, DividerItemDecoration.LIST));
         recyclerView.setAdapter(adapter);
 
@@ -133,6 +135,8 @@ public class MadActivity extends BaseActivity {
                 intent.putExtra ("newsContent",model.getContent ());
                 intent.putExtra ("newsDate",model.getTime ());
                 intent.putExtra ("newsImg",model.getImageUrl ());
+                intent.putExtra ("isShare", true);
+
                 startActivity(intent);
             }
         });

@@ -199,6 +199,9 @@ public class DataUtils {
                     Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
                 } else {
                     Log.d ("chan", "resultList:" + resultList.size ());
+                    if (resultList.size ()==0){
+                        Toast.makeText (context, "没有更多了~", Toast.LENGTH_SHORT).show ();
+                    }
 
                     for (int i = 0; i < resultList.size (); i++) {
                         MilitaryAdBean bean = resultList.get (i);
@@ -242,6 +245,9 @@ public class DataUtils {
                     Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
                 } else {
                     Log.d ("chan", "resultList:" + resultList.size ());
+                    if (resultList.size ()==0){
+                        Toast.makeText (context, "没有更多了~", Toast.LENGTH_SHORT).show ();
+                    }
 
                     for (int i = 0; i < resultList.size (); i++) {
                         MilitaryNewsBean bean = resultList.get (i);

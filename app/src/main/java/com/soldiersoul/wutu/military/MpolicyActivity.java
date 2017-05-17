@@ -133,6 +133,7 @@ public class MpolicyActivity extends BaseActivity {
                 intent.putExtra ("newsContent",policy.getContent ());
                 //来源放在时间的位置
                 intent.putExtra ("newsDate","来源:"+policy.getResource ());
+
                 startActivity (intent);
             }
         });

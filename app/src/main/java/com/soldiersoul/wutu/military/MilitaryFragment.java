@@ -50,6 +50,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                 adapter.setListData (datas);
                 loadingView.hide ();
                 refreshLayout.setVisibility (View.VISIBLE);
+                recyclerView.scrollToPosition (adapter.getLastPosition ());
                 Log.d ("chan", "handler == set adapter data:" + datas.size ());
             }
         }
@@ -235,6 +236,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                     intent.putExtra ("newsContent", curNews.getNewsContent ());
                     intent.putExtra ("newsDate", curNews.getNewsTime ());
                     intent.putExtra ("newsImg", curNews.getImgUrl ());
+                    intent.putExtra ("isShare", true);
                     startActivity (intent);
                 } else {
                     //视频新闻(更换新视频播放框架)
@@ -282,12 +284,12 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
      * 下拉刷新方法
      */
     private void refresh () {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, null);
+        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
             datas = list;
-            adapter.setListData (datas);
+//            adapter.setListData (datas);
             refreshLayout.setRefreshing (false);
             isfresh = false;
         }
