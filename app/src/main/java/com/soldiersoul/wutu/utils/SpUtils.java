@@ -34,6 +34,12 @@ public class SpUtils {
      */
     public static final String KEY_IS_FIRST_USE = "IsFirstLogin";
 
+    /**
+     * 上一次浏览位置
+     */
+    public static final String KEY_LAST_POSITION = "lastViewPosition";
+
+
     private static SharedPreferences sp;
 
     public SpUtils (Context context) {

@@ -34,6 +34,7 @@ import com.soldiersoul.wutu.utils.DataUtils;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -51,6 +52,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                 loadingView.hide ();
                 refreshLayout.setVisibility (View.VISIBLE);
                 recyclerView.scrollToPosition (adapter.getLastPosition ());
+                startDate = new Date ();
                 Log.d ("chan", "handler == set adapter data:" + datas.size ());
             }
         }
@@ -77,6 +79,9 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     //刷新标签
     private boolean isfresh;
 
+    //刚进入的日期时间
+    private static Date startDate;
+
     public MilitaryFragment () {
 
     }
@@ -97,6 +102,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
+        startDate = new Date ();
     }
 
     @Override
@@ -182,29 +188,29 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter (adapter);
 
         //设置上拉加载更多数据
-        //        recyclerView.setOnScrollListener(new LoadMoreScrollListener() {
-        //            @Override
-        //            public void onLoadMore() {
-        //                //注意加锁
-        //                if (!isfresh) {
-        //                    isfresh = true;
-        //                    recyclerView.postDelayed(new Runnable() {
-        //                        @Override
-        //                        public void run() {
-        //                            //TODO：数据加载，等待后台加入
-        //                            loadMore();
-        //                        }
-        //
-        //                    }, 2000);
-        //                }
-        //            }
-        //
-        //            @Override
-        //            public void onScrolled(int firstPosition) {
-        //                super.onScrolled(firstPosition);
-        //            }
-        //
-        //        });
+//        recyclerView.setOnScrollListener (new LoadMoreScrollListener () {
+//            @Override
+//            public void onLoadMore () {
+//                //注意加锁
+//                if (!isfresh) {
+//                    isfresh = true;
+//                    recyclerView.postDelayed (new Runnable () {
+//                        @Override
+//                        public void run () {
+//                            //TODO：数据加载，等待后台加入
+////                            loadMore ();
+//                        }
+//
+//                    }, 2000);
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled (int firstPosition) {
+//                super.onScrolled (firstPosition);
+//            }
+//
+//        });
         //设置下拉刷新
         refreshLayout.setOnRefreshListener (new SwipeRefreshLayout.OnRefreshListener () {
             @Override
@@ -237,6 +243,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                     intent.putExtra ("newsDate", curNews.getNewsTime ());
                     intent.putExtra ("newsImg", curNews.getImgUrl ());
                     intent.putExtra ("isShare", true);
+                    intent.putExtra ("newsNo", position+1);
                     startActivity (intent);
                 } else {
                     //视频新闻(更换新视频播放框架)
@@ -246,6 +253,7 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
                     intent.putExtra ("title",videoModel.getVideoTitle ());
                     intent.putExtra ("logo",videoModel.getFengmianRes ());
                     intent.putExtra ("resource",videoModel.getVideoResouce ());
+                    intent.putExtra ("newsNo",position+1);
                     startActivity (intent);
                 }
 
@@ -269,22 +277,24 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     /**
      * 上拉加载更多
      */
-    //    private void loadMore () {
-    //        List<RecyclerBaseModel> list = DataUtils.getLoadMoreData (datas);
-    //        //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
-    //        //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
-    //        synchronized (lock) {
-    //            //adapter.setLoadMoreState(LoadMoreHolder.NULL_DATA_STATE);
-    //            adapter.addListData (list);
-    //            isfresh = false;
-    //        }
-    //    }
+//        private void loadMore () {
+//            List<RecyclerBaseModel> list = DataUtils.getLoadMoreData (datas);
+//            //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
+//            //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
+//            synchronized (lock) {
+//                //adapter.setLoadMoreState(LoadMoreHolder.NULL_DATA_STATE);
+//                adapter.addListData (list);
+//                isfresh = false;
+//            }
+//        }
 
     /**
      * 下拉刷新方法
+     *
+     * 每次刷新查进入页面时间后的数据,并更新时间
      */
     private void refresh () {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler);
+        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler,startDate);
         //组装好数据之后，再一次性给list，在加多个锁，这样能够避免和上拉数据更新冲突
         //数据要尽量组装好，避免多个异步操作同个内存，因为多个异步更新一个数据源会有问题。
         synchronized (lock) {
@@ -298,9 +308,11 @@ public class MilitaryFragment extends Fragment implements View.OnClickListener {
     /**
      * 初始化数据集合
      * 使用adapter.setListData设置数据，内部封装了notifyDataSetChanged方法
+     *
+     * 第一次进入查 昨天的数据
      */
     public void initDatas () {
-        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler);
+        List<RecyclerBaseModel> list = DataUtils.getRefreshData (getActivity (), datas, mHandler,null);
         this.datas = list;
         //        if (adapter != null) {
         //            adapter.setListData (datas);

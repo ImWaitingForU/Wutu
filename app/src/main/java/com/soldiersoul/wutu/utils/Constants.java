@@ -5,6 +5,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by Chan on 2016/12/26 0026.
  * <p>
@@ -41,6 +44,30 @@ public class Constants {
     public static int dip2px(Context context, float dipValue) {
         float fontScale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * fontScale + 0.5f);
+    }
+
+    /**
+     * 返回昨天
+     * @param today
+     * @return
+     */
+    public static java.util.Date yesterday(Date today) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 1);
+        return calendar.getTime();
+    }
+
+    /**
+     * 返回明天
+     * @param today
+     * @return
+     */
+    public static java.util.Date tomorrow(Date today) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + 1);
+        return calendar.getTime();
     }
 
 

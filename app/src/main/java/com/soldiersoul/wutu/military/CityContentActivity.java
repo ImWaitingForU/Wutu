@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.CityPolicyBean;
 import com.soldiersoul.wutu.utils.BaseActivity;
+import com.soldiersoul.wutu.utils.SpUtils;
 import com.squareup.picasso.Picasso;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
@@ -49,6 +50,9 @@ public class CityContentActivity extends BaseActivity {
 
     private String sharedImgUrl;
     private String sharedTitle;
+
+    private SpUtils spUtils;
+    private static int newsNo;
 
     private Handler mHander = new Handler () {
         @Override
@@ -120,11 +124,19 @@ public class CityContentActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy () {
+        //退出时监听，保存浏览记录，下次进去直接加载上次退出的位置
+        SpUtils.putInteger (SpUtils.KEY_LAST_POSITION,newsNo);
+        super.onDestroy ();
+    }
+
+    @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         ButterKnife.bind (this);
 
         loadingView.show ();
+        spUtils = new SpUtils (this);
 
         Intent intent = getIntent ();
         Bundle bundle = intent.getExtras ();
@@ -147,6 +159,7 @@ public class CityContentActivity extends BaseActivity {
             String content = bundle.getString ("newsContent");
             String date = bundle.getString ("newsDate");
             String imgUrl = bundle.getString ("newsImg");
+            newsNo = bundle.getInt ("newsNo");
             sharedImgUrl = imgUrl;
             sharedTitle = title;
             inputData (title, content, date, imgUrl);

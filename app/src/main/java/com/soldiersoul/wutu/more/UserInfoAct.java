@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
@@ -43,6 +44,9 @@ public class UserInfoAct extends BaseActivity {
 
     private UserBean user;
 
+    //判断是不是自己用户
+    private static Boolean isSelf = false;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -51,6 +55,24 @@ public class UserInfoAct extends BaseActivity {
 
         //获取传入的用户，显示传入的用户信息，而不是只显示个人用户信息
         user = (UserBean) getIntent ().getSerializableExtra ("user");
+
+        Log.d ("chan",
+               "=id1=" + user.getObjectId () + "==id2=" + BmobUser.getCurrentUser (UserBean.class).getObjectId ());
+        //不是本机用户就不允许修改
+        if (!user.getObjectId ().equals (BmobUser.getCurrentUser (UserBean.class).getObjectId ())) {
+            isSelf = true;
+            itemUserName.setOtherUserUI ();
+            itemUserPhone.setOtherUserUI ();
+            itemUserSchool.setOtherUserUI ();
+            itemUserSociety.setOtherUserUI ();
+            itemUserName.setClickable (false);
+            itemUserPhone.setClickable (false);
+            itemUserSchool.setClickable (false);
+            itemUserSociety.setClickable (false);
+            userAvatar.setClickable (false);
+            userAvatarLayout.setClickable (false);
+        }
+
         setHomeButtonStaff ("个人信息");
     }
 

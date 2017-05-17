@@ -16,23 +16,24 @@ import com.soldiersoul.wutu.Model.ImageModel;
 import com.soldiersoul.wutu.Model.MutilModel;
 import com.soldiersoul.wutu.Model.VideoModel;
 import com.soldiersoul.wutu.R;
-import com.soldiersoul.wutu.beans.MpolicyBean;
 import com.soldiersoul.wutu.beans.MilitaryAdBean;
 import com.soldiersoul.wutu.beans.MilitaryNewsBean;
+import com.soldiersoul.wutu.beans.MpolicyBean;
 
 import net.sf.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -49,102 +50,106 @@ public class DataUtils {
         return mBundle;
     }
 
+    private SpUtils spUtils;
+
     public static void setmBundle (Bundle mBundle) {
         DataUtils.mBundle = mBundle;
     }
 
-//    //新闻，政策，宣传模拟数据
-//    public static List<RecyclerBaseModel> getInitialData () {
-//        List<RecyclerBaseModel> list = new ArrayList<> ();
-//
-//        MutilModel cardModel = new MutilModel ();
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        cardModel.setResLayoutId (MutilHolder.ID);
-//        cardModel.setImage1 (R.mipmap.ic_launcher);
-//        cardModel.setTv1 ("标题");
-//        cardModel.setTv2 ("内容-------------------------------------------------------" +
-//                                  "-----------------------------------------------------------------" +
-//                                  "-------------------------------------------------------------------" +
-//                                  "-----------------------------------------------------------");
-//        cardModel.setTv3 ("2017.2.28");
-//        list.add (cardModel);
-//
-//        return list;
-//    }
+    //    //新闻，政策，宣传模拟数据
+    //    public static List<RecyclerBaseModel> getInitialData () {
+    //        List<RecyclerBaseModel> list = new ArrayList<> ();
+    //
+    //        MutilModel cardModel = new MutilModel ();
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        cardModel.setResLayoutId (MutilHolder.ID);
+    //        cardModel.setImage1 (R.mipmap.ic_launcher);
+    //        cardModel.setTv1 ("标题");
+    //        cardModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------------" +
+    //                                  "-------------------------------------------------------------------" +
+    //                                  "-----------------------------------------------------------");
+    //        cardModel.setTv3 ("2017.2.28");
+    //        list.add (cardModel);
+    //
+    //        return list;
+    //    }
+
     /**
      * 获取福利政策数据 MPolicyBean ,数据无动态性
      */
     public static List<RecyclerBaseModel> getRefreshPolicyData (final Context context, final List outList,
-                                                            final Handler handler) {
+                                                                final Handler handler) {
+
         BmobQuery<MpolicyBean> query = new BmobQuery<> ();
         query.findObjects (new FindListener<MpolicyBean> () {
             @Override
@@ -199,7 +204,7 @@ public class DataUtils {
                     Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
                 } else {
                     Log.d ("chan", "resultList:" + resultList.size ());
-                    if (resultList.size ()==0){
+                    if (resultList.size () == 0) {
                         Toast.makeText (context, "没有更多了~", Toast.LENGTH_SHORT).show ();
                     }
 
@@ -227,16 +232,28 @@ public class DataUtils {
         return outList;
     }
 
+
     /**
      * 获取下拉刷新数据
      * 下拉刷新则保证每次不重复刷新,每次添加新的到list中
+     * <p>
+     * //不使用no字段，使用data查询
      */
-    public static List<RecyclerBaseModel> getRefreshData (final Context context, final List outList,
-                                                          final Handler handler) {
+    public static List<RecyclerBaseModel> getRefreshData (final Context context, final List<RecyclerBaseModel> outList,
+                                                          final Handler handler, Date date) {
         BmobQuery<MilitaryNewsBean> query = new BmobQuery<> ();
         query.setLimit (5);
-        //只查增量新闻
-        query.addWhereGreaterThan ("no", outList.size ());
+        //只查增量新闻,如果有保存浏览记录，则查的是保存记录之后的新闻
+
+        //如果传入查询时间为空，则返回今天的。
+        if (date == null) {
+            query.addWhereGreaterThan ("createdAt", new BmobDate (Constants.yesterday (new Date ())));
+            Log.d ("Bmob", "查询时间:" + "昨天");
+        } else {
+            //查询新闻创建时间大于刷新时间的
+            Log.d ("Bmob", "查询时间:" + date.toString ());
+            query.addWhereGreaterThan ("createdAt", new BmobDate (date));
+        }
         query.findObjects (new FindListener<MilitaryNewsBean> () {
             @Override
             public void done (List<MilitaryNewsBean> resultList, BmobException e) {
@@ -245,12 +262,13 @@ public class DataUtils {
                     Toast.makeText (context, "获取数据失败", Toast.LENGTH_SHORT).show ();
                 } else {
                     Log.d ("chan", "resultList:" + resultList.size ());
-                    if (resultList.size ()==0){
+                    if (resultList.size () == 0) {
                         Toast.makeText (context, "没有更多了~", Toast.LENGTH_SHORT).show ();
                     }
 
                     for (int i = 0; i < resultList.size (); i++) {
                         MilitaryNewsBean bean = resultList.get (i);
+
                         if (bean.getVideoUrl () != null) {
                             //如果videoUrl字段不为空，证明是一条视频新闻，按照视频格式加载
                             VideoModel videoModel = new VideoModel ();
@@ -260,6 +278,7 @@ public class DataUtils {
                             videoModel.setVideoUrl (bean.getVideoUrl ());
                             videoModel.setVideoResouce (bean.getNewsSource ());
                             videoModel.setVideoTitle (bean.getNewsTitle ());
+                            videoModel.setExtraTag (bean.getNo ());
                             outList.add (videoModel);
                         } else {
                             //否则是普通文本新闻
@@ -269,8 +288,10 @@ public class DataUtils {
                             imageModel.setNewsTitle (bean.getNewsTitle ());
                             imageModel.setNewsContent (bean.getNewsContent ());
                             imageModel.setNewsTime ("新闻来源:" + bean.getNewsSource () + " ; " + bean.getNewsDate ());
+                            imageModel.setExtraTag (bean.getNo ());
                             outList.add (imageModel);
                         }
+
                     }
 
                     if (handler != null) {
@@ -287,6 +308,7 @@ public class DataUtils {
 
     /**
      * 查询新闻方法,根据标题查询
+     *
      * @param context
      * @param outList
      * @param handler
@@ -297,15 +319,15 @@ public class DataUtils {
                                                          final Handler handler, final String keyword) {
 
         BmobQuery<MilitaryNewsBean> query = new BmobQuery<> ();
-//        query.addWhereContains ("newsTitle","aaa");
-//        query.addWhereMatches ("newsTitle",".*党.*");
-//        String bql = "select * from MilitaryNewsBean";
-//        query.doSQLQuery (bql, new SQLQueryListener<MilitaryNewsBean> () {
-//            @Override
-//            public void done (BmobQueryResult<MilitaryNewsBean> bmobQueryResult, BmobException e) {
-//                Log.d ("Bmob","========="+bmobQueryResult.getCount ());
-//            }
-//        });
+        //        query.addWhereContains ("newsTitle","aaa");
+        //        query.addWhereMatches ("newsTitle",".*党.*");
+        //        String bql = "select * from MilitaryNewsBean";
+        //        query.doSQLQuery (bql, new SQLQueryListener<MilitaryNewsBean> () {
+        //            @Override
+        //            public void done (BmobQueryResult<MilitaryNewsBean> bmobQueryResult, BmobException e) {
+        //                Log.d ("Bmob","========="+bmobQueryResult.getCount ());
+        //            }
+        //        });
         query.findObjects (new FindListener<MilitaryNewsBean> () {
             @Override
             public void done (List<MilitaryNewsBean> resultList, BmobException e) {
@@ -317,7 +339,7 @@ public class DataUtils {
 
                     for (int i = 0; i < resultList.size (); i++) {
                         MilitaryNewsBean bean = resultList.get (i);
-                        if (!bean.getNewsTitle ().contains (keyword)){
+                        if (!bean.getNewsTitle ().contains (keyword)) {
                             continue;
                         }
 
@@ -507,42 +529,42 @@ public class DataUtils {
     //    }
 
     //获取上拉加载数据
-//    public static List<RecyclerBaseModel> getLoadMoreData (List<RecyclerBaseModel> datas) {
-//        List<RecyclerBaseModel> list = new ArrayList<> ();
-//        for (int i = 0; i < datas.size (); i++) {
-//            RecyclerBaseModel recyclerBaseModel = datas.get (i);
-//            RecyclerBaseModel newModel;
-//            if (recyclerBaseModel instanceof ClickModel) {
-//
-//            } else if (recyclerBaseModel instanceof VideoModel) {
-//                newModel = new VideoModel ();
-//                VideoModel videoModel = (VideoModel) newModel;
-//                videoModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
-//                videoModel.setBtnRes (R.drawable.video_click_play_selector);
-//                //                videoModel.setFengmianRes ();
-//                list.add (newModel);
-//            } else if (recyclerBaseModel instanceof ImageModel) {
-//                newModel = new ImageModel ();
-//                ImageModel imageModel = (ImageModel) newModel;
-//                imageModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
-//                //                imageModel.setResId (((ImageModel) recyclerBaseModel).getResId ());
-//                list.add (newModel);
-//            } else if (recyclerBaseModel instanceof MutilModel) {
-//                newModel = new MutilModel ();
-//                MutilModel mutilModel = (MutilModel) newModel;
-//                mutilModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
-//                mutilModel.setImage1 (R.mipmap.ic_launcher);
-//                mutilModel.setTv1 ("标题");
-//                mutilModel.setTv2 ("内容-------------------------------------------------------" +
-//                                           "-----------------------------------------------------------------" +
-//                                           "-------------------------------------------------------------------" +
-//                                           "-----------------------------------------------------------");
-//                mutilModel.setTv3 ("2017.2.28");
-//                list.add (newModel);
-//            }
-//        }
-//        return list;
-//    }
+    //    public static List<RecyclerBaseModel> getLoadMoreData (List<RecyclerBaseModel> datas) {
+    //        List<RecyclerBaseModel> list = new ArrayList<> ();
+    //        for (int i = 0; i < datas.size (); i++) {
+    //            RecyclerBaseModel recyclerBaseModel = datas.get (i);
+    //            RecyclerBaseModel newModel;
+    //            if (recyclerBaseModel instanceof ClickModel) {
+    //
+    //            } else if (recyclerBaseModel instanceof VideoModel) {
+    //                newModel = new VideoModel ();
+    //                VideoModel videoModel = (VideoModel) newModel;
+    //                videoModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
+    //                videoModel.setBtnRes (R.drawable.video_click_play_selector);
+    //                //                videoModel.setFengmianRes ();
+    //                list.add (newModel);
+    //            } else if (recyclerBaseModel instanceof ImageModel) {
+    //                newModel = new ImageModel ();
+    //                ImageModel imageModel = (ImageModel) newModel;
+    //                imageModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
+    //                //                imageModel.setResId (((ImageModel) recyclerBaseModel).getResId ());
+    //                list.add (newModel);
+    //            } else if (recyclerBaseModel instanceof MutilModel) {
+    //                newModel = new MutilModel ();
+    //                MutilModel mutilModel = (MutilModel) newModel;
+    //                mutilModel.setResLayoutId (recyclerBaseModel.getResLayoutId ());
+    //                mutilModel.setImage1 (R.mipmap.ic_launcher);
+    //                mutilModel.setTv1 ("标题");
+    //                mutilModel.setTv2 ("内容-------------------------------------------------------" +
+    //                                           "-----------------------------------------------------------------" +
+    //                                           "-------------------------------------------------------------------" +
+    //                                           "-----------------------------------------------------------");
+    //                mutilModel.setTv3 ("2017.2.28");
+    //                list.add (newModel);
+    //            }
+    //        }
+    //        return list;
+    //    }
 
     //    //获取社团成员数据
     //    public static List<Map<String, Object>> getSocietyMemberInfo(final Context context){
