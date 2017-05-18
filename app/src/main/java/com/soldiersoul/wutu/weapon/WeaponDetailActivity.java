@@ -2,6 +2,7 @@ package com.soldiersoul.wutu.weapon;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,14 +33,18 @@ public class WeaponDetailActivity extends BaseActivity {
 
     private WeaponBean weapon;
 
-    private void setData(){
+    private void setData () {
         title.setText (weapon.getWeaponName ());
-        country.setText ("国家:"+weapon.getCountry ());
-        type.setText ("类型:"+weapon.getWeaponType ());
+        country.setText ("国家:" + weapon.getCountry ());
+        type.setText ("类型:" + weapon.getWeaponType ());
         info.setText (weapon.getWeaponInfo ());
         info2.setText (weapon.getWeaponInfo2 ());
         Picasso.with (this).load (weapon.getImg1 ()).into (img1);
-        Picasso.with (this).load (weapon.getImg2 ()).into (img2);
+        if (weapon.getImg2 () == null || weapon.getImg2 ().equals ("")) {
+            img2.setVisibility (View.GONE);
+        } else {
+            Picasso.with (this).load (weapon.getImg2 ()).into (img2);
+        }
     }
 
     @Override
@@ -56,12 +61,12 @@ public class WeaponDetailActivity extends BaseActivity {
         query.findObjects (new FindListener<WeaponBean> () {
             @Override
             public void done (List<WeaponBean> list, BmobException e) {
-                if (e == null){
-                    if (weapon==null) weapon = list.get (0);
-//                    setHomeButtonStaff (weapon.getWeaponName ());
+                if (e == null) {
+                    if (weapon == null) { weapon = list.get (0); }
+                    //                    setHomeButtonStaff (weapon.getWeaponName ());
                     setData ();
-                }else{
-                    Log.d ("Bmob","武器数据导入失败"+e.getMessage ());
+                } else {
+                    Log.d ("Bmob", "武器数据导入失败" + e.getMessage ());
                 }
             }
         });

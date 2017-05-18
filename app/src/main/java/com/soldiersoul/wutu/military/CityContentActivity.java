@@ -126,7 +126,7 @@ public class CityContentActivity extends BaseActivity {
     @Override
     protected void onDestroy () {
         //退出时监听，保存浏览记录，下次进去直接加载上次退出的位置
-        SpUtils.putInteger (SpUtils.KEY_LAST_POSITION,newsNo);
+//        SpUtils.putInteger (SpUtils.KEY_LAST_POSITION,newsNo);
         super.onDestroy ();
     }
 

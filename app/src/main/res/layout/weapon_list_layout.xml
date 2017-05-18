@@ -18,7 +18,7 @@
             android:layout_height="90dp"
             android:layout_marginRight="16dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/ic_loadimg_failed"/>
 
         <TextView
             android:id="@+id/tvWeaponTitle"

@@ -151,7 +151,9 @@ public class VerifyFragment extends Fragment implements CountDownButton.GetVerif
                         Message message = new Message ();
                         message.what = VERIFY_SUCCESS;
                         message.arg1 = Integer.parseInt (verifyCode);
+                        message.arg2 = Integer.parseInt (userName);
                         message.obj = userName;
+
                         mHandler.sendMessage (message);
                     } else {
                         Log.i ("bmob", "验证失败：code =" + ex.getErrorCode () + ",msg = " + ex.getLocalizedMessage ());

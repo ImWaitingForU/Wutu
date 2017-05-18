@@ -186,8 +186,8 @@ public class ShowWeaponActivity extends BaseActivity {
                 likeButton.setVisibility (View.VISIBLE);
 
                 //根据收藏情况展示不同的心形布局
-                Log.d ("Bmob", "武器收藏UserBean==" + weaponBean.getUserBean ().getObjectId ());
-                if (weaponBean.getUserBean ().getObjectId ().equals (currentUser.getObjectId ())) {
+                UserBean user = weaponBean.getUserBean ();
+                if (user != null && user.getObjectId ().equals (currentUser.getObjectId ())) {
                     likeButton.setLiked (true);
                     Log.d ("Bmob", "已收藏");
                 } else {

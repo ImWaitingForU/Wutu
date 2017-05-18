@@ -28,7 +28,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug{
+        debug {
             minifyEnabled false
 //            signingConfig signingConfigs.debug
         }
@@ -53,6 +53,19 @@ dependencies {
     apply plugin: 'com.android.application'
     compile files('libs/json-lib-2.4-jdk15.jar')
     compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
+    compile files('libs/libapshare.jar')
+    compile files('libs/SocialSDK_alipay.jar')
+    compile files('libs/SocialSDK_evernote.jar')
+    compile files('libs/SocialSDK_sms.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/umeng_social_shareview.jar')
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    compile files('libs/SocialSDK_Sina_Simplify.jar')
     compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
     compile 'cn.bmob.android:bmob-sdk:3.5.1'
     compile 'cn.bmob.android:bmob-sms:1.0.1'
@@ -81,20 +94,8 @@ dependencies {
     compile 'com.wang.avi:library:2.1.3'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile files('libs/libapshare.jar')
-    compile files('libs/SocialSDK_alipay.jar')
-    compile files('libs/SocialSDK_evernote.jar')
-    compile files('libs/SocialSDK_sms.jar')
-    compile files('libs/umeng_shareboard_widget.jar')
-    compile files('libs/umeng_social_api.jar')
-    compile files('libs/umeng_social_net.jar')
-    compile files('libs/umeng_social_shareboard.jar')
-    compile files('libs/umeng_social_tool.jar')
-    compile files('libs/umeng_social_shareview.jar')
-    compile files('libs/SocialSDK_QQ_Simplify.jar')
-    compile files('libs/SocialSDK_WeChat_Simplify.jar')
-    compile files('libs/SocialSDK_Sina_Simplify.jar')
 }
+
 
 
 

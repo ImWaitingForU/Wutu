@@ -69,7 +69,7 @@ public class WeaponFragment extends Fragment implements View.OnClickListener {
         if (v.getId () == R.id.ivPistol || v.getId () == R.id.tvPistol) {
             startActivity ("手枪");
         } else if (v.getId () == R.id.ivMusket || v.getId () == R.id.tvMusket) {
-            startActivity ("冲锋枪");
+            startActivity ("步枪");
         } else if (v.getId () == R.id.ivMissile || v.getId () == R.id.tvMissile) {
             startActivity ("导弹");
         } else if (v.getId () == R.id.ivTank || v.getId () == R.id.tvTank) {

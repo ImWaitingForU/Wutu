@@ -104,7 +104,7 @@ public class SocietyFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //判断是当前用户是否包含社团信息，定位移动到个人信息界面
-        if (user.getSociety ()==null) {
+        if ( user.getSociety ()==null) {
             return inflater.inflate (R.layout.fragment_society_empty, container, false);
         } else {
             return inflater.inflate (R.layout.fragment_society, container, false);

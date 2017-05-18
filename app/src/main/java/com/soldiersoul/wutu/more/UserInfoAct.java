@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.beans.UserBean;
+import com.soldiersoul.wutu.register.RegisterActivity;
 import com.soldiersoul.wutu.utils.BaseActivity;
 import com.soldiersoul.wutu.views.SimpleUserInfoItem;
 import com.squareup.picasso.Picasso;
@@ -171,6 +172,9 @@ public class UserInfoAct extends BaseActivity {
     @OnClick (R.id.itemUserPhone)
     public void changeUserPhone () {
         // TODO: 2017/3/14 验证手机号 ？是否允许修改？
+        Intent intent = new Intent (this, RegisterActivity.class);
+        intent.putExtra ("isChangePhone", true);
+        startActivity (intent);
     }
 
 

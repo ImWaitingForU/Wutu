@@ -18,16 +18,25 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
 
     private VerifyFragment mVerifyFragment;
     private PwdFragment mPwdFragment;
+    private ChangePhoneFrag mPhoneFragment;
     private FragmentManager fm;
 
     private Boolean isFindPwd;
+    private Boolean isChangePhone;
 
     private Handler mHandler = new Handler () {
         @Override
         public void handleMessage (Message msg) {
             if (msg.what == VerifyFragment.VERIFY_SUCCESS) {
                 Log.d ("Chan", "handler:" + msg.arg1);
-                showPwdFragment (msg.obj, isFindPwd, msg.arg1);
+
+                //如果是修改手机号则发送不同的消息
+                if (isChangePhone) {
+                    showChangePhoneFragment (msg.arg2);
+                } else {
+                    //普通注册
+                    showPwdFragment (msg.obj, isFindPwd, msg.arg1);
+                }
             }
         }
     };
@@ -39,6 +48,7 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
 
         //判断是否是重置密码
         isFindPwd = getIntent ().getBooleanExtra ("isFindPwd", false);
+        isChangePhone = getIntent ().getBooleanExtra ("isChangePhone", false);
         showVerifyFragment (isFindPwd);
         BmobSMS.initialize (this, "2cc3116ad9187a3b8cca8f37da4338e0");
 
@@ -64,6 +74,19 @@ public class RegisterActivity extends BaseActivity implements MisoperationDialog
             transaction.add (R.id.activity_register, mVerifyFragment);
         }
         setTitle ("验证手机号");
+        transaction.commitAllowingStateLoss ();
+    }
+
+    /**
+     * 显示更换手机Fragment
+     */
+    private void showChangePhoneFragment (int phone) {
+        FragmentTransaction transaction = fm.beginTransaction ();
+        if (mPhoneFragment == null) {
+            mPhoneFragment = new ChangePhoneFrag (mHandler, phone);
+            transaction.add (R.id.activity_register, mPhoneFragment);
+        }
+        setTitle ("更换手机号");
         transaction.commitAllowingStateLoss ();
     }
 

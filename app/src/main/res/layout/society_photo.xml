@@ -7,11 +7,13 @@
 
     <ImageView
         android:id="@+id/ivSocietyPhoto"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="180dp"/>
     
     <TextView
+        android:textSize="16sp"
+        style="@style/TextAppearance.AppCompat.Body1"
         android:text="相册名"
         android:id="@+id/tvPhotoName"
         android:gravity="center"

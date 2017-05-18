@@ -1,0 +1,36 @@
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.soldiersoul.wutu.register.ChangePhoneFrag">
+
+    <TextView
+        android:id="@+id/etNewPhone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorTranslate"
+        android:gravity="center"
+        android:inputType="phone"
+        android:maxLength="11"/>
+
+    <View
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/et_userName"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/btnFinishChange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_selector"
+        android:text="修改"
+        android:textColor="@color/colorWhite"/>
+
+</LinearLayout>

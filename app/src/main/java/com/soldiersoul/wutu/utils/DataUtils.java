@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.Map;
 
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 
@@ -245,15 +244,22 @@ public class DataUtils {
         query.setLimit (5);
         //只查增量新闻,如果有保存浏览记录，则查的是保存记录之后的新闻
 
+
+        // 1 --------- 按照时间增量查询
         //如果传入查询时间为空，则返回今天的。
-        if (date == null) {
-            query.addWhereGreaterThan ("createdAt", new BmobDate (Constants.yesterday (new Date ())));
-            Log.d ("Bmob", "查询时间:" + "昨天");
-        } else {
-            //查询新闻创建时间大于刷新时间的
-            Log.d ("Bmob", "查询时间:" + date.toString ());
-            query.addWhereGreaterThan ("createdAt", new BmobDate (date));
-        }
+//        if (date == null) {
+//            query.addWhereGreaterThan ("createdAt", new BmobDate (Constants.yesterday (new Date ())));
+//            Log.d ("Bmob", "查询时间:" + "昨天");
+//        } else {
+//            //查询新闻创建时间大于刷新时间的
+//            Log.d ("Bmob", "查询时间:" + date.toString ());
+//            query.addWhereGreaterThan ("createdAt", new BmobDate (date));
+//        }
+
+        // 2----------- 按照no数量查询
+        query.addWhereGreaterThan ("no",outList.size ());
+        Log.d ("Bmob","queryNoList==="+outList.size ());
+
         query.findObjects (new FindListener<MilitaryNewsBean> () {
             @Override
             public void done (List<MilitaryNewsBean> resultList, BmobException e) {

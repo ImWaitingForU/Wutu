@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.soldiersoul.wutu.R;
 import com.soldiersoul.wutu.utils.BaseActivity;
-import com.soldiersoul.wutu.utils.SpUtils;
 
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -45,8 +44,8 @@ public class VideoPlayerAct extends BaseActivity {
     @Override
     protected void onDestroy () {
         //退出时记录浏览位置
-        SpUtils sp = new SpUtils (this);
-        SpUtils.putInteger (SpUtils.KEY_LAST_POSITION,getIntent ().getIntExtra ("newsNo",0));
+//        SpUtils sp = new SpUtils (this);
+//        SpUtils.putInteger (SpUtils.KEY_LAST_POSITION,getIntent ().getIntExtra ("newsNo",0));
         super.onDestroy ();
     }
 

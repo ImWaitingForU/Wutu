@@ -164,7 +164,11 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
 
     @Override
     public void onBottomBar2Clicked () {
-        showSocietyFragments ();
+        if (BmobUser.getCurrentUser (UserBean.class) == null) {
+            startActivity (new Intent (MainActivity.this, LoginActivity.class));
+        } else {
+            showSocietyFragments ();
+        }
     }
 
     @Override
@@ -177,7 +181,7 @@ public class MainActivity extends BaseActivity implements BottomBar.BottomBarCli
         //如果没登陆则进入登陆界面
         if (BmobUser.getCurrentUser (UserBean.class) == null) {
             startActivity (new Intent (MainActivity.this, LoginActivity.class));
-            this.finish ();
+//            this.finish ();
         } else {
             showMeFragments ();
         }
